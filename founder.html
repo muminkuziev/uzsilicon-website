@@ -1,1 +1,141 @@
-2
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder & Project Initiator — Kuziev Mumin Ulashboevich · Uz Silicon Tech</title>
+<meta name="description" content="Kuziev Mumin Ulashboevich — Founder and Project Initiator of Uz Silicon Tech, Uzbekistan's integrated silicon value chain initiative.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0B0E13;--ink2:#0E1116;--panel:#141A22;--panel2:#1A222C;--line:#26303C;
+    --amber:#E8A33D;--amber2:#F2B85A;--amber-dim:#9A6E2C;--steel:#6BA5C9;--steel-dim:#3E6478;
+    --text:#EAEEF3;--muted:#949DAA;--faint:#5C6672}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;font-size:16px}
+  .mono{font-family:'Space Mono',monospace}
+  h1,h2,h3,.disp{font-family:'Space Grotesk',sans-serif;letter-spacing:-.015em}
+  .wrap{max-width:820px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  a{color:inherit}
+  [data-lang="en"] .uz{display:none}
+  [data-lang="uz"] .en{display:none}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,14,19,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;font-size:17px;letter-spacing:-.02em;text-decoration:none}
+  .brand .mk{width:26px;height:26px}.brand b{color:var(--amber)}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav-right a.back{font-size:13px;color:var(--muted);text-decoration:none}.nav-right a.back:hover{color:var(--amber)}
+  .lang{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;font-family:'Space Mono';font-size:11px}
+  .lang button{background:none;border:0;color:var(--faint);padding:5px 11px;cursor:pointer;font-family:inherit;font-size:inherit}
+  [data-lang="en"] .lang .b-en,[data-lang="uz"] .lang .b-uz{background:var(--amber);color:var(--ink)}
+
+  header.f-hero{padding:clamp(46px,8vw,80px) 0 24px;
+    background:radial-gradient(700px 380px at 80% 0%,rgba(232,163,61,.12),transparent 60%)}
+  .kick{font-family:'Space Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:18px}
+  .kick::before{content:"";width:22px;height:1px;background:var(--amber)}
+  h1{font-size:clamp(30px,6vw,50px);font-weight:700;line-height:1.05}
+  .role-sub{margin-top:12px;font-family:'Space Grotesk';font-weight:500;font-size:clamp(15px,2.3vw,20px);color:var(--steel)}
+
+  section{padding:30px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+  h2{font-size:clamp(18px,3vw,24px);font-weight:600;margin-bottom:14px}
+  p{color:#CDD4DD;margin-bottom:14px}p:last-child{margin-bottom:0}
+  p b{color:var(--text)}
+  ul{list-style:none;margin:6px 0 14px}
+  ul li{padding:6px 0 6px 24px;position:relative;color:#CDD4DD}
+  ul li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:2px;background:var(--amber);transform:rotate(45deg)}
+
+  .contact{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:13px;padding:22px 24px}
+  .contact .row{display:flex;gap:12px;padding:6px 0;font-size:14.5px;flex-wrap:wrap}
+  .contact .k{font-family:'Space Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);min-width:90px;padding-top:2px}
+  .contact .v{color:var(--text)}.contact a{color:var(--steel);text-decoration:none;font-family:'Space Mono';font-size:14px}.contact a:hover{color:var(--amber)}
+
+  .notice{background:var(--ink2);border:1px solid var(--line);border-radius:11px;padding:18px 20px;font-size:13px;color:var(--muted)}
+  .notice h3{font-family:'Space Grotesk';font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin-bottom:8px;font-weight:600}
+
+  footer{border-top:1px solid var(--line);background:var(--ink2);padding:30px 0;margin-top:30px}
+  .copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:'Space Mono';font-size:11px;color:var(--faint)}
+</style>
+</head>
+<body data-lang="en">
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <svg class="mk" viewBox="0 0 32 32" fill="none"><path d="M16 2l12 7v14l-12 7L4 23V9z" stroke="#E8A33D" stroke-width="1.6"/><path d="M16 9l6 3.5v7L16 23l-6-3.5v-7z" fill="#E8A33D" fill-opacity="0.18" stroke="#E8A33D" stroke-width="1.2"/></svg>
+      UZ <b>SILICON</b> TECH
+    </a>
+    <div class="nav-right">
+      <a href="index.html" class="back"><span class="en">← Home</span><span class="uz">← Bosh sahifa</span></a>
+      <div class="lang">
+        <button class="b-en" onclick="setLang('en')">EN</button>
+        <button class="b-uz" onclick="setLang('uz')">UZ</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="f-hero">
+  <div class="wrap">
+    <span class="kick"><span class="en">Founder & Project Initiator</span><span class="uz">Asoschi va Tashabbuskor</span></span>
+    <h1>Kuziev Mumin Ulashboevich</h1>
+    <p class="role-sub"><span class="en">Founder and Project Initiator of Uz Silicon Tech</span><span class="uz">Uz Silicon Tech asoschisi va tashabbuskori</span></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <p><span class="en"><b>Kuziev Mumin Ulashboevich</b> is the founder and initiator of the Uz Silicon Tech concept — a strategic initiative aimed at establishing a fully integrated silicon value chain in Uzbekistan, including high-purity quartz processing, metallurgical silicon, polysilicon, wafer manufacturing, and related downstream industries.</span>
+    <span class="uz"><b>Kuziev Mumin Ulashboevich</b> — Uz Silicon Tech konsepsiyasining asoschisi va tashabbuskori. Bu — O'zbekistonda to'liq integratsiyalashgan kremniy zanjirini barpo etishga qaratilgan strategik tashabbus bo'lib, yuqori tozalikdagi kvarts qayta ishlash, metallurgik silisiy, polysilicon, wafer ishlab chiqarish va tegishli quyi sanoatlarni o'z ichiga oladi.</span></p>
+    <p><span class="en">The concept was developed with the vision of positioning Uzbekistan as a future supplier of traceable, China-independent silicon materials for the global solar and semiconductor industries.</span>
+    <span class="uz">Konsepsiya O'zbekistonni global quyosh va yarimo'tkazgich sanoati uchun kuzatiladigan, Xitoyga bog'liq bo'lmagan kremniy materiallari yetkazib beruvchisi sifatida joylashtirish maqsadida ishlab chiqilgan.</span></p>
+  </section>
+
+  <section>
+    <h2><span class="en">Project focus</span><span class="uz">Loyiha yo'nalishlari</span></h2>
+    <ul>
+      <li><span class="en">Development of a national silicon cluster;</span><span class="uz">Milliy kremniy klasterini rivojlantirish;</span></li>
+      <li><span class="en">Creation of high-value industrial exports;</span><span class="uz">Yuqori qiymatli sanoat eksportini yaratish;</span></li>
+      <li><span class="en">Integration of renewable energy with advanced manufacturing;</span><span class="uz">Qayta tiklanuvchi energiyani ilg'or ishlab chiqarish bilan birlashtirish;</span></li>
+      <li><span class="en">Attraction of international strategic partners and investors;</span><span class="uz">Xalqaro strategik sheriklar va investorlarni jalb qilish;</span></li>
+      <li><span class="en">Strengthening Uzbekistan's role in global critical minerals supply chains.</span><span class="uz">O'zbekistonning global kritik minerallar ta'minot zanjiridagi rolini mustahkamlash.</span></li>
+    </ul>
+    <p><span class="en">The founder's role is to initiate, coordinate, develop, and promote the strategic concept while working with government institutions, investors, industrial partners, and international organizations.</span>
+    <span class="uz">Asoschining vazifasi — davlat institutlari, investorlar, sanoat sheriklari va xalqaro tashkilotlar bilan ishlagan holda strategik konsepsiyani tashabbus qilish, muvofiqlashtirish, rivojlantirish va targ'ib qilishdir.</span></p>
+  </section>
+
+  <section>
+    <h2><span class="en">Contact</span><span class="uz">Aloqa</span></h2>
+    <div class="contact">
+      <div class="row"><span class="k"><span class="en">Name</span><span class="uz">Ism</span></span><span class="v">Kuziev Mumin Ulashboevich</span></div>
+      <div class="row"><span class="k">Email</span><a href="mailto:founder@uzsilicon.com">founder@uzsilicon.com</a></div>
+      <div class="row"><span class="k"><span class="en">Website</span><span class="uz">Sayt</span></span><a href="https://www.uzsilicon.com">www.uzsilicon.com</a></div>
+      <div class="row"><span class="k"><span class="en">Country</span><span class="uz">Davlat</span></span><span class="v"><span class="en">Republic of Uzbekistan</span><span class="uz">O'zbekiston Respublikasi</span></span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="notice">
+      <h3><span class="en">Intellectual Ownership Notice</span><span class="uz">Intellektual mulk haqida bildirishnoma</span></h3>
+      <p style="margin:0"><span class="en">This website, concept materials, presentations, and strategic documents are published to document the original initiative and authorship of the Uz Silicon Tech concept. All rights reserved by the author unless otherwise agreed through written partnership, licensing, investment, or development agreements.</span>
+      <span class="uz">Ushbu veb-sayt, konsept materiallari, taqdimotlar va strategik hujjatlar Uz Silicon Tech konsepsiyasining asl tashabbusi va mualliflik huquqini hujjatlashtirish maqsadida e'lon qilingan. Yozma sheriklik, litsenziya, investitsiya yoki rivojlantirish shartnomalari orqali boshqacha kelishilmagan bo'lsa, barcha huquqlar muallifga tegishli.</span></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap copy">
+    <span>© 2026 UZ SILICON TECH · uzsilicon.com</span>
+    <a href="index.html" style="color:var(--steel);text-decoration:none"><span class="en">← Back to home</span><span class="uz">← Bosh sahifaga</span></a>
+  </div>
+</footer>
+
+<script>
+  function setLang(l){document.documentElement.setAttribute('data-lang',l);document.body.setAttribute('data-lang',l);document.documentElement.lang=l;try{localStorage.setItem('uzst_lang',l)}catch(e){}}
+  (function(){var s;try{s=localStorage.getItem('uzst_lang')}catch(e){}if(s)setLang(s)})();
+</script>
+</body>
+</html>
