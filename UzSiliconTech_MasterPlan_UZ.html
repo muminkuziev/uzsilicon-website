@@ -1,1 +1,649 @@
-4
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uz Silicon Tech — To'liq Master-Reja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1116; --panel:#161C24; --panel2:#1B232D; --panel3:#11161D; --line:#28323F;
+    --amber:#E8A33D; --amber-dim:#9A6E2C; --steel:#6BA5C9; --steel-dim:#3E6478;
+    --green:#5FB98A; --red:#E07A5F; --violet:#9B8CCB;
+    --text:#E7EBF0; --muted:#8A93A0; --faint:#5A6470;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;font-size:15px;
+    background-image:radial-gradient(1000px 600px at 85% -5%,rgba(232,163,61,.06),transparent 60%),
+                     radial-gradient(800px 600px at -10% 20%,rgba(107,165,201,.05),transparent 55%);}
+  .wrap{max-width:1000px;margin:0 auto;padding:clamp(16px,4vw,44px)}
+  .mono{font-family:'Space Mono',monospace}
+  h1,h2,h3,h4,.disp{font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em}
+
+  /* cover */
+  .cover{border-bottom:1px solid var(--line);padding-bottom:34px;margin-bottom:8px}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--amber);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--amber)}
+  h1{font-size:clamp(28px,6.5vw,52px);font-weight:700;line-height:1.03;margin:16px 0 6px}
+  h1 .ac{color:var(--amber)}
+  .sub{color:var(--muted);font-size:clamp(14px,2.4vw,18px);max-width:64ch}
+  .meta{margin-top:18px;display:flex;gap:8px 26px;flex-wrap:wrap;font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+  .meta b{color:var(--muted)}
+
+  .figs{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:26px 0 0}
+  .fig{background:var(--panel);padding:15px 12px}
+  .fig .v{font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(15px,2.6vw,21px)}
+  .fig .v.am{color:var(--amber)} .fig .v.st{color:var(--steel)} .fig .v.gr{color:var(--green)}
+  .fig .l{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+  @media(max-width:760px){.figs{grid-template-columns:repeat(2,1fr)}}
+
+  /* TOC */
+  .toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:30px 0}
+  .toc h4{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);margin-bottom:12px;font-weight:600}
+  .toc ol{list-style:none;counter-reset:t;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+  @media(max-width:680px){.toc ol{grid-template-columns:1fr}}
+  .toc li{counter-increment:t;font-size:13.5px}
+  .toc li a{color:var(--muted);text-decoration:none;display:flex;gap:10px;padding:3px 0;border-bottom:1px solid transparent}
+  .toc li a:hover{color:var(--amber)}
+  .toc li a::before{content:counter(t,decimal-leading-zero);font-family:'Space Mono',monospace;
+    color:var(--amber-dim);font-size:11px;flex:0 0 auto}
+
+  /* sections */
+  section{margin:46px 0;scroll-margin-top:20px}
+  .shead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);
+    padding-bottom:12px;margin-bottom:20px}
+  .shead .num{font-family:'Space Mono',monospace;color:var(--amber);font-size:14px;font-weight:700}
+  .shead h2{font-size:clamp(19px,3.4vw,27px);font-weight:600}
+  .shead .lens{margin-left:auto;font-family:'Space Mono',monospace;font-size:10px;color:var(--faint);
+    text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);padding:4px 10px;border-radius:20px;white-space:nowrap}
+  p{margin:0 0 13px;color:#CDD4DD}
+  p b,li b{color:var(--text);font-weight:600}
+  .amb{color:var(--amber)} .stl{color:var(--steel)}
+  ul.clean{list-style:none;margin:0 0 14px}
+  ul.clean li{padding:5px 0 5px 22px;position:relative;color:#CDD4DD;font-size:14px}
+  ul.clean li::before{content:"▸";position:absolute;left:0;color:var(--amber-dim);font-size:12px;top:6px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin:16px 0}
+  .card.warn{border-left:3px solid var(--red)}
+  .card.good{border-left:3px solid var(--green)}
+  .card.note{border-left:3px solid var(--steel)}
+  .card h4{font-size:14px;font-weight:600;margin-bottom:8px;font-family:'Space Grotesk'}
+  .card.warn h4{color:var(--red)} .card.good h4{color:var(--green)} .card.note h4{color:var(--steel)}
+  .card p{font-size:13.5px;margin-bottom:8px} .card p:last-child{margin-bottom:0}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+  th{font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--faint);font-weight:700;background:var(--panel3)}
+  td{color:#CDD4DD}
+  td.mono,th.r{font-family:'Space Mono',monospace}
+  td.r,th.r{text-align:right} td.num{font-family:'Space Mono',monospace;color:var(--text)}
+  tr:hover td{background:rgba(255,255,255,.015)}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px}
+  .tbl-wrap table{margin:0} .tbl-wrap th:first-child,.tbl-wrap td:first-child{padding-left:16px}
+
+  /* flow diagram */
+  .flow{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;overflow-x:auto}
+  .stage-row{display:flex;align-items:stretch;gap:0;min-width:680px}
+  .stg{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 11px;
+    display:flex;flex-direction:column;gap:5px;min-width:0}
+  .stg .si{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .stg .sn{font-family:'Space Grotesk';font-weight:600;font-size:13.5px;line-height:1.15}
+  .stg .sd{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted)}
+  .stg.s1{border-color:var(--steel-dim)} .stg.s5{border-color:var(--amber-dim);
+    background:linear-gradient(180deg,#221d14,#1B232D)}
+  .ar{display:flex;align-items:center;flex:0 0 24px;color:var(--amber)}
+  .ar svg{width:18px;height:18px}
+  .loop{margin-top:14px;display:flex;gap:10px;align-items:center;font-size:12px;color:var(--violet);
+    background:var(--panel3);border:1px dashed var(--steel-dim);border-radius:9px;padding:9px 13px}
+  .loop b{color:var(--steel)}
+
+  /* bar chart */
+  .bars{margin:16px 0}
+  .bar{display:grid;grid-template-columns:160px 1fr 70px;align-items:center;gap:12px;margin:7px 0;font-size:13px}
+  @media(max-width:560px){.bar{grid-template-columns:110px 1fr 56px;gap:8px;font-size:12px}}
+  .bar .bl{color:var(--muted)}
+  .bar .bt{height:18px;border-radius:4px;background:var(--steel);min-width:2px}
+  .bar .bt.am{background:var(--amber)} .bar .bt.gr{background:var(--green)}
+  .bar .bt.vi{background:var(--violet)} .bar .bt.st{background:var(--steel)}
+  .bar .bv{font-family:'Space Mono',monospace;text-align:right;color:var(--text)}
+
+  /* land donut legend */
+  .land{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
+  @media(max-width:600px){.land{grid-template-columns:1fr;gap:10px}}
+  .lg .li{display:flex;align-items:center;gap:9px;font-size:13px;padding:4px 0;color:#CDD4DD}
+  .lg .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+  .lg .lv{margin-left:auto;font-family:'Space Mono',monospace;color:var(--text)}
+
+  /* timeline gantt */
+  .gantt{margin:14px 0;font-size:12px}
+  .gh{display:grid;grid-template-columns:150px repeat(7,1fr);gap:2px;margin-bottom:6px}
+  .gh span{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--faint);text-align:center}
+  .gh span:first-child{text-align:left}
+  .grow{display:grid;grid-template-columns:150px repeat(7,1fr);gap:2px;align-items:center;margin:3px 0}
+  .grow .gl{font-size:11.5px;color:var(--muted)}
+  .gbar{height:16px;border-radius:3px;grid-column:var(--s) / var(--e);background:var(--amber);opacity:.85}
+  .gbar.st{background:var(--steel)} .gbar.gr{background:var(--green)} .gbar.vi{background:var(--violet)}
+  .gcell{height:16px;border-radius:2px;background:var(--panel3)}
+
+  /* expert grid */
+  .experts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:680px){.experts{grid-template-columns:1fr}}
+  .ex{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;border-top:2px solid var(--steel-dim)}
+  .ex.flag{border-top-color:var(--red)} .ex.ok{border-top-color:var(--green)}
+  .ex .er{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .ex .eh{font-family:'Space Grotesk';font-weight:600;font-size:14.5px;margin:3px 0 7px}
+  .ex p{font-size:12.5px;margin:0;color:var(--muted)}
+
+  /* footer */
+  footer{margin-top:50px;border-top:1px solid var(--line);padding-top:22px}
+  .disc{font-size:11.5px;color:var(--faint);display:flex;gap:8px;margin:6px 0}
+  .disc b{color:var(--muted)}
+  .sign{margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    font-family:'Space Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.05em}
+  .sign .g{color:var(--amber-dim)}
+  a.up{color:var(--steel);text-decoration:none;font-size:11px;font-family:'Space Mono'}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<header class="cover" id="top">
+  <div class="eyebrow">Integratsiyalashgan Master-Reja · Konsept v2.5 · Ufq 2032</div>
+  <h1>Uz Silicon Tech<br><span class="ac">To'liq Qiymat Zanjiri</span></h1>
+  <p class="sub">Qazib olishdan tayyor mahsulotgacha — kvarts koni · metallurgik silisiy · polysilicon · wafer · yopiq-sikl chiqindi qayta ishlash (ZLD + STC) · ~1 GW firm energiya · kadrlar va ta'lim tizimi. Sakkiz ekspert nigohi bilan tahlil qilingan.</p>
+  <div class="meta">
+    <span><b>Tashabbuskor:</b> Kuziev Mumin Ulashboevich</span>
+    <span><b>Joylashuv:</b> Navoiy / Jizzax / Sirdaryo</span>
+    <span><b>Status:</b> Pre-Feasibility konsept</span>
+  </div>
+  <div class="figs">
+    <div class="fig"><div class="v am">100<span style="font-size:12px"> kt</span></div><div class="l">Polysilicon/yil</div></div>
+    <div class="fig"><div class="v st">20<span style="font-size:12px"> GW</span></div><div class="l">Wafer/yil</div></div>
+    <div class="fig"><div class="v gr">~1<span style="font-size:12px"> GW</span></div><div class="l">Firm energiya</div></div>
+    <div class="fig"><div class="v">~2 800<span style="font-size:12px"> ga</span></div><div class="l">Umumiy yer</div></div>
+    <div class="fig"><div class="v">~6–8<span style="font-size:12px"> ming</span></div><div class="l">Ish o'rni</div></div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h4>Mundarija</h4>
+  <ol>
+    <li><a href="#vc">Qiymat zanjiri — umumiy ko'rinish</a></li>
+    <li><a href="#geo">Geologiya va qazib olish</a></li>
+    <li><a href="#proc">Texnologik jarayon (5 bosqich)</a></li>
+    <li><a href="#waste">Chiqindi: ZLD + yopiq-sikl STC</a></li>
+    <li><a href="#wafer">Wafer zavodi</a></li>
+    <li><a href="#offtake">Offtake xaritasi (xaridorlar)</a></li>
+    <li><a href="#energy">Energiya ta'minoti</a></li>
+    <li><a href="#land">Yer va infratuzilma</a></li>
+    <li><a href="#people">Inson kapitali (kadrlar)</a></li>
+    <li><a href="#edu">Ta'lim va kadrlar tayyorlash</a></li>
+    <li><a href="#capex">CAPEX breakdown (batafsil)</a></li>
+    <li><a href="#equity">Aktsiyadorlik strukturasi</a></li>
+    <li><a href="#fin">Moliyaviy model + sensitivity</a></li>
+    <li><a href="#swot">SWOT tahlili</a></li>
+    <li><a href="#impact">O'zbekiston uchun strategik ta'sir</a></li>
+    <li><a href="#gates">Gate-1 → FID timeline</a></li>
+    <li><a href="#audience">Bu hujjat kimlar uchun</a></li>
+    <li><a href="#verdict">Sakkiz ekspert xulosasi</a></li>
+    <li><a href="#risk">Risklar va halol caveatlar</a></li>
+  </ol>
+</nav>
+
+<!-- 1. VALUE CHAIN -->
+<section id="vc">
+  <div class="shead"><span class="num">01</span><h2>Qiymat zanjiri — umumiy ko'rinish</h2><span class="lens">Geolog · Texnolog</span></div>
+  <p>Loyiha — yolg'iz zavod emas, balki <b>to'liq vertikal integratsiyalashgan klaster:</b> kvarts yer ostidan olinadi, bosqichma-bosqich tozalanadi va wafer'gacha qayta ishlanadi. Har bir chiqindi oqimi <span class="stl">yopiq siklda qaytariladi.</span> O'zbekistonning ustunligi shu yerda: <b>Omon xomashyoni import qiladi — biz yer ostidan olamiz.</b></p>
+  <div class="flow">
+    <div class="stage-row">
+      <div class="stg s1"><span class="si">Qadam 0</span><span class="sn">Kvarts koni</span><span class="sd">SiO₂ 98.7% · Nurota/Jerdanak</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Qadam 1</span><span class="sn">MG-Si</span><span class="sd">Yoy pechi · 98–99% Si</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Qadam 2</span><span class="sn">TCS sintezi</span><span class="sd">SiHCl₃ + H₂/HCl</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Qadam 3</span><span class="sn">Distillyatsiya</span><span class="sd">Tozalash → 9–11N</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg s5"><span class="si">Qadam 4</span><span class="sn">Polysilicon</span><span class="sd">Siemens CVD · 6N+</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Qadam 5</span><span class="sn">Wafer</span><span class="sd">Ingot → kesish</span></div>
+    </div>
+    <div class="loop"><span>♻</span><span><b>Yopiq sikl:</b> STC → TCS gidroxlorlash · H₂ va HCl rekuperatsiyasi · ZLD suv tizimi · kerf (kesim chiqindisi) qaytarish — <b>nol suyuq chiqindi.</b></span></div>
+  </div>
+</section>
+
+<!-- 2. GEOLOGY -->
+<section id="geo">
+  <div class="shead"><span class="num">02</span><h2>Geologiya va qazib olish</h2><span class="lens">Geolog</span></div>
+  <p>Geolog nigohi: ichki kvarts <b>endi taxmin emas.</b> Toshkent Kimyo-Texnologiya Instituti (Nomazov &amp; Aripova, 2025) O'zbekiston konlari kvartsining tarkibini o'lchadi:</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Manba</th><th class="r">SiO₂</th><th class="r">Al₂O₃</th><th class="r">Fe₂O₃</th><th>Baho</th></tr>
+    <tr><td>Nurota tomir kvartsi</td><td class="num r">98.74%</td><td class="num r">0.45%</td><td class="num r">0.02%</td><td>Yuqori tozalik</td></tr>
+    <tr><td>Jerdanak kvartsiti</td><td class="num r">97.72%</td><td class="num r">0.77%</td><td class="num r">0.12%</td><td>Illit aralashmasi</td></tr>
+  </table></div>
+  <div class="card good"><h4>✓ Nima tasdiqlangan</h4>
+    <p>SiO₂ darajasi <b>MG-Si (metallurgik silisiy) uchun yetarli.</b> O'zbekistonda 20+ kvarts koni va boyitish (AJ "Kvarts") tajribasi bor. Bu — Omonning "importga bog'liqlik" zaifligiga qarshi real ustunlik.</p>
+    <p style="margin-top:8px"><b>Rasmiy strategik tasdiq:</b> O'zbekistonning <b>Kritik Elementlar ro'yxati</b> kremniy (Si) va <b>yuqori-tozalikdagi silica/kvartsni</b> o'z ichiga oladi — ulkan, asosan foydalanilmagan salohiyat bilan (Mirkamalov va b., 2025). Ya'ni davlat bu materialni strategik deб tan oladi.</p></div>
+  <div class="card warn"><h4>✗ Gate-1 uchun hali kerak — va JORC masalasi</h4>
+    <p>Hozir bizда <b>kimyoviy tarkib</b> bor (TKTI), lekin <b>JORC-mos resurs hisoboti yo'q.</b> O'zbekiston GKZ (sovet) klassifikatsiyasidan foydalanadi, lekin xalqaro investor (IFC, banklar) <b>JORC yoki NI 43-101</b> standartidagi resurs bayonotini talab qiladi: tonnaj + sifat + ishonch toifasi (measured/indicated/inferred). Buni faqat <b>burg'ulash dasturi</b> beradi.</p></div>
+  <h4 class="disp" style="margin:18px 0 8px;font-size:15px">Gate-1 Resource Assessment — to'liq checklist</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>Band</th><th>Talab</th><th class="r">Status</th></tr>
+    <tr><td>Kon nomzodlari</td><td>Jizzax · Navoiy · Sirdaryo + Nurota/Jerdanak</td><td class="num r">⚠ Tanlanadi</td></tr>
+    <tr><td>SiO₂ diapazoni</td><td>≥98% (MG-Si uchun tasdiqlangan: 97.7–98.7%)</td><td class="num r">✓ Bor</td></tr>
+    <tr><td><b>Bor (B) + fosfor (P) ppm</b></td><td>Polysilicon uchun eng kritik — hali o'lchanmagan</td><td class="num r">✗ Kerak</td></tr>
+    <tr><td>Boyitishdan keyingi tozalik</td><td>6N gacha yetadimi (pilot test)</td><td class="num r">✗ Kerak</td></tr>
+    <tr><td>30 yillik zaxira</td><td>~9 mln tonna kvarts (JORC-mos)</td><td class="num r">✗ Burg'ulash</td></tr>
+    <tr><td>Qazib olish tannarxi</td><td>$/tonna → $1.3/kg xomashyo taxminini tasdiqlash</td><td class="num r">✗ Kerak</td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--muted)"><b>UzSIF/Geologiya qo'mitasiga signal:</b> "Bizда ilmiy tasdiqlangan boshlang'ich dalil bor; biz Gate-1 (burg'ulash + B/P + JORC) ni boshlashga tayyormiz."</p>
+
+  <h4 class="disp" style="margin:22px 0 8px;font-size:15px">B/P — eng kritik parametr</h4>
+  <p>Polysilicon uchun bor (B) va fosfor (P) — eng muhim, chunki ular yarimo'tkazgich xossasini buzadi va kvartsdan olib tashlash o'ta qiyin.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Element</th><th class="r">Maqsadli (indikativ)</th><th>O'lchov usuli</th></tr>
+    <tr><td>Bor (B)</td><td class="num r">&lt; 0.1 ppm</td><td>ICP-MS</td></tr>
+    <tr><td>Fosfor (P)</td><td class="num r">&lt; 0.3 ppm</td><td>ICP-MS</td></tr>
+  </table></div>
+  <p style="font-size:12.5px;color:var(--faint)">Hozir O'zbekistonда hech bir kon bo'yicha B/P o'lchovi yo'q — bu normal. Faqat ICP-MS laboratoriya + xalqaro assay + JORC eksperti aniqlaydi. Yakuniy polysilicon spetsi yanada qattiqroq (ppba darajasida).</p>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Pilot boyitish testi (6N potentsiali)</h4>
+  <p>Boyitishdan keyin Al₂O₃, Fe₂O₃, TiO₂, CaO, MgO ppm darajasiga tushishi kerak. Pilot test bosqichlari:</p>
+  <ul class="clean">
+    <li>1 · Maydalash → 2 · Magnit ajratish → 3 · Kimyoviy yuvish → 4 · Kislota bilan tozalash → 5 · Quritish → 6 · ICP-MS tahlil</li>
+    <li>Natija: kvarts <b>MG-Si → TCS → polysilicon</b> zanjiriga kirish imkoniyatini tasdiqlaydi (yoki rad etadi)</li>
+  </ul>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Burg'ulash dasturi (JORC uchun)</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>Parametr</th><th>Minimal (indikativ)</th></tr>
+    <tr><td>Burg'u nuqtasi</td><td>~12 (kon hajmiga qarab ko'proq bo'lishi mumkin)</td></tr>
+    <tr><td>Chuqurlik</td><td>150–200 m</td></tr>
+    <tr><td>Natija</td><td>3D geologik model · tonnaj + sifat + ishonch toifasi</td></tr>
+    <tr><td>Muddat</td><td>~6 oy · JORC eksperti tasdiqlaydi</td></tr>
+  </table></div>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Gate-1 yakuniy natija (deliverables)</h4>
+  <ul class="clean">
+    <li>B/P ppm assay (ICP-MS) · JORC-mos resurs bayonoti (Inferred → Indicated → Measured)</li>
+    <li>30 yillik zaxira tasdiqlangan (~9 mln tonna kvarts) · boyitishdan keyingi tozalik</li>
+    <li>Qazib olish tannarxi ($/tonna) · logistika xaritasi · MG-Si uchun xomashyo tayyorligi</li>
+  </ul>
+
+  <div class="card note"><h4>◆ Davlatga rasmiy signal (executive sentence)</h4>
+    <p style="font-style:italic;color:var(--text)">"Dastlabki ilmiy ma'lumotlarga ko'ra, Jizzax va Navoiy hududlarida polysilicon sanoati uchun istiqbolli kvarts resurslari mavjud. Ularning yaroqliligi mustaqil laboratoriya assay, burg'ulash va JORC auditi orqali tasdiqlanishi kerak."</p></div>
+
+  <div class="card warn"><h4>⚠ Geologik aniqlik (Eng. DD himoyasi)</h4>
+    <p>Xomashyo bazasi sifatida faqat <b>tasdiqlangan yuqori tozalikdagi kvarts</b> ko'rsatiladi: Nurota tomir kvartsi (98.7%) va Jerdanak kvartsiti (TKTI). O'zbekistonда keng mineral baza bor, lekin <b>silica sand (qum) ≠ polysilicon kvartsi</b>, va har bir kon (mas. Jeroy — fosforit koni, polysilicon emas) alohida tekshirilishi shart. Bu farqni saqlash — geologiya qo'mitasi oldida ishonchni saqlaydi.</p></div>
+</section>
+
+<!-- 3. PROCESS -->
+<section id="proc">
+  <div class="shead"><span class="num">03</span><h2>Texnologik jarayon</h2><span class="lens">Injener-texnolog · Eng. DD</span></div>
+  <p>Kvartsdan polysilicongacha 5 kimyoviy-fizik bosqich. Har biri alohida uskuna, energiya va xavfsizlik rejimi talab qiladi.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Bosqich</th><th>Jarayon</th><th>Asosiy uskuna</th><th class="r">Energiya (kWh/kg)</th></tr>
+    <tr><td><b>1 · Karbotermik</b></td><td>SiO₂ + 2C → Si + 2CO (1800°C)</td><td>Suvga botgan yoy pechi (SAF)</td><td class="num r">~11–13</td></tr>
+    <tr><td><b>2 · TCS sintezi</b></td><td>Si + 3HCl → SiHCl₃ + H₂</td><td>Qaynar qatlam reaktori</td><td class="num r">~5</td></tr>
+    <tr><td><b>3 · Distillyatsiya</b></td><td>Fraksion tozalash (B, P, metallarni olib tashlash)</td><td>Distillyatsiya kolonnalari</td><td class="num r">~8</td></tr>
+    <tr><td><b>4 · Siemens CVD</b></td><td>SiHCl₃ + H₂ → Si (1100°C, tayoqchada o'sadi)</td><td>Siemens reaktorlari (CVD)</td><td class="num r">~45–50</td></tr>
+    <tr><td><b>5 · Kesish/qadoq</b></td><td>Maydalash, sifat nazorati, qadoqlash</td><td>Toza xona, avtomatika</td><td class="num r">~2</td></tr>
+    <tr><td colspan="3"><b>Jami (polysilicongacha)</b></td><td class="num r"><b>~70–75</b></td></tr>
+  </table></div>
+  <div class="card note"><h4>◆ Texnolog eslatmasi: 6N vs 11N</h4>
+    <p>Bazaviy maqsad — <b>solar-grade 6N (99.9999%)</b> — quyosh panellari uchun. <b>Semiconductor-grade 11N</b> (mikrochip) — butunlay boshqa, ancha murakkab daraja; faqat 5 ta kompaniya uddalaydi (Wacker, Hemlock, OCI, Tokuyama, Mitsubishi). U <b>keyingi, alohida faza</b> sifatida qoldiriladi.</p></div>
+  <div class="card warn"><h4>⚠ Eng. DD: texnologiya egasi va power quality</h4>
+    <p><b>Litsenziya/EPC kim?</b> Siemens jarayoni va STC yopiq-sikli know-how talab qiladi (G'arb opsiyalari: centrotherm va b.). <b>Quvvat sifati:</b> Siemens reaktori bir soniyalik uzilishni ham ko'tarmaydi — bu energiya tizimida firm baseload'ni majburiy qiladi.</p></div>
+</section>
+
+<!-- 4. WASTE -->
+<section id="waste">
+  <div class="shead"><span class="num">04</span><h2>Chiqindi: ZLD + yopiq-sikl STC</h2><span class="lens">Texnolog · Davlat (ekologiya)</span></div>
+  <p>Bu — loyihaning <b>ESG/"low-carbon" sertifikatining yuragi</b> va EI xaridori talab qiladigan narsa. Polysilicon jarayonining ikki asosiy chiqindisi — <b>silikon tetraxlorid (STC, SiCl₄)</b> va <b>oqava suv</b> — to'liq qaytariladi.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">STC → TCS qaytarish</span><span class="bt vi" style="width:96%"></span><span class="bv">~96%</span></div>
+    <div class="bar"><span class="bl">Vodorod (H₂) rekuperatsiya</span><span class="bt st" style="width:99%"></span><span class="bv">~99%</span></div>
+    <div class="bar"><span class="bl">HCl qayta ishlatish</span><span class="bt am" style="width:90%"></span><span class="bv">~90%</span></div>
+    <div class="bar"><span class="bl">Suv qayta ishlatish (ZLD)</span><span class="bt gr" style="width:98%"></span><span class="bv">~98%</span></div>
+  </div>
+  <h4 class="disp" style="margin:16px 0 8px;font-size:15px">Uchta yopiq sikl</h4>
+  <ul class="clean">
+    <li><b>STC closed-loop (gidroxlorlash):</b> STC + 3H₂ + Si → 4 SiHCl₃ — chiqindi STC qayta TCS'ga aylanib, jarayonga qaytadi. Bu sotib olinadigan xlor va xomashyoni keskin kamaytiradi.</li>
+    <li><b>Off-gas rekuperatsiya:</b> H₂, HCl, SiHCl₃ reaktor gazlaridan ajratilib qaytariladi.</li>
+    <li><b>Zero Liquid Discharge (ZLD):</b> butun oqava bug'lantirish/kristallashtirish orqali tozalanadi — <b>tashqariga nol suyuq chiqindi.</b> Cho'l zonasida (Navoiy) suv tanqisligi sababli majburiy.</li>
+  </ul>
+  <div class="card note"><h4>◆ Davlat/ekologiya nigohi</h4>
+    <p>ZLD + closed-loop STC — capex'ni ~10–15% oshiradi, lekin u: (1) suv tanqisligini hal qiladi, (2) "yashil" sertifikat beradi (EI premium sharti), (3) xlor/xomashyo sotib olishni kamaytirib operatsion tannarxni tushiradi. Omon ham aynan shu tizimni qurdi.</p></div>
+</section>
+
+<!-- 5. WAFER -->
+<section id="wafer">
+  <div class="shead"><span class="num">05</span><h2>Wafer zavodi</h2><span class="lens">Texnolog · Bozor</span></div>
+  <p>Wafer bosqichi — Turkiya sherigi tomonidan O'zbekistonда quriladi. Polysilicon → ingot → wafer. Bu sizning mahsulotingizning <b>yondagi, ko'chmas xaridori.</b></p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Bosqich</th><th>Jarayon</th><th>Chiqindi qaytarish</th></tr>
+    <tr><td>Ingot o'stirish</td><td>Czochralski (CZ) — monokristall tortish</td><td>Tort qoldig'i → qayta eritish</td></tr>
+    <tr><td>Kesish (slicing)</td><td>Olmos simli arra bilan yupqa wafer</td><td><b>Kerf loss</b> (kesim kukuni) → qaytarish</td></tr>
+    <tr><td>Yuvish/saralash</td><td>Tozalash, sifat nazorati, qadoqlash</td><td>ZLD suv tizimiga ulanadi</td></tr>
+  </table></div>
+  <ul class="clean">
+    <li><b>Quvvat:</b> 20 GW/yil → ~46–50 kt polysilicon yutadi (100kt'ning yarmi)</li>
+    <li><b>Eksport yo'li:</b> Turkiya–EI bojxona ittifoqi orqali wafer EI'ga erkin kiradi</li>
+    <li><b>Energiya:</b> ~210 MW firm qo'shimcha (CZ tortish energiya-talab)</li>
+  </ul>
+</section>
+
+<!-- 6. OFFTAKE MAP -->
+<section id="offtake">
+  <div class="shead"><span class="num">06</span><h2>Offtake xaritasi (xaridorlar)</h2><span class="lens">Bozor · Inv. bank</span></div>
+  <p>100kt polysilicon ikkiga bo'linadi va wafer orqali EI'ga yetadi. <b>Bu — loyihaning "kim sotib oladi?" savoliga aniq javobi.</b></p>
+  <div class="flow">
+    <div class="stage-row" style="min-width:560px">
+      <div class="stg s5"><span class="si">Manba</span><span class="sn">Polysilicon</span><span class="sd">100 kt/yil</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="split">
+        <div class="stg"><span class="si">Xaridor A · O'zb'da</span><span class="sn">Turkiya wafer (20 GW)</span><span class="sd">~50 kt → wafer</span></div>
+        <div class="stg"><span class="si">Xaridor B · eksport</span><span class="sn">Hindiston</span><span class="sd">~50 kt polysilicon</span></div>
+      </div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="split">
+        <div class="stg s1"><span class="si">Yakuniy bozor</span><span class="sn">Yevropa (EI)</span><span class="sd">wafer · bojxonasiz</span></div>
+        <div class="stg s1"><span class="si">Yakuniy bozor</span><span class="sn">Hindiston wafer</span><span class="sd">Waaree·Tata·ReNew</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="tbl-wrap" style="margin-top:16px"><table>
+    <tr><th>Xaridor</th><th>Hajm</th><th>Nega ular</th><th class="r">Marja* (all-in $7.8/kg)</th></tr>
+    <tr><td><b>🇹🇷 Turkiya wafer (O'zb'da)</b></td><td>~50 kt</td><td>Yondagi · China-free · Turkiya–EI bojxona ittifoqi</td><td class="num r">premium</td></tr>
+    <tr><td><b>🇮🇳 Hindiston</b></td><td>~50 kt</td><td>20+ GW wafer quryapti, ichki polysilicon ~nol, ALMM siyosati</td><td class="num r">+$2/kg (yupqa)</td></tr>
+    <tr><td>🇪🇺 Yevropa (wafer orqali)</td><td>—</td><td>~63 GW/yil talab; €2.2 mlrd EI dasturi</td><td class="num r">+$12/kg</td></tr>
+    <tr><td>🇺🇸 AQSh (ixtiyoriy)</td><td>—</td><td>UFLPA/FEOC majburiy non-China</td><td class="num r">+$16/kg</td></tr>
+  </table></div>
+  <p style="font-size:12px;color:var(--faint)">*Marja Energiya-Tannarx modelidan (alohida Excel fayl). Hindiston narxga sezgir; AQSh/EI premium kengroq.</p>
+  <div class="card note"><h4>◆ Bozor eksperti</h4><p>China-Free premium real, lekin oyna tor — Omon (100kt), Qatar, AQSh to'ldirmoqda. Yondagi Turkiya wafer + Hindiston offtake sizni shu poygada ushlab turadi. <b>Erta LOI/MOU</b> — "talab"ni "xaridor"ga aylantiradi.</p></div>
+</section>
+
+<!-- 7. ENERGY -->
+<section id="energy">
+  <div class="shead"><span class="num">07</span><h2>Energiya ta'minoti</h2><span class="lens">Energetik · Inv. bank</span></div>
+  <p>To'liq zanjir (MG-Si + polysilicon + wafer) <b>~1 GW firm (uzluksiz) quvvat</b> talab qiladi — yiliga ~8 800 GWh. ACWA Power / Masdar IPP modeli: ular quradi, siz 20–25 yillik PPA orqali sotib olasiz.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">Quyosh (PV)</span><span class="bt am" style="width:90%"></span><span class="bv">~1.2 GW</span></div>
+    <div class="bar"><span class="bl">Shamol</span><span class="bt st" style="width:45%"></span><span class="bv">~600 MW</span></div>
+    <div class="bar"><span class="bl">Gaz (firm zaxira)</span><span class="bt gr" style="width:42%"></span><span class="bv">~500 MW</span></div>
+    <div class="bar"><span class="bl">BESS (storage)</span><span class="bt vi" style="width:24%"></span><span class="bv">~300 MW</span></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Ko'rsatkich</th><th class="r">Qiymat</th><th>Izoh</th></tr>
+    <tr><td>Firm quvvat (to'liq zanjir)</td><td class="num r">~1 GW</td><td>MG-Si + poly + wafer</td></tr>
+    <tr><td>Elektr tannarxi</td><td class="num r">~$2.6–2.8/kg</td><td>Grid $4.4 dan yaxshi; Xitoy $1.65 dan yuqori</td></tr>
+    <tr><td>Energiya klasteri capex</td><td class="num r">~$2.5–3 mlrd</td><td>ACWA/Masdar egalik qiladi (PPA)</td></tr>
+    <tr><td>CO₂ izi</td><td class="num r">~14 kg/kg</td><td>"low-carbon" chegarasida (Xitoy ~36)</td></tr>
+  </table></div>
+  <div class="card note"><h4>◆ Asosiy ziddiyat + Excel hamroh</h4><p>Gaz ko'p = arzon/firm, lekin CO₂ yuqori (premium zaiflashadi). Renewable ko'p = toza, lekin capex katta. Bu balans <b>alohida Energiya-Tannarx Excel modelida</b> hisoblanadi — gaz/renewable ulushini o'zgartirib $/kg tannarx, firm-coverage % va CO₂ izini real vaqtда ko'rsatadi.</p></div>
+</section>
+
+<!-- 7. LAND -->
+<section id="land">
+  <div class="shead"><span class="num">08</span><h2>Yer va infratuzilma</h2><span class="lens">Geolog · Eng. DD</span></div>
+  <p>Umumiy maydon ~<b>2 800 gektar</b> — asosiy qismi quyosh fermasi. Sanoat yadrosi ~600 ga.</p>
+  <div class="land">
+    <svg viewBox="0 0 42 42" width="190" height="190" style="transform:rotate(-90deg)">
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#1B232D" stroke-width="6"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#E8A33D" stroke-width="6" stroke-dasharray="64 36" stroke-dashoffset="0"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#6BA5C9" stroke-width="6" stroke-dasharray="18 82" stroke-dashoffset="-64"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#5FB98A" stroke-width="6" stroke-dasharray="9 91" stroke-dashoffset="-82"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#9B8CCB" stroke-width="6" stroke-dasharray="5 95" stroke-dashoffset="-91"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#3E6478" stroke-width="6" stroke-dasharray="4 96" stroke-dashoffset="-96"/>
+    </svg>
+    <div class="lg">
+      <div class="li"><span class="sw" style="background:#E8A33D"></span>Quyosh fermasi <span class="lv">~1 800 ga</span></div>
+      <div class="li"><span class="sw" style="background:#6BA5C9"></span>Shamol zonasi (oraliq) <span class="lv">~500 ga</span></div>
+      <div class="li"><span class="sw" style="background:#5FB98A"></span>Polysilicon + MG-Si zavodi <span class="lv">~250 ga</span></div>
+      <div class="li"><span class="sw" style="background:#9B8CCB"></span>Wafer zavodi <span class="lv">~120 ga</span></div>
+      <div class="li"><span class="sw" style="background:#3E6478"></span>Gaz/BESS/podstansiya <span class="lv">~40 ga</span></div>
+      <div class="li"><span class="sw" style="background:#5A6470"></span>ZLD/suv/logistika/bufer <span class="lv">~90 ga</span></div>
+    </div>
+  </div>
+  <p style="margin-top:16px"><b>Joylashuv omillari:</b> Navoiy — Masdar quyosh tajribasi, sanoat zonasi, ammo suv tanqis (ZLD majburiy). Jizzax/Sirdaryo — suv/logistika yaxshiroq bo'lishi mumkin. Yakuniy tanlov: kvarts koniga yaqinlik + energiya + suv + temir yo'l ulanishi bo'yicha baholanadi.</p>
+</section>
+
+<!-- 8. PEOPLE -->
+<section id="people">
+  <div class="shead"><span class="num">09</span><h2>Inson kapitali (kadrlar)</h2><span class="lens">Davlat · Operatsion</span></div>
+  <p>To'liq klaster ~<b>6 000–8 000 to'g'ridan-to'g'ri ish o'rni</b> (bilvosita 2–3 baravar ko'p). Eng katta ehtiyoj — wafer zavodida.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">Wafer zavodi</span><span class="bt am" style="width:100%"></span><span class="bv">~3 500</span></div>
+    <div class="bar"><span class="bl">Polysilicon + MG-Si</span><span class="bt st" style="width:40%"></span><span class="bv">~1 400</span></div>
+    <div class="bar"><span class="bl">Lab/QC/utilities/ZLD</span><span class="bt vi" style="width:13%"></span><span class="bv">~450</span></div>
+    <div class="bar"><span class="bl">Admin/logistika/boshqaruv</span><span class="bt gr" style="width:14%"></span><span class="bv">~500</span></div>
+    <div class="bar"><span class="bl">Qazib olish (kon)</span><span class="bt st" style="width:8%"></span><span class="bv">~300</span></div>
+    <div class="bar"><span class="bl">Energiya klasteri O&amp;M</span><span class="bt gr" style="width:6%"></span><span class="bv">~200</span></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Daraja</th><th>Rol</th><th>Soha</th></tr>
+    <tr><td>Muhandis / PhD</td><td>Jarayon, R&amp;D, sifat</td><td>Kimyo muhandisligi · metallurgiya · materialshunoslik · energetika</td></tr>
+    <tr><td>Texnik</td><td>Uskuna, avtomatika, ta'mir</td><td>Asboblar (instrumentation) · mexanika · elektr</td></tr>
+    <tr><td>Operator</td><td>Pech, reaktor, CZ, kesish</td><td>Kimyoviy operatorlar · toza xona</td></tr>
+    <tr><td>HSE / ekolog</td><td>Xavfsizlik, ZLD, xlor kimyosi</td><td>Sanoat xavfsizligi · ekologiya</td></tr>
+  </table></div>
+</section>
+
+<!-- 9. EDUCATION -->
+<section id="edu">
+  <div class="shead"><span class="num">10</span><h2>Ta'lim va kadrlar tayyorlash</h2><span class="lens">Davlat · Universitet</span></div>
+  <p class="amb" style="font-weight:600">Eng kritik vaqt omili: tayyorlash 2032'da emas, <b>2028–29'da boshlanishi shart.</b> 3–4 yil oldin boshlanmasa, zavod ishga tushganда malakali kadr bo'lmaydi.</p>
+  <h4 class="disp" style="margin:16px 0 8px;font-size:15px">Universitet kafedralari (sheriklar)</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>Muassasa</th><th>Yo'nalish</th><th>Rol</th></tr>
+    <tr><td>Toshkent Kimyo-Texnologiya Inst. (TKTI)</td><td>Kimyo muhandisligi, kvarts boyitish</td><td>Yadro sherik (kvarts tadqiqoti shu yerdan)</td></tr>
+    <tr><td>Navoiy davlat kon-tex. univ.</td><td>Qazib olish, metallurgiya</td><td>MG-Si va kon kadrlari</td></tr>
+    <tr><td>Toshkent davlat texnika univ.</td><td>Energetika, avtomatika, mexanika</td><td>Texnik va muhandis kadrlar</td></tr>
+    <tr><td>Turin Politexnika (Toshkent)</td><td>Materialshunoslik, mexatronika</td><td>Xalqaro standart muhandislar</td></tr>
+    <tr><td>Xorijiy sherik (Germaniya/Koreya)</td><td>Siemens jarayoni, CVD know-how</td><td>Ustozlik, stajirovka, litsenziya</td></tr>
+  </table></div>
+  <h4 class="disp" style="margin:18px 0 8px;font-size:15px">Tayyorlash jadvali</h4>
+  <div class="gantt">
+    <div class="gh"><span>Bosqich</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031</span><span>2032</span></div>
+    <div class="grow"><span class="gl">O'quv dastur + kafedra</span><div class="gbar st" style="--s:2;--e:4"></div><div class="gcell" style="grid-column:4/9"></div></div>
+    <div class="grow"><span class="gl">Stipendiya + 1-kurs</span><div class="gcell" style="grid-column:2/3"></div><div class="gbar" style="--s:3;--e:6"></div><div class="gcell" style="grid-column:6/9"></div></div>
+    <div class="grow"><span class="gl">Xorijda stajirovka (muhandis)</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar vi" style="--s:4;--e:7"></div><div class="gcell" style="grid-column:7/9"></div></div>
+    <div class="grow"><span class="gl">Joyida o'quv markazi + simulyator</span><div class="gcell" style="grid-column:2/6"></div><div class="gbar gr" style="--s:6;--e:8"></div><div class="gcell" style="grid-column:8/9"></div></div>
+    <div class="grow"><span class="gl">Vendor treningi (uskuna)</span><div class="gcell" style="grid-column:2/7"></div><div class="gbar" style="--s:7;--e:9"></div></div>
+  </div>
+  <div class="card note"><h4>◆ Amaliy yondashuv</h4><p>1) Birinchi to'lqin muhandislarni 2028–29'da Xitoy/Koreya/Germaniya zavodlariga <b>amaliy o'qishga</b> yuborish (eng tez yo'l). 2) Joyida <b>o'quv-simulyator markazi</b> qurish. 3) Uskuna yetkazib beruvchilar (vendor) bilan trening shartnomalari. 4) Universitet dasturlarini <b>real ehtiyojga moslab</b> qayta loyihalash.</p></div>
+</section>
+
+<!-- 11. CAPEX BREAKDOWN -->
+<section id="capex">
+  <div class="shead"><span class="num">11</span><h2>CAPEX breakdown (batafsil)</h2><span class="lens">Auditor · Inv. bank</span></div>
+  <p>UzSIF birinchi so'raydigan jadval. Har bir bosqich alohida, egasi va model bilan. <b>Diqqat:</b> wafer va energiya — sheriklar (Turkiya, ACWA/Masdar) zimmasida, demak <span class="amb">Uz Silicon Tech'ning o'z capex'i ~$4.5–5.5 mlrd.</span></p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Komponent</th><th class="r">Capex (dastlabki)</th><th>Egasi / model</th></tr>
+    <tr><td>1 · Kvarts koni</td><td class="num r">~$0.1–0.2 mlrd</td><td>Uz Silicon Tech / davlat</td></tr>
+    <tr><td>2 · MG-Si (yoy pechi)</td><td class="num r">~$0.4–0.5 mlrd</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>3 · TCS sintezi</td><td class="num r">~$0.5–0.7 mlrd</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>4 · Distillyatsiya (tozalash)</td><td class="num r">~$0.5–0.7 mlrd</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>5 · CVD (Siemens reaktorlari)</td><td class="num r">~$1.8–2.2 mlrd</td><td>Uz Silicon Tech (eng katta)</td></tr>
+    <tr><td>6 · ZLD + closed-loop STC</td><td class="num r">~$0.4–0.6 mlrd</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>7 · Yer + infratuzilma</td><td class="num r">~$0.3–0.5 mlrd</td><td>Uz Silicon Tech / davlat</td></tr>
+    <tr style="background:rgba(232,163,61,.06)"><td><b>Sizning qismingiz (1–7)</b></td><td class="num r"><b>~$4.5–5.5 mlrd</b></td><td>Uz Silicon Tech</td></tr>
+    <tr><td>8 · Wafer zavodi (20 GW)</td><td class="num r">~$2.0–4.0 mlrd</td><td>🇹🇷 Turkiya sherigi (JV)</td></tr>
+    <tr><td>9 · Energiya klasteri (~1 GW)</td><td class="num r">~$2.5–3.0 mlrd</td><td>ACWA/Masdar IPP (PPA)</td></tr>
+    <tr style="background:rgba(232,163,61,.1)"><td><b>UMUMIY KLASTER</b></td><td class="num r"><b>~$9–12.5 mlrd</b></td><td>Ko'p tomonlama</td></tr>
+  </table></div>
+  <div class="card note"><h4>◆ Auditor uchun muhim</h4><p>"$1.5–2 mlrd" (v1.0) eskirgan. To'liq integratsiyalashgan klaster ~$9–12.5 mlrd. Lekin <b>asset-light struktura</b> tufayli sizning balansingiz ~$4.5–5.5 mlrd — qolgani sherik/PPA orqali off-balance.</p></div>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Polysilicon zavodi CAPEX strukturasi (sanoat-tipik)</h4>
+  <p style="font-size:13px;color:var(--muted)">Faqat polysilicon yadrosi (TCS→CVD) uchun, ~$3.6–4.2 mlrd. MG-Si, wafer va energiya klasteri bundan tashqarida.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">TCS + Distillyatsiya</span><span class="bt am" style="width:91%"></span><span class="bv">~32%</span></div>
+    <div class="bar"><span class="bl">Siemens CVD</span><span class="bt am" style="width:80%"></span><span class="bv">~28%</span></div>
+    <div class="bar"><span class="bl">Utilities (energiya/suv/gaz)</span><span class="bt st" style="width:63%"></span><span class="bv">~22%</span></div>
+    <div class="bar"><span class="bl">STC loop + ZLD</span><span class="bt vi" style="width:28%"></span><span class="bv">~10%</span></div>
+    <div class="bar"><span class="bl">EPC / Engineering</span><span class="bt gr" style="width:23%"></span><span class="bv">~8%</span></div>
+  </div>
+
+  <div class="card good"><h4>★ Global benchmark: Omon (United Solar Polysilicon)</h4>
+    <p>Dunyodagi eng yirik non-China polysilicon zavodi — bizning loyihamizning isbotlangan andazasi:</p>
+    <ul class="clean" style="margin:6px 0">
+      <li><b>100kt · ~$1.6 mlrd → ~$16 000/tonna</b> · ~22 oyда qurildi</li>
+      <li>Moliyalash: IFC $480 mln + OIA suveren fond $260 mln + Waaree + mahalliy banklar</li>
+      <li>FEOC-compliant · ESG · ZLD · erkin zona · joyida quyosh</li>
+      <li><b>Zaifligi: xomashyoni import qiladi</b> — biz ichki kvarts+MG-Si bilan buni yengamiz</li>
+    </ul>
+    <p style="margin-top:6px"><b>Investorга signal:</b> "Omon $1.6 mlrdда 100kt qurdi va IFC+suveren fond moliyalashtirdi. Biz xuddi shu modelni, ichki xomashyo ustunligi bilan takrorlaymiz."</p></div>
+  <p style="font-size:12px;color:var(--faint)">Eslatma: Omon raqamlari tasdiqlangan ommaviy ma'lumotlardan. CAPEX foiz strukturasi — sanoat-tipik baho, biror kompaniyaning ichki raqami emas.</p>
+</section>
+
+<!-- 12. EQUITY -->
+<section id="equity">
+  <div class="shead"><span class="num">12</span><h2>Aktsiyadorlik strukturasi</h2><span class="lens">Fond direktori · Inv. bank</span></div>
+  <p>Investor birinchi so'raydi: "kim egasi?" Bu — <b>polysilicon kompaniyasining (SPV)</b> indikativ cap-table'i. <span class="amb">Diqqat:</span> energiya (ACWA/Masdar) va wafer (Turkiya) — alohida vositalar; ular asosan <b>shartnoma sheriklari</b> (PPA / offtake), ixtiyoriy ozchilik ulushi bilan.</p>
+  <div class="land">
+    <svg viewBox="0 0 42 42" width="180" height="180" style="transform:rotate(-90deg)">
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#1B232D" stroke-width="6"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#E8A33D" stroke-width="6" stroke-dasharray="35 65"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#6BA5C9" stroke-width="6" stroke-dasharray="25 75" stroke-dashoffset="-35"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#5FB98A" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="-60"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#9B8CCB" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="-80"/>
+    </svg>
+    <div class="lg">
+      <div class="li"><span class="sw" style="background:#E8A33D"></span>UzSIF (suveren fond, anchor) <span class="lv">~30%</span></div>
+      <div class="li"><span class="sw" style="background:#6BA5C9"></span>Strategik sanoat sherigi <span class="lv">~25%</span></div>
+      <div class="li"><span class="sw" style="background:#5FB98A"></span>DFI / IPO / xususiy investorlar <span class="lv">~25%</span></div>
+      <div class="li"><span class="sw" style="background:#9B8CCB"></span>Sheriklar ozchilik (ACWA/Turkiya, ixt.) <span class="lv">~20%</span></div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--faint);margin-top:8px">Foizlar indikativ. Asosiy printsip: davlat/suveren fond anchor sifatida (Omon/OIA modeli), DFI (IFC) qarz+equity, strategik sanoat sherigi texnologiya bilan.</p>
+</section>
+
+<!-- 13. FINANCIAL MODEL -->
+<section id="fin">
+  <div class="shead"><span class="num">13</span><h2>Moliyaviy model + sensitivity</h2><span class="lens">Auditor · Inv. bank</span></div>
+  <p><b>Daromad modeli (100kt):</b> narx × hajm. Tannarx bizning Energiya modelidan — naqd ~$5.8/kg, all-in ~$7.8/kg.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Polysilicon narxi</th><th class="r">Daromad/yil</th><th class="r">EBITDA</th><th class="r">EBIT</th><th>Xulosa</th></tr>
+    <tr><td><b>$12/kg</b> (blended premium)</td><td class="num r">$1 200 mln</td><td class="num r">$620 mln</td><td class="num r">$420 mln</td><td style="color:var(--green)">Kuchli</td></tr>
+    <tr><td>$10/kg</td><td class="num r">$1 000 mln</td><td class="num r">$420 mln</td><td class="num r">$220 mln</td><td style="color:var(--green)">Yaxshi</td></tr>
+    <tr><td>$8/kg</td><td class="num r">$800 mln</td><td class="num r">$220 mln</td><td class="num r">$20 mln</td><td style="color:var(--amber)">Chegarada</td></tr>
+    <tr style="background:rgba(224,122,95,.08)"><td><b>$6/kg</b> (Xitoy narxi)</td><td class="num r">$600 mln</td><td class="num r">$20 mln</td><td class="num r">−$180 mln</td><td style="color:var(--red)"><b>ZARAR</b></td></tr>
+  </table></div>
+  <div class="card warn"><h4>⚠ Sensitivity — eng muhim haqiqat</h4>
+    <p>All-in zararsizlik nuqtasi <b>~$7.8/kg.</b> Xitoy commodity narxida ($6) loyiha <b>zarar ko'radi.</b> Demak loyiha <b>faqat premium bozorда</b> ($10+/kg, FEOC/EI) ishlaydi — Xitoy bilan narx raqobatida emas. Bu — butun "China-Free" strategiyaning moliyaviy isboti.</p>
+    <p style="margin-top:6px">Payback (sizning ~$5 mlrd qismingiz): $12/kg da ~8 yil · $10/kg da ~12 yil. Infratuzilma loyihasi uchun maqbul.</p></div>
+  <p style="font-size:12px;color:var(--faint)">Barcha raqamlar Energiya-Tannarx modeliga bog'langan. Yakuniy IRR/NPV Feasibility Study'da to'liq moliyalashtirish strukturasi bilan hisoblanadi.</p>
+</section>
+
+<!-- 14. SWOT -->
+<section id="swot">
+  <div class="shead"><span class="num">14</span><h2>SWOT tahlili</h2><span class="lens">Strategik</span></div>
+  <div class="experts">
+    <div class="ex ok"><div class="er">S · Kuchli tomonlar</div><div class="eh">Ichki vertikal zanjir</div><p>Kvarts+MG-Si ichida (Omonda yo'q) · arzon renewable salohiyati · neytral geosiyosat · davlat qo'llab-quvvatlashi · China-free/FEOC pozitsiya.</p></div>
+    <div class="ex flag"><div class="er">W · Zaif tomonlar</div><div class="eh">Logistika + tannarx</div><p>Landlocked · gazli tarmoq (ESG ziddiyati) · polysilicon tajribasi/kadr yo'q · all-in tannarx Xitoydan yuqori · 30kt subscale xavfi.</p></div>
+    <div class="ex ok"><div class="er">O · Imkoniyatlar</div><div class="eh">De-China talab</div><p>EI/AQSh diversifikatsiyasi · Hindiston wafer bumi (polysilicon kerak) · 2028–30 muvozanat · yarimo'tkazgich ekotizimi.</p></div>
+    <div class="ex flag"><div class="er">T · Xavflar</div><div class="eh">Non-China ortiqcha taklif</div><p>Omon/Qatar/AQSh/Marokko · premium siqilishi · Xitoy narx urushi · gaz deregulyatsiyasi · 4 tomon koordinatsiyasi.</p></div>
+  </div>
+</section>
+
+<!-- 15. STRATEGIC IMPACT -->
+<section id="impact">
+  <div class="shead"><span class="num">15</span><h2>O'zbekiston uchun strategik ta'sir</h2><span class="lens">Davlat · Prezident Admin.</span></div>
+  <p>Prezident Administratsiyasi va Vazirlar Mahkamasi uchun — milliy darajadagi natijalar:</p>
+  <div class="figs" style="grid-template-columns:repeat(4,1fr)">
+    <div class="fig"><div class="v am">6–8<span style="font-size:12px"> ming</span></div><div class="l">To'g'ridan ish o'rni</div></div>
+    <div class="fig"><div class="v gr">$1+<span style="font-size:12px"> mlrd</span></div><div class="l">Yillik daromad</div></div>
+    <div class="fig"><div class="v st">~1<span style="font-size:12px"> GW</span></div><div class="l">Yangi renewable</div></div>
+    <div class="fig"><div class="v">1-chi</div><div class="l">M. Osiyoda polysilicon</div></div>
+  </div>
+  <ul class="clean" style="margin-top:14px">
+    <li><b>Yangi sanoat tarmog'i</b> — quyosh va yarimo'tkazgich materiallari zanjirining poydevori</li>
+    <li><b>Eksport diversifikatsiyasi</b> — xom ashyo emas, yuqori qiymatli mahsulot (wafer EI'ga)</li>
+    <li><b>Energetika o'tishi katalizatori</b> — ~1 GW renewable klaster</li>
+    <li><b>Ta'minot zanjiri suvereniteti</b> — China-free, strategik mustaqillik</li>
+    <li><b>Bilvosita ta'sir</b> — 2-3 baravar qo'shimcha ish o'rni, kadr va ta'lim rivoji</li>
+  </ul>
+</section>
+
+<!-- 16. GATE TIMELINE -->
+<section id="gates">
+  <div class="shead"><span class="num">16</span><h2>Gate-1 → FID timeline</h2><span class="lens">Inv. bank · UzSIF</span></div>
+  <p>Investorlar uchun eng muhim ko'rinish: qaysi bosqich qachon, va qaysi "darvoza" o'tilmasa to'xtaydi. <b>Gate-1–3 o'tmasa, FID'ga borilmaydi.</b></p>
+  <div class="gantt">
+    <div class="gh"><span>Bosqich</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031</span><span>2032</span></div>
+    <div class="grow"><span class="gl">Gate-1 Resurs (JORC,B/P)</span><div class="gbar st" style="--s:2;--e:3"></div><div class="gcell" style="grid-column:3/9"></div></div>
+    <div class="grow"><span class="gl">Gate-2 Bozor (LOI)</span><div class="gcell" style="grid-column:2/3"></div><div class="gbar st" style="--s:2;--e:4"></div><div class="gcell" style="grid-column:4/9"></div></div>
+    <div class="grow"><span class="gl">Gate-3 Energiya (PPA)</span><div class="gcell" style="grid-column:2/3"></div><div class="gbar st" style="--s:3;--e:4"></div><div class="gcell" style="grid-column:4/9"></div></div>
+    <div class="grow"><span class="gl">Gate-4–5 Feasibility</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar vi" style="--s:3;--e:5"></div><div class="gcell" style="grid-column:5/9"></div></div>
+    <div class="grow"><span class="gl">Gate-6 Offtake qulflash</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar" style="--s:4;--e:5"></div><div class="gcell" style="grid-column:5/9"></div></div>
+    <div class="grow"><span class="gl">Gate-7 FID ★</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar gr" style="--s:4;--e:5"></div><div class="gcell" style="grid-column:5/9"></div></div>
+    <div class="grow"><span class="gl">Qurilish</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar" style="--s:4;--e:8"></div></div>
+    <div class="grow"><span class="gl">Ishlab chiqarish ★</span><div class="gcell" style="grid-column:2/8"></div><div class="gbar gr" style="--s:8;--e:9"></div></div>
+  </div>
+  <p style="font-size:13px;color:var(--muted)">FID ~2028 oxiri → qurilish ~3–4 yil → <b>2032 ishlab chiqarish</b>, talab/taqchillik sikli ko'tarilishiga to'g'ri keladi.</p>
+</section>
+
+<!-- 17. AUDIENCE -->
+<section id="audience">
+  <div class="shead"><span class="num">17</span><h2>Bu hujjat kimlar uchun</h2></div>
+  <p>Master-reja to'rt guruh uchun mo'ljallangan — har biri boshqa bo'limni o'qiydi.</p>
+  <div class="experts">
+    <div class="ex ok"><div class="er">★ Birlamchi nishon</div><div class="eh">UzSIF — O'zbekiston Suveren Fondi</div><p>Aynan shunday hujjatni kutadi. Signal: "biz tayyormiz, siz Gate-1'ni boshlang va orkestrator bo'ling." Capex + Gate timeline + offtake — ular uchun.</p></div>
+    <div class="ex"><div class="er">Texnik tasdiq</div><div class="eh">Geologiya qo'mitasi</div><p>Geologiya bo'limi to'g'ri tonда: "bizда taxmin bor, siz JORC bilan tasdiqlaysiz." B/P, zaxira, burg'ulash — ular uchun.</p></div>
+    <div class="ex"><div class="er">Energiya sherigi</div><div class="eh">ACWA Power / Masdar</div><p>Energiya bo'limi va ~1 GW firm talab — ular uchun eng muhim. PPA modeli + 2 anchor xaridor ularga bankability beradi.</p></div>
+    <div class="ex"><div class="er">Wafer sherigi</div><div class="eh">Turkiya wafer ishlab chiqaruvchilari</div><p>20 GW wafer → 50 kt yondagi China-free polysilicon + Turkiya–EI bojxona yo'li = ular uchun oltin imkoniyat.</p></div>
+  </div>
+</section>
+
+<!-- 18. VERDICT -->
+<section id="verdict">
+  <div class="shead"><span class="num">18</span><h2>Sakkiz ekspert xulosasi</h2></div>
+  <div class="experts">
+    <div class="ex flag"><div class="er">Fond direktori</div><div class="eh">Differensiator + sponsor</div><p>Vertikal integratsiya (ichki kvarts) — real moat. Lekin "kim equity qo'yadi?" hali javobsiz. Suveren fond anchor bo'lishi shart.</p></div>
+    <div class="ex ok"><div class="er">Bozor eksperti</div><div class="eh">Premium real, oyna tor</div><p>China-Free talab bor, lekin Omon/Qatar/AQSh to'ldirmoqda. Yondagi Turkiya wafer + Hindiston offtake — kuchli pozitsiya.</p></div>
+    <div class="ex"><div class="er">Davlat eksperti</div><div class="eh">Milliy strategik klaster</div><p>~1 GW yangi quvvat + 6–8 ming ish o'rni. Davlat orkestratsiyasi va energiya kafolati hal qiluvchi.</p></div>
+    <div class="ex"><div class="er">Investitsiya banki</div><div class="eh">2 offtake shart</div><p>Energiya PPA + polysilicon offtake — ikkalasi bo'lmasa moliyalashtirilmaydi. IFC modeli (Omon) mavjud.</p></div>
+    <div class="ex flag"><div class="er">Moliyaviy auditor</div><div class="eh">Capex $8–12 mlrd</div><p>"$1.5–2 mlrd" eskirgan. All-in tannarx Xitoydan yuqori — biznes premium bozorga tayanadi, narx raqobatiga emas.</p></div>
+    <div class="ex flag"><div class="er">Engineering DD</div><div class="eh">Texnologiya + power quality</div><p>Litsenziya/EPC kim? Reaktor uzilishni ko'tarmaydi → firm energiya majburiy. ZLD/STC capex'ni oshiradi.</p></div>
+    <div class="ex"><div class="er">Geolog</div><div class="eh">Kvarts bor, B/P noma'lum</div><p>SiO₂ MG-Si uchun tasdiqlangan. Bor/fosfor o'lchovi va zaxira hisobi — Gate 1'ning qolgani.</p></div>
+    <div class="ex"><div class="er">Injener-texnolog</div><div class="eh">5 bosqich + yopiq sikl</div><p>Jarayon ma'lum va isbotlangan. 6N maqsadli; 11N keyingi faza. STC closed-loop + ZLD to'g'ri yondashuv.</p></div>
+  </div>
+</section>
+
+<!-- 19. RISK -->
+<section id="risk">
+  <div class="shead"><span class="num">19</span><h2>Risklar va halol caveatlar</h2></div>
+  <div class="card warn"><h4>⚠ Eng katta xavf — koordinatsiya, texnik emas</h4>
+    <p>4 mustaqil mega-qaror (poly · wafer · energiya · offtake) bir vaqtда imzolanishi kerak. Buni faqat <b>davlat/suveren fond orkestrator</b> sifatida sindira oladi.</p></div>
+  <ul class="clean">
+    <li><b>Barcha raqamlar dastlabki muhandislik baholari</b> — Feasibility Study'da aniqlanadi. Hujjat investitsiya qarori uchun asos emas, balki konsept arxitekturasi.</li>
+    <li><b>Energiya:</b> grid'da loyiha o'ladi; faqat maxsus renewable+gaz PPA bilan ishlaydi.</li>
+    <li><b>Kvarts polysilicon-grade ekanligi hali isbotlanmagan</b> — B/P testi va pilot boyitish kerak.</li>
+    <li><b>Premium bozor</b> 2032'gacha qolishi kafolatlanmagan — erta offtake/LOI hal qiladi.</li>
+    <li><b>Kadrlar tayyorlash 2028–29'da boshlanmasa</b>, ishga tushish kechikadi.</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="disc"><b>◆</b><span>Bu hujjat — Pre-Feasibility konsept. Barcha texnik va moliyaviy ko'rsatkichlar xalqaro benchmarklar asosidagi dastlabki baholar bo'lib, mustaqil Feasibility Study va Engineering Due Diligence orqali tasdiqlanishi shart.</span></div>
+  <div class="disc"><b>◆</b><span>Manbalar: TKTI kvarts tadqiqoti (Nomazov &amp; Aripova, 2025); IEA / pv-magazine / Bernreuter polysilicon ma'lumotlari; ACWA Power / Masdar IPP benchmarklari; United Solar (Omon) loyiha modeli.</span></div>
+  <div class="sign">
+    <span>UZ SILICON TECH · <span class="g">MASTER-REJA v2.5</span> · Integratsiyalashgan Klaster Arxitekturasi</span>
+    <span>Kuziev Mumin Ulashboevich · <a href="#top" class="up">↑ Boshiga</a></span>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
