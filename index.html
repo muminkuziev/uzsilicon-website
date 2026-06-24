@@ -1,1 +1,461 @@
-1
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uz Silicon Tech — Non-China Polysilicon · Central Asia's First Integrated Silicon Value Chain</title>
+<meta name="description" content="Central Asia's first integrated, traceable polysilicon and wafer value chain — designed for FEOC compliance, serving non-China solar and semiconductor supply chains.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0E13; --ink2:#0E1116; --panel:#141A22; --panel2:#1A222C; --line:#26303C;
+    --amber:#E8A33D; --amber2:#F2B85A; --amber-dim:#9A6E2C; --steel:#6BA5C9; --steel-dim:#3E6478;
+    --green:#5FB98A; --red:#E07A5F; --violet:#9B8CCB;
+    --text:#EAEEF3; --muted:#949DAA; --faint:#5C6672;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;
+    font-size:16px;overflow-x:hidden}
+  .mono{font-family:'Space Mono',monospace}
+  h1,h2,h3,h4,.disp{font-family:'Space Grotesk',sans-serif;letter-spacing:-.015em;line-height:1.08}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+  a{color:inherit}
+
+  /* lang toggle */
+  [data-lang="en"] .uz{display:none}
+  [data-lang="uz"] .en{display:none}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(11,14,19,.82);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;font-size:17px;letter-spacing:-.02em}
+  .brand .mk{width:26px;height:26px;flex:0 0 auto}
+  .brand b{color:var(--amber)}
+  .nav-links{display:flex;align-items:center;gap:26px;font-size:13.5px;color:var(--muted)}
+  .nav-links a{text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--amber)}
+  @media(max-width:760px){.nav-links a:not(.cta){display:none}}
+  .lang{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;font-family:'Space Mono';font-size:11px}
+  .lang button{background:none;border:0;color:var(--faint);padding:5px 11px;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:.05em}
+  [data-lang="en"] .lang .b-en,[data-lang="uz"] .lang .b-uz{background:var(--amber);color:var(--ink)}
+
+  /* HERO */
+  .hero{position:relative;padding:clamp(56px,11vw,118px) 0 clamp(46px,8vw,86px);overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+    background:radial-gradient(820px 460px at 78% 8%,rgba(232,163,61,.16),transparent 58%),
+               radial-gradient(680px 520px at 5% 70%,rgba(107,165,201,.10),transparent 55%);}
+  .hero-bg svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+  .hero .wrap{position:relative;z-index:1}
+  .kick{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono';font-size:11.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber-dim);
+    border-radius:30px;padding:6px 15px;margin-bottom:24px}
+  .kick::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
+  h1{font-size:clamp(33px,7.2vw,68px);font-weight:700;max-width:16ch}
+  h1 .g{color:var(--amber)}
+  .hero p.lead{margin-top:22px;font-size:clamp(15px,2.2vw,20px);color:var(--muted);max-width:60ch}
+  .hero p.lead b{color:var(--text);font-weight:600}
+  .hero-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk';font-weight:600;font-size:14.5px;
+    padding:12px 22px;border-radius:9px;text-decoration:none;transition:transform .15s,background .2s}
+  .btn-primary{background:var(--amber);color:var(--ink)}.btn-primary:hover{background:var(--amber2);transform:translateY(-1px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}.btn-ghost:hover{border-color:var(--amber-dim)}
+
+  .hero-figs{margin-top:54px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .hf{background:var(--ink2);padding:18px 14px}
+  .hf .v{font-family:'Space Mono';font-weight:700;font-size:clamp(16px,2.7vw,23px)}
+  .hf .v.am{color:var(--amber)}.hf .v.st{color:var(--steel)}.hf .v.gr{color:var(--green)}
+  .hf .l{font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
+  @media(max-width:760px){.hero-figs{grid-template-columns:repeat(2,1fr)}.hf:last-child{grid-column:1/3}}
+
+  /* SECTIONS */
+  section.blk{padding:clamp(50px,8vw,88px) 0;border-top:1px solid var(--line)}
+  .eyebrow{font-family:'Space Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);
+    display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--amber)}
+  h2{font-size:clamp(24px,4.4vw,40px);font-weight:600;max-width:20ch}
+  .sec-lead{margin-top:16px;color:var(--muted);font-size:clamp(15px,2vw,18px);max-width:66ch}
+  .sec-lead b{color:var(--text)}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+  @media(max-width:820px){.grid3{grid-template-columns:1fr}}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:24px}
+  .card .ic{width:34px;height:34px;border-radius:9px;background:rgba(232,163,61,.12);display:flex;align-items:center;
+    justify-content:center;color:var(--amber);margin-bottom:14px}
+  .card .ic svg{width:19px;height:19px}
+  .card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--muted)}
+  .card.steel .ic{background:rgba(107,165,201,.12);color:var(--steel)}
+  .card.green .ic{background:rgba(95,185,138,.12);color:var(--green)}
+
+  /* value chain */
+  .chain{margin-top:36px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;overflow-x:auto}
+  .chain-row{display:flex;align-items:stretch;gap:0;min-width:720px}
+  .node{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:13px 12px;min-width:0}
+  .node.acc{border-color:var(--amber-dim);background:linear-gradient(180deg,#221d14,#1A222C)}
+  .node .ni{font-family:'Space Mono';font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .node .nn{font-family:'Space Grotesk';font-weight:600;font-size:14px;margin:4px 0}
+  .node .nd{font-family:'Space Mono';font-size:10.5px;color:var(--muted)}
+  .arr{display:flex;align-items:center;flex:0 0 26px;color:var(--amber)}
+  .arr svg{width:18px;height:18px}
+  .loop{margin-top:14px;display:flex;gap:10px;align-items:center;font-size:13px;color:var(--violet);
+    background:var(--ink2);border:1px dashed var(--steel-dim);border-radius:9px;padding:10px 14px}
+  .loop b{color:var(--steel)}
+
+  /* numbers band */
+  .band{background:linear-gradient(180deg,#10141A,#0B0E13)}
+  .num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+  @media(max-width:760px){.num-grid{grid-template-columns:repeat(2,1fr)}}
+  .ncard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .ncard .v{font-family:'Space Mono';font-weight:700;font-size:clamp(22px,4vw,32px);color:var(--amber)}
+  .ncard .v.st{color:var(--steel)}.ncard .v.gr{color:var(--green)}
+  .ncard .l{font-size:13px;color:var(--muted);margin-top:6px}
+
+  /* sensitivity table */
+  .tbl{margin-top:30px;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+  th{font-family:'Space Mono';font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);background:var(--ink2)}
+  td{color:var(--text)} td.mono{font-family:'Space Mono'} td.r,th.r{text-align:right}
+  tr:last-child td{border-bottom:0}
+
+  /* partners */
+  .partners{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+  @media(max-width:820px){.partners{grid-template-columns:1fr 1fr}}
+  .pt{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px;border-top:2px solid var(--steel-dim)}
+  .pt.lead{border-top-color:var(--amber)}
+  .pt .r{font-family:'Space Mono';font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .pt.lead .r{color:var(--amber)}
+  .pt .n{font-family:'Space Grotesk';font-weight:600;font-size:15px;margin:4px 0 6px}
+  .pt p{font-size:12.5px;color:var(--muted)}
+
+  /* roadmap */
+  .road{margin-top:34px;display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+  .rstep{flex:1;min-width:150px;background:var(--panel);padding:18px 16px;border-right:1px solid var(--line)}
+  .rstep:last-child{border-right:0}
+  .rstep.fid{background:linear-gradient(180deg,#1a2a1f,#141A22)}
+  .rstep .y{font-family:'Space Mono';font-size:11px;color:var(--amber);font-weight:700}
+  .rstep .t{font-family:'Space Grotesk';font-weight:600;font-size:14px;margin:5px 0 4px}
+  .rstep .d{font-size:12px;color:var(--muted)}
+
+  /* disclaimer */
+  .disc{margin-top:40px;font-size:12.5px;color:var(--faint);border:1px solid var(--line);border-radius:11px;
+    padding:14px 18px;background:var(--ink2)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);background:var(--ink2);padding:46px 0 30px}
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+  .founder{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);
+    border-radius:12px;padding:18px 22px;min-width:280px}
+  .founder .r{font-family:'Space Mono';font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--amber)}
+  .founder .nm{font-family:'Space Grotesk';font-weight:600;font-size:17px;margin:5px 0 4px}
+  .founder a{font-family:'Space Mono';font-size:13px;color:var(--steel);text-decoration:none}
+  .founder a:hover{color:var(--amber)}
+  .foot-meta{font-size:12.5px;color:var(--faint);max-width:32ch}
+  .foot-meta .lg{font-family:'Space Grotesk';font-weight:700;color:var(--text);font-size:15px;margin-bottom:8px}
+  .foot-meta .lg b{color:var(--amber)}
+  .copy{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:8px;font-family:'Space Mono';font-size:11px;color:var(--faint);letter-spacing:.04em}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+<!-- ============================================================
+     GOOGLE ANALYTICS 4  —  REPLACE G-XXXXXXXXXX WITH YOUR ID
+     Get it at analytics.google.com → Admin → Data Streams
+     ============================================================ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+  // event helper for button clicks (download / view master plan)
+  function track(name){ try{ gtag('event', name, {event_category:'engagement'}); }catch(e){} }
+</script>
+</head>
+<body data-lang="en">
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand">
+      <svg class="mk" viewBox="0 0 32 32" fill="none"><path d="M16 2l12 7v14l-12 7L4 23V9z" stroke="#E8A33D" stroke-width="1.6"/><path d="M16 9l6 3.5v7L16 23l-6-3.5v-7z" fill="#E8A33D" fill-opacity="0.18" stroke="#E8A33D" stroke-width="1.2"/></svg>
+      UZ <b>SILICON</b> TECH
+    </div>
+    <div class="nav-links">
+      <a href="#project" class="en">The Project</a><a href="#project" class="uz">Loyiha</a>
+      <a href="#why" class="en">Why Uzbekistan</a><a href="#why" class="uz">Nega O'zbekiston</a>
+      <a href="#numbers" class="en">Numbers</a><a href="#numbers" class="uz">Raqamlar</a>
+      <a href="#cluster" class="en">Cluster</a><a href="#cluster" class="uz">Klaster</a>
+      <a href="founder.html" class="en">Founder</a><a href="founder.html" class="uz">Asoschi</a>
+      <div class="lang">
+        <button class="b-en" onclick="setLang('en')">EN</button>
+        <button class="b-uz" onclick="setLang('uz')">UZ</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><pattern id="hex" width="56" height="64" patternUnits="userSpaceOnUse" patternTransform="scale(1.4)">
+        <path d="M28 0l28 16v32L28 64 0 48V16z" fill="none" stroke="#26303C" stroke-width="1"/>
+      </pattern></defs>
+      <rect width="1200" height="600" fill="url(#hex)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <span class="kick"><span class="en">Strategic Concept · Horizon 2032</span><span class="uz">Strategik Konsept · Ufq 2032</span></span>
+    <h1>
+      <span class="en">Non-China <span class="g">Polysilicon.</span><br>Built in Uzbekistan.</span>
+      <span class="uz">Non-China <span class="g">Polysilicon.</span><br>O'zbekistonda ishlab chiqariladi.</span>
+    </h1>
+    <p style="margin-top:14px;font-family:'Space Grotesk';font-weight:500;font-size:clamp(15px,2.3vw,21px);color:var(--steel)">
+      <span class="en">Central Asia's First Integrated Silicon Value Chain</span>
+      <span class="uz">Markaziy Osiyodagi birinchi integratsiyalashgan kremniy zanjiri</span>
+    </p>
+    <p class="lead">
+      <span class="en">Uz Silicon Tech is a strategic initiative to build <b>Central Asia's first</b> integrated, fully traceable polysilicon and wafer value chain — designed for FEOC compliance and built to serve the non-China solar and semiconductor supply chains of Europe, the United States and the wider region.</span>
+      <span class="uz">Uz Silicon Tech — <b>Markaziy Osiyodagi birinchi</b> integratsiyalashgan, to'liq kuzatiladigan polysilicon va wafer zanjirini yaratishga qaratilgan strategik tashabbus. FEOC talablariga moslab loyihalangan; Yevropa, AQSh va mintaqaning non-China quyosh hamda yarimo'tkazgich ta'minoti uchun.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#project" class="btn btn-primary"><span class="en">Explore the project</span><span class="uz">Loyiha bilan tanishish</span></a>
+      <a href="#cluster" class="btn btn-ghost"><span class="en">The cluster model</span><span class="uz">Klaster modeli</span></a>
+    </div>
+    <div class="hero-figs">
+      <div class="hf"><div class="v am">100<span style="font-size:13px"> kt</span></div><div class="l"><span class="en">Polysilicon / yr · target</span><span class="uz">Polysilicon / yil · maqsad</span></div></div>
+      <div class="hf"><div class="v st">20<span style="font-size:13px"> GW</span></div><div class="l"><span class="en">Wafer / yr · proposed</span><span class="uz">Wafer / yil · taklif</span></div></div>
+      <div class="hf"><div class="v gr">~1<span style="font-size:13px"> GW</span></div><div class="l"><span class="en">Clean firm power · target</span><span class="uz">Toza firm energiya · maqsad</span></div></div>
+      <div class="hf"><div class="v">6–8<span style="font-size:13px"> k</span></div><div class="l"><span class="en">Direct jobs · projected</span><span class="uz">Ish o'rni · proyeksiya</span></div></div>
+      <div class="hf"><div class="v">2032</div><div class="l"><span class="en">Target production</span><span class="uz">Maqsadli ishlab chiqarish</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OPPORTUNITY -->
+<section class="blk" id="opportunity">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">The shift</span><span class="uz">O'zgarish</span></div>
+      <h2><span class="en">The world is de-risking its silicon supply away from China.</span><span class="uz">Dunyo kremniy ta'minotini Xitoydan diversifikatsiya qilmoqda.</span></h2>
+      <p class="sec-lead"><span class="en">China controls over 90% of global polysilicon. Under UFLPA and FEOC rules, Europe and the US now pay a structural premium for traceable, non-Chinese material — creating a durable opening for a neutral, compliant producer.</span><span class="uz">Xitoy global polysiliconning 90% dan ortig'ini nazorat qiladi. UFLPA va FEOC qoidalari ostida Yevropa va AQSh kuzatiladigan, non-Xitoy material uchun strukturaviy premium to'laydi — neytral, mos ishlab chiqaruvchi uchun barqaror imkoniyat.</span></p>
+    </div>
+    <div class="grid3">
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg></div>
+        <h3><span class="en">Premium demand</span><span class="uz">Premium talab</span></h3>
+        <p><span class="en">Non-China polysilicon trades at a 3–4× premium over Chinese material in the EU and US markets.</span><span class="uz">Non-Xitoy polysilicon EI va AQSh bozorlarida Xitoy materialidan 3–4 barobar premium bilan sotiladi.</span></p>
+      </div>
+      <div class="card steel rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 7l10 5 10-5"/></svg></div>
+        <h3><span class="en">Hungry downstream</span><span class="uz">Och quyi zanjir</span></h3>
+        <p><span class="en">India is building 35+ GW of wafer capacity with almost no domestic polysilicon — a structural feedstock gap.</span><span class="uz">Hindiston 35+ GW wafer quvvati quryapti, ichki polysilicon deyarli yo'q — strukturaviy xomashyo bo'shlig'i.</span></p>
+      </div>
+      <div class="card green rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg></div>
+        <h3><span class="en">Neutral & compliant by design</span><span class="uz">Loyihaviy neytral va mos</span></h3>
+        <p><span class="en">Uzbekistan offers a geopolitically neutral platform, designed for FEOC compliance with ESG-aligned, fully traceable production.</span><span class="uz">O'zbekiston — FEOC talablariga moslab loyihalangan, ESG-mos, to'liq kuzatiladigan ishlab chiqarish bilan geosiyosiy neytral platforma.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT / VALUE CHAIN -->
+<section class="blk" id="project">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">The project</span><span class="uz">Loyiha</span></div>
+      <h2><span class="en">A fully integrated value chain — from quartz to wafer.</span><span class="uz">To'liq integratsiyalashgan zanjir — kvartsdan wafergacha.</span></h2>
+      <p class="sec-lead"><span class="en">Unlike most non-Chinese producers who import their feedstock, Uz Silicon Tech mines and refines its own high-purity quartz. Every waste stream is recovered in closed loops.</span><span class="uz">Xomashyoni import qiladigan ko'pchilik non-Xitoy ishlab chiqaruvchidan farqli, Uz Silicon Tech o'z yuqori-tozalik kvartsini qazib oladi va tozalaydi. Har bir chiqindi yopiq siklda qaytariladi.</span></p>
+    </div>
+    <div class="chain rv">
+      <div class="chain-row">
+        <div class="node"><span class="ni"><span class="en">Stage 0</span><span class="uz">Bosqich 0</span></span><span class="nn"><span class="en">Quartz mine</span><span class="uz">Kvarts koni</span></span><span class="nd">SiO₂ 98.7%</span></div>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="node"><span class="ni"><span class="en">Stage 1</span><span class="uz">Bosqich 1</span></span><span class="nn">MG-Si</span><span class="nd"><span class="en">Arc furnace</span><span class="uz">Yoy pechi</span></span></div>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="node"><span class="ni"><span class="en">Stage 2–3</span><span class="uz">Bosqich 2–3</span></span><span class="nn">TCS + Distillation</span><span class="nd"><span class="en">Purification</span><span class="uz">Tozalash</span></span></div>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="node acc"><span class="ni"><span class="en">Stage 4</span><span class="uz">Bosqich 4</span></span><span class="nn">Polysilicon</span><span class="nd">Siemens CVD · 6N+</span></div>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="node"><span class="ni"><span class="en">Stage 5</span><span class="uz">Bosqich 5</span></span><span class="nn">Wafer</span><span class="nd"><span class="en">Ingot → slicing</span><span class="uz">Ingot → kesish</span></span></div>
+      </div>
+      <div class="loop"><span>♻</span><span><b>Closed-loop:</b> <span class="en">STC → TCS hydrochlorination · H₂ / HCl recovery · Zero Liquid Discharge (ZLD) · kerf recovery — zero liquid waste.</span><span class="uz">STC → TCS gidroxlorlash · H₂ / HCl rekuperatsiya · Zero Liquid Discharge (ZLD) · kerf qaytarish — nol suyuq chiqindi.</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY UZBEKISTAN -->
+<section class="blk band" id="why">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">Why Uzbekistan</span><span class="uz">Nega O'zbekiston</span></div>
+      <h2><span class="en">The one advantage no competitor can copy.</span><span class="uz">Raqobatchi nusxalay olmaydigan yagona ustunlik.</span></h2>
+      <p class="sec-lead"><span class="en">The benchmark non-Chinese plant — United Solar in Oman — imports its raw material. Uzbekistan's national Critical Minerals list officially recognises silicon and high-purity quartz, with verified deposits (Nurota vein quartz at 98.7% SiO₂). Domestic feedstock + low-cost renewables is the moat.</span><span class="uz">Andaza non-Xitoy zavod — Omondagi United Solar — xomashyoni import qiladi. O'zbekistonning milliy Kritik Minerallar ro'yxati kremniy va yuqori-tozalik kvartsini rasman tan oladi (Nurota tomir kvartsi, 98.7% SiO₂). Ichki xomashyo + arzon renewable — bu himoya devori.</span></p>
+    </div>
+    <div class="grid2">
+      <div class="card rv">
+        <h3 style="color:var(--amber)"><span class="en">Vertical integration</span><span class="uz">Vertikal integratsiya</span></h3>
+        <p style="margin-bottom:14px"><span class="en">Domestic quartz → MG-Si → polysilicon. A complete, non-China chain produced inside one country.</span><span class="uz">Ichki kvarts → MG-Si → polysilicon. Bitta mamlakat ichida to'liq, non-China zanjir.</span></p>
+        <h3 style="color:var(--amber)"><span class="en">Energy platform</span><span class="uz">Energiya platformasi</span></h3>
+        <p><span class="en">~1 GW firm power via a solar + wind + gas + storage cluster, structured as an IPP with ACWA Power / Masdar.</span><span class="uz">~1 GW firm energiya — quyosh + shamol + gaz + storage klasteri, ACWA Power / Masdar bilan IPP sifatida.</span></p>
+      </div>
+      <div class="card steel rv">
+        <h3><span class="en">Benchmark: Oman (United Solar)</span><span class="uz">Benchmark: Omon (United Solar)</span></h3>
+        <p style="margin-bottom:10px"><span class="en">The proven template we build on:</span><span class="uz">Biz tayanadigan isbotlangan andaza:</span></p>
+        <ul style="list-style:none;font-size:13.5px;color:var(--muted)">
+          <li style="padding:4px 0 4px 18px;position:relative"><span style="position:absolute;left:0;color:var(--steel)">▸</span> 100kt · ~$1.6B · <span class="en">built in ~22 months</span><span class="uz">~22 oyda qurildi</span></li>
+          <li style="padding:4px 0 4px 18px;position:relative"><span style="position:absolute;left:0;color:var(--steel)">▸</span> <span class="en">Financed by IFC + Oman sovereign fund</span><span class="uz">IFC + Omon suveren fondi moliyalashtirdi</span></li>
+          <li style="padding:4px 0 4px 18px;position:relative"><span style="position:absolute;left:0;color:var(--amber)">▸</span> <b style="color:var(--text)"><span class="en">Imports raw material — we don't.</span><span class="uz">Xomashyoni import qiladi — biz yo'q.</span></b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="blk" id="numbers">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">By the numbers</span><span class="uz">Raqamlarda</span></div>
+      <h2><span class="en">A bankable thesis — honest about where it works.</span><span class="uz">Bankable tezis — qayerda ishlashiga halol.</span></h2>
+      <p class="sec-lead"><span class="en">The project is not built to beat China on price. It is built to serve premium, traceable markets. The sensitivity below shows exactly where the economics hold.</span><span class="uz">Loyiha Xitoyni narxda urish uchun emas — premium, kuzatiladigan bozorlar uchun qurilgan. Quyidagi sensitivity iqtisod qayerda ishlashini aniq ko'rsatadi.</span></p>
+    </div>
+    <div class="num-grid">
+      <div class="ncard rv"><div class="v">~$9–12.5<span style="font-size:15px"> B</span></div><div class="l"><span class="en">Total cluster CAPEX</span><span class="uz">Umumiy klaster CAPEX</span></div></div>
+      <div class="ncard rv"><div class="v st">~$4.5–5.5<span style="font-size:15px"> B</span></div><div class="l"><span class="en">Polysilicon co. (asset-light)</span><span class="uz">Polysilicon (asset-light)</span></div></div>
+      <div class="ncard rv"><div class="v gr">~$1.2<span style="font-size:15px"> B</span></div><div class="l"><span class="en">Revenue / yr @ $12/kg</span><span class="uz">Daromad/yil @ $12/kg</span></div></div>
+      <div class="ncard rv"><div class="v gr">~$2.7<span style="font-size:15px">/kg</span></div><div class="l"><span class="en">Electricity cost</span><span class="uz">Elektr tannarxi</span></div></div>
+    </div>
+    <div class="tbl rv">
+      <table>
+        <tr><th><span class="en">Polysilicon price</span><span class="uz">Polysilicon narxi</span></th><th class="r">EBITDA</th><th class="r">EBIT</th><th><span class="en">Verdict</span><span class="uz">Xulosa</span></th></tr>
+        <tr><td class="mono">$12 / kg <span style="color:var(--faint)">(<span class="en">blended premium</span><span class="uz">premium</span>)</span></td><td class="mono r">$620M</td><td class="mono r">+$420M</td><td style="color:var(--green)"><span class="en">Strong</span><span class="uz">Kuchli</span></td></tr>
+        <tr><td class="mono">$10 / kg</td><td class="mono r">$420M</td><td class="mono r">+$220M</td><td style="color:var(--green)"><span class="en">Healthy</span><span class="uz">Yaxshi</span></td></tr>
+        <tr><td class="mono">$8 / kg</td><td class="mono r">$220M</td><td class="mono r">+$20M</td><td style="color:var(--amber)"><span class="en">Break-even</span><span class="uz">Chegarada</span></td></tr>
+        <tr style="background:rgba(224,122,95,.07)"><td class="mono">$6 / kg <span style="color:var(--faint)">(<span class="en">China price</span><span class="uz">Xitoy narxi</span>)</span></td><td class="mono r">$20M</td><td class="mono r" style="color:var(--red)">−$180M</td><td style="color:var(--red)"><span class="en">Loss</span><span class="uz">Zarar</span></td></tr>
+      </table>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:var(--faint)"><span class="en">All-in break-even ≈ $7.8/kg. The project requires premium markets ($10+/kg) — this is the financial proof of the non-China strategy.</span><span class="uz">All-in zararsizlik ≈ $7.8/kg. Loyiha premium bozorlarni ($10+/kg) talab qiladi — bu non-China strategiyaning moliyaviy isboti.</span></p>
+  </div>
+</section>
+
+<!-- CLUSTER / PARTNERS -->
+<section class="blk band" id="cluster">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">The cluster</span><span class="uz">Klaster</span></div>
+      <h2><span class="en">Four partners. One orchestrator.</span><span class="uz">To'rt sherik. Bitta orkestrator.</span></h2>
+      <p class="sec-lead"><span class="en">The value chain closes only when energy, polysilicon, wafer and offtake align. A sovereign anchor — following the Oman model — orchestrates the first commitment.</span><span class="uz">Zanjir faqat energiya, polysilicon, wafer va offtake birlashganda yopiladi. Suveren anchor — Omon modeli bo'yicha — birinchi majburiyatni orkestratsiya qiladi.</span></p>
+    </div>
+    <div class="partners">
+      <div class="pt lead rv"><div class="r">★ <span class="en">Orchestrator</span><span class="uz">Orkestrator</span></div><div class="n">UzSIF / <span class="en">State</span><span class="uz">Davlat</span></div><p><span class="en">Anchor equity, land, energy guarantee, coordination.</span><span class="uz">Anchor kapital, yer, energiya kafolati, koordinatsiya.</span></p></div>
+      <div class="pt rv"><div class="r">Energy · IPP</div><div class="n">ACWA Power / Masdar</div><p><span class="en">Builds ~1 GW cluster; sells via 20–25 yr PPA.</span><span class="uz">~1 GW klaster quradi; 20–25 yillik PPA orqali sotadi.</span></p></div>
+      <div class="pt rv"><div class="r">Wafer · JV</div><div class="n"><span class="en">Turkey partner</span><span class="uz">Turkiya sherigi</span></div><p><span class="en">20 GW wafer in Uzbekistan → EU via customs union.</span><span class="uz">O'zbekistonda 20 GW wafer → bojxona ittifoqi orqali EI.</span></p></div>
+      <div class="pt rv"><div class="r">Offtake</div><div class="n"><span class="en">India + EU</span><span class="uz">Hindiston + EI</span></div><p><span class="en">India buys polysilicon; EU buys wafer.</span><span class="uz">Hindiston polysilicon oladi; EI wafer oladi.</span></p></div>
+    </div>
+
+    <div class="rv" style="margin-top:30px">
+      <div class="eyebrow"><span class="en">Roadmap to FID</span><span class="uz">FID sari yo'l</span></div>
+    </div>
+    <div class="road rv">
+      <div class="rstep"><div class="y">2026</div><div class="t"><span class="en">Gate 1–2</span><span class="uz">Gate 1–2</span></div><div class="d"><span class="en">Resource (JORC, B/P) · market validation</span><span class="uz">Resurs (JORC, B/P) · bozor validatsiyasi</span></div></div>
+      <div class="rstep"><div class="y">2027</div><div class="t"><span class="en">Gate 3–5</span><span class="uz">Gate 3–5</span></div><div class="d"><span class="en">Energy PPA · feasibility study</span><span class="uz">Energiya PPA · feasibility</span></div></div>
+      <div class="rstep fid"><div class="y">2028</div><div class="t"><span class="en">Gate 6–7 · FID ★</span><span class="uz">Gate 6–7 · FID ★</span></div><div class="d"><span class="en">Offtake locked · investment decision</span><span class="uz">Offtake qulflandi · qaror</span></div></div>
+      <div class="rstep"><div class="y">2028–32</div><div class="t"><span class="en">Build → Produce</span><span class="uz">Qurilish → Ishlab ch.</span></div><div class="d"><span class="en">Production by 2032</span><span class="uz">2032'da ishlab chiqarish</span></div></div>
+    </div>
+
+    <div class="disc rv">
+      <span class="en"><b>Strategic concept.</b> All technical and financial figures are preliminary estimates based on international benchmarks, to be confirmed through an independent feasibility study and engineering due diligence. This site is not an offer of securities or investment.</span>
+      <span class="uz"><b>Strategik konsept.</b> Barcha texnik va moliyaviy raqamlar xalqaro benchmarklarga asoslangan dastlabki baholar bo'lib, mustaqil feasibility study va engineering due diligence orqali tasdiqlanishi shart. Bu sayt qimmatli qog'oz yoki investitsiya taklifi emas.</span>
+    </div>
+  </div>
+</section>
+
+<!-- MASTER PLAN CTA -->
+<section class="blk" id="masterplan" style="background:linear-gradient(180deg,#10141A,#0B0E13)">
+  <div class="wrap" style="text-align:center">
+    <div class="rv">
+      <div class="eyebrow" style="justify-content:center"><span class="en">Full documentation</span><span class="uz">To'liq hujjat</span></div>
+      <h2 style="margin:0 auto"><span class="en">The complete strategic master plan.</span><span class="uz">To'liq strategik master-reja.</span></h2>
+      <p class="sec-lead" style="margin:16px auto 0"><span class="en">A 19-section integrated concept — from quartz mining to financial sensitivity, energy modelling and the cluster roadmap. Reviewed through eight expert lenses.</span><span class="uz">19 bo'limli integratsiyalashgan konsept — kvarts qazib olishdan moliyaviy sensitivity, energiya modeli va klaster yo'l xaritasigacha. Sakkiz ekspert nigohi bilan.</span></p>
+      <div class="hero-cta en" style="justify-content:center;margin-top:28px">
+        <a href="UzSiliconTech_MasterPlan_EN.pdf" download class="btn btn-primary" onclick="track('download_masterplan_en')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Download Master Plan (PDF)
+        </a>
+        <a href="UzSiliconTech_MasterPlan_EN.html" target="_blank" rel="noopener" class="btn btn-ghost" onclick="track('view_masterplan_en')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          View Master Plan
+        </a>
+      </div>
+      <div class="hero-cta uz" style="justify-content:center;margin-top:28px">
+        <a href="UzSiliconTech_MasterPlan_UZ.pdf" download class="btn btn-primary" onclick="track('download_masterplan_uz')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Master-rejani yuklab olish (PDF)
+        </a>
+        <a href="UzSiliconTech_MasterPlan_UZ.html" target="_blank" rel="noopener" class="btn btn-ghost" onclick="track('view_masterplan_uz')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
+          Master-rejani ko'rish
+        </a>
+      </div>
+      <p style="margin-top:16px;font-size:12px;color:var(--faint)"><span class="en">Strategic concept — all figures preliminary, subject to feasibility study.</span><span class="uz">Strategik konsept — barcha raqamlar dastlabki, feasibility study'ga bog'liq.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-meta">
+        <div class="lg">UZ <b>SILICON</b> TECH</div>
+        <span class="en">Premium non-China / China-free polysilicon initiative for Uzbekistan. Powering the Western solar and semiconductor supply chain from Central Asia.</span>
+        <span class="uz">O'zbekiston uchun premium non-China polysilicon tashabbusi. Markaziy Osiyodan G'arb quyosh va yarimo'tkazgich ta'minot zanjirini quvvatlash.</span>
+      </div>
+      <div class="founder">
+        <div class="r"><span class="en">Founder & Project Initiator</span><span class="uz">Asoschi va Tashabbuskor</span></div>
+        <div class="nm">Kuziev Mumin Ulashboevich</div>
+        <a href="mailto:founder@uzsilicon.com">founder@uzsilicon.com</a>
+        <div style="margin-top:10px"><a href="founder.html" style="font-family:'Inter';font-size:12.5px;color:var(--muted)"><span class="en">Full profile →</span><span class="uz">To'liq profil →</span></a></div>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 UZ SILICON TECH · uzsilicon.com</span>
+      <span><span class="en">Strategic concept — figures preliminary</span><span class="uz">Strategik konsept — raqamlar dastlabki</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setLang(l){
+    document.documentElement.setAttribute('data-lang', l);
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    try{ localStorage.setItem('uzst_lang', l); }catch(e){}
+  }
+  (function(){
+    var saved; try{ saved = localStorage.getItem('uzst_lang'); }catch(e){}
+    if(saved){ setLang(saved); }
+    // reveal on scroll
+    var rv = document.querySelectorAll('.rv');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, {threshold:.12});
+      rv.forEach(function(el){ io.observe(el); });
+    } else { rv.forEach(function(el){ el.classList.add('in'); }); }
+  })();
+</script>
+</body>
+</html>
