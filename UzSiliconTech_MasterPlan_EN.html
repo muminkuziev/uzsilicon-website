@@ -1,1 +1,647 @@
-3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uz Silicon Tech — Integrated Master Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1116; --panel:#161C24; --panel2:#1B232D; --panel3:#11161D; --line:#28323F;
+    --amber:#E8A33D; --amber-dim:#9A6E2C; --steel:#6BA5C9; --steel-dim:#3E6478;
+    --green:#5FB98A; --red:#E07A5F; --violet:#9B8CCB;
+    --text:#E7EBF0; --muted:#8A93A0; --faint:#5A6470;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;font-size:15px;
+    background-image:radial-gradient(1000px 600px at 85% -5%,rgba(232,163,61,.06),transparent 60%),
+                     radial-gradient(800px 600px at -10% 20%,rgba(107,165,201,.05),transparent 55%);}
+  .wrap{max-width:1000px;margin:0 auto;padding:clamp(16px,4vw,44px)}
+  .mono{font-family:'Space Mono',monospace}
+  h1,h2,h3,h4,.disp{font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em}
+
+  /* cover */
+  .cover{border-bottom:1px solid var(--line);padding-bottom:34px;margin-bottom:8px}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--amber);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--amber)}
+  h1{font-size:clamp(28px,6.5vw,52px);font-weight:700;line-height:1.03;margin:16px 0 6px}
+  h1 .ac{color:var(--amber)}
+  .sub{color:var(--muted);font-size:clamp(14px,2.4vw,18px);max-width:64ch}
+  .meta{margin-top:18px;display:flex;gap:8px 26px;flex-wrap:wrap;font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+  .meta b{color:var(--muted)}
+
+  .figs{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:26px 0 0}
+  .fig{background:var(--panel);padding:15px 12px}
+  .fig .v{font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(15px,2.6vw,21px)}
+  .fig .v.am{color:var(--amber)} .fig .v.st{color:var(--steel)} .fig .v.gr{color:var(--green)}
+  .fig .l{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+  @media(max-width:760px){.figs{grid-template-columns:repeat(2,1fr)}}
+
+  /* TOC */
+  .toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:30px 0}
+  .toc h4{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);margin-bottom:12px;font-weight:600}
+  .toc ol{list-style:none;counter-reset:t;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+  @media(max-width:680px){.toc ol{grid-template-columns:1fr}}
+  .toc li{counter-increment:t;font-size:13.5px}
+  .toc li a{color:var(--muted);text-decoration:none;display:flex;gap:10px;padding:3px 0;border-bottom:1px solid transparent}
+  .toc li a:hover{color:var(--amber)}
+  .toc li a::before{content:counter(t,decimal-leading-zero);font-family:'Space Mono',monospace;
+    color:var(--amber-dim);font-size:11px;flex:0 0 auto}
+
+  /* sections */
+  section{margin:46px 0;scroll-margin-top:20px}
+  .shead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);
+    padding-bottom:12px;margin-bottom:20px}
+  .shead .num{font-family:'Space Mono',monospace;color:var(--amber);font-size:14px;font-weight:700}
+  .shead h2{font-size:clamp(19px,3.4vw,27px);font-weight:600}
+  .shead .lens{margin-left:auto;font-family:'Space Mono',monospace;font-size:10px;color:var(--faint);
+    text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);padding:4px 10px;border-radius:20px;white-space:nowrap}
+  p{margin:0 0 13px;color:#CDD4DD}
+  p b,li b{color:var(--text);font-weight:600}
+  .amb{color:var(--amber)} .stl{color:var(--steel)}
+  ul.clean{list-style:none;margin:0 0 14px}
+  ul.clean li{padding:5px 0 5px 22px;position:relative;color:#CDD4DD;font-size:14px}
+  ul.clean li::before{content:"▸";position:absolute;left:0;color:var(--amber-dim);font-size:12px;top:6px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 20px;margin:16px 0}
+  .card.warn{border-left:3px solid var(--red)}
+  .card.good{border-left:3px solid var(--green)}
+  .card.note{border-left:3px solid var(--steel)}
+  .card h4{font-size:14px;font-weight:600;margin-bottom:8px;font-family:'Space Grotesk'}
+  .card.warn h4{color:var(--red)} .card.good h4{color:var(--green)} .card.note h4{color:var(--steel)}
+  .card p{font-size:13.5px;margin-bottom:8px} .card p:last-child{margin-bottom:0}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+  th{font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--faint);font-weight:700;background:var(--panel3)}
+  td{color:#CDD4DD}
+  td.mono,th.r{font-family:'Space Mono',monospace}
+  td.r,th.r{text-align:right} td.num{font-family:'Space Mono',monospace;color:var(--text)}
+  tr:hover td{background:rgba(255,255,255,.015)}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px}
+  .tbl-wrap table{margin:0} .tbl-wrap th:first-child,.tbl-wrap td:first-child{padding-left:16px}
+
+  /* flow diagram */
+  .flow{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;overflow-x:auto}
+  .stage-row{display:flex;align-items:stretch;gap:0;min-width:680px}
+  .stg{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 11px;
+    display:flex;flex-direction:column;gap:5px;min-width:0}
+  .stg .si{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .stg .sn{font-family:'Space Grotesk';font-weight:600;font-size:13.5px;line-height:1.15}
+  .stg .sd{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted)}
+  .stg.s1{border-color:var(--steel-dim)} .stg.s5{border-color:var(--amber-dim);
+    background:linear-gradient(180deg,#221d14,#1B232D)}
+  .ar{display:flex;align-items:center;flex:0 0 24px;color:var(--amber)}
+  .ar svg{width:18px;height:18px}
+  .loop{margin-top:14px;display:flex;gap:10px;align-items:center;font-size:12px;color:var(--violet);
+    background:var(--panel3);border:1px dashed var(--steel-dim);border-radius:9px;padding:9px 13px}
+  .loop b{color:var(--steel)}
+
+  /* bar chart */
+  .bars{margin:16px 0}
+  .bar{display:grid;grid-template-columns:160px 1fr 70px;align-items:center;gap:12px;margin:7px 0;font-size:13px}
+  @media(max-width:560px){.bar{grid-template-columns:110px 1fr 56px;gap:8px;font-size:12px}}
+  .bar .bl{color:var(--muted)}
+  .bar .bt{height:18px;border-radius:4px;background:var(--steel);min-width:2px}
+  .bar .bt.am{background:var(--amber)} .bar .bt.gr{background:var(--green)}
+  .bar .bt.vi{background:var(--violet)} .bar .bt.st{background:var(--steel)}
+  .bar .bv{font-family:'Space Mono',monospace;text-align:right;color:var(--text)}
+
+  /* land donut legend */
+  .land{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
+  @media(max-width:600px){.land{grid-template-columns:1fr;gap:10px}}
+  .lg .li{display:flex;align-items:center;gap:9px;font-size:13px;padding:4px 0;color:#CDD4DD}
+  .lg .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+  .lg .lv{margin-left:auto;font-family:'Space Mono',monospace;color:var(--text)}
+
+  /* timeline gantt */
+  .gantt{margin:14px 0;font-size:12px}
+  .gh{display:grid;grid-template-columns:150px repeat(7,1fr);gap:2px;margin-bottom:6px}
+  .gh span{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--faint);text-align:center}
+  .gh span:first-child{text-align:left}
+  .grow{display:grid;grid-template-columns:150px repeat(7,1fr);gap:2px;align-items:center;margin:3px 0}
+  .grow .gl{font-size:11.5px;color:var(--muted)}
+  .gbar{height:16px;border-radius:3px;grid-column:var(--s) / var(--e);background:var(--amber);opacity:.85}
+  .gbar.st{background:var(--steel)} .gbar.gr{background:var(--green)} .gbar.vi{background:var(--violet)}
+  .gcell{height:16px;border-radius:2px;background:var(--panel3)}
+
+  /* expert grid */
+  .experts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:680px){.experts{grid-template-columns:1fr}}
+  .ex{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;border-top:2px solid var(--steel-dim)}
+  .ex.flag{border-top-color:var(--red)} .ex.ok{border-top-color:var(--green)}
+  .ex .er{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .ex .eh{font-family:'Space Grotesk';font-weight:600;font-size:14.5px;margin:3px 0 7px}
+  .ex p{font-size:12.5px;margin:0;color:var(--muted)}
+
+  /* footer */
+  footer{margin-top:50px;border-top:1px solid var(--line);padding-top:22px}
+  .disc{font-size:11.5px;color:var(--faint);display:flex;gap:8px;margin:6px 0}
+  .disc b{color:var(--muted)}
+  .sign{margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    font-family:'Space Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.05em}
+  .sign .g{color:var(--amber-dim)}
+  a.up{color:var(--steel);text-decoration:none;font-size:11px;font-family:'Space Mono'}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<header class="cover" id="top">
+  <div class="eyebrow">Integrated Master Plan · Concept v2.5 · Horizon 2032</div>
+  <h1>Uz Silicon Tech<br><span class="ac">The Full Value Chain</span></h1>
+  <p class="sub">From mining to finished product — quartz mine · metallurgical silicon · polysilicon · wafer · closed-loop waste recovery (ZLD + STC) · ~1 GW firm power · workforce and education system. Analysed through eight expert lenses.</p>
+  <div class="meta">
+    <span><b>Initiator:</b> Kuziev Mumin Ulashboevich</span>
+    <span><b>Location:</b> Navoi / Jizzakh / Sirdarya</span>
+    <span><b>Status:</b> Pre-Feasibility concept</span>
+  </div>
+  <div class="figs">
+    <div class="fig"><div class="v am">100<span style="font-size:12px"> kt</span></div><div class="l">Polysilicon/yr · target</div></div>
+    <div class="fig"><div class="v st">20<span style="font-size:12px"> GW</span></div><div class="l">Wafer/yr · proposed</div></div>
+    <div class="fig"><div class="v gr">~1<span style="font-size:12px"> GW</span></div><div class="l">Firm power</div></div>
+    <div class="fig"><div class="v">~2,800<span style="font-size:12px"> ha</span></div><div class="l">Total land</div></div>
+    <div class="fig"><div class="v">~6–8<span style="font-size:12px"> k</span></div><div class="l">Direct jobs</div></div>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h4>Contents</h4>
+  <ol>
+    <li><a href="#vc">Value chain — overview</a></li>
+    <li><a href="#geo">Geology and mining</a></li>
+    <li><a href="#proc">Process technology (5 stages)</a></li>
+    <li><a href="#waste">Waste: ZLD + closed-loop STC</a></li>
+    <li><a href="#wafer">Wafer plant</a></li>
+    <li><a href="#offtake">Offtake map (buyers)</a></li>
+    <li><a href="#energy">Energy supply</a></li>
+    <li><a href="#land">Land and infrastructure</a></li>
+    <li><a href="#people">Human capital (workforce)</a></li>
+    <li><a href="#edu">Education and workforce training</a></li>
+    <li><a href="#capex">CAPEX breakdown (detailed)</a></li>
+    <li><a href="#equity">Shareholding structure</a></li>
+    <li><a href="#fin">Financial model + sensitivity</a></li>
+    <li><a href="#swot">SWOT analysis</a></li>
+    <li><a href="#impact">Strategic impact for Uzbekistan</a></li>
+    <li><a href="#gates">Gate-1 → FID timeline</a></li>
+    <li><a href="#audience">Who this document is for</a></li>
+    <li><a href="#verdict">Eight-expert verdict</a></li>
+    <li><a href="#risk">Risks and honest caveats</a></li>
+  </ol>
+</nav>
+
+<!-- 1. VALUE CHAIN -->
+<section id="vc">
+  <div class="shead"><span class="num">01</span><h2>Value chain — overview</h2><span class="lens">Geologist · Process Eng.</span></div>
+  <p>The project is not a single plant but a <b>fully vertically integrated cluster:</b> quartz is mined, purified stage by stage, and processed all the way to wafer. Every waste stream is <span class="stl">recovered in closed loops.</span> Uzbekistan's advantage is precisely here: <b>Oman imports its raw material — we take ours from the ground.</b></p>
+  <div class="flow">
+    <div class="stage-row">
+      <div class="stg s1"><span class="si">Stage 0</span><span class="sn">Quartz mine</span><span class="sd">SiO₂ 98.7% · Nurota/Jerdanak</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Stage 1</span><span class="sn">MG-Si</span><span class="sd">Arc furnace · 98–99% Si</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Stage 2</span><span class="sn">TCS synthesis</span><span class="sd">SiHCl₃ + H₂/HCl</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Stage 3</span><span class="sn">Distillation</span><span class="sd">Purify → 9–11N</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg s5"><span class="si">Stage 4</span><span class="sn">Polysilicon</span><span class="sd">Siemens CVD · 6N+</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stg"><span class="si">Stage 5</span><span class="sn">Wafer</span><span class="sd">Ingot → slicing</span></div>
+    </div>
+    <div class="loop"><span>♻</span><span><b>Closed loop:</b> STC → TCS hydrochlorination · H₂ and HCl recovery · ZLD water system · kerf (cutting waste) recovery — <b>zero liquid discharge.</b></span></div>
+  </div>
+</section>
+
+<!-- 2. GEOLOGY -->
+<section id="geo">
+  <div class="shead"><span class="num">02</span><h2>Geology and mining</h2><span class="lens">Geologist</span></div>
+  <p>The geologist's view: domestic quartz is <b>no longer an assumption.</b> The Tashkent Institute of Chemical Technology (Nomazov &amp; Aripova, 2025) measured the composition of quartz from Uzbek deposits:</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Source</th><th class="r">SiO₂</th><th class="r">Al₂O₃</th><th class="r">Fe₂O₃</th><th>Assessment</th></tr>
+    <tr><td>Nurota vein quartz</td><td class="num r">98.74%</td><td class="num r">0.45%</td><td class="num r">0.02%</td><td>High purity</td></tr>
+    <tr><td>Jerdanak quartzite</td><td class="num r">97.72%</td><td class="num r">0.77%</td><td class="num r">0.12%</td><td>Illite admixture</td></tr>
+  </table></div>
+  <div class="card good"><h4>✓ What is confirmed</h4>
+    <p>The SiO₂ grade is <b>sufficient for MG-Si (metallurgical silicon).</b> Uzbekistan has 20+ quartz deposits and beneficiation experience (JSC "Kvarts"). This is a real advantage against Oman's "import dependency" weakness.</p>
+    <p style="margin-top:8px"><b>Official strategic recognition:</b> Uzbekistan's <b>Critical Elements list</b> includes silicon (Si) and <b>high-purity silica/quartz</b> — with vast, largely untapped potential (Mirkamalov et al., 2025). That is, the state recognises this material as strategic.</p></div>
+  <div class="card warn"><h4>✗ Still required for Gate-1 — and the JORC question</h4>
+    <p>Today we have <b>chemical composition</b> (TKTI), but <b>no JORC-compliant resource statement.</b> Uzbekistan uses the GKZ (Soviet) classification, but international investors (IFC, banks) require a resource statement to the <b>JORC or NI 43-101</b> standard: tonnage + grade + confidence category (measured/indicated/inferred). Only a <b>drilling programme</b> delivers this.</p></div>
+  <h4 class="disp" style="margin:18px 0 8px;font-size:15px">Gate-1 Resource Assessment — full checklist</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>Item</th><th>Requirement</th><th class="r">Status</th></tr>
+    <tr><td>Candidate deposits</td><td>Jizzakh · Navoi · Sirdarya + Nurota/Jerdanak</td><td class="num r">⚠ To select</td></tr>
+    <tr><td>SiO₂ range</td><td>≥98% (confirmed for MG-Si: 97.7–98.7%)</td><td class="num r">✓ Have</td></tr>
+    <tr><td><b>Boron (B) + phosphorus (P) ppm</b></td><td>Most critical for polysilicon — not yet measured</td><td class="num r">✗ Needed</td></tr>
+    <tr><td>Post-beneficiation purity</td><td>Does it reach 6N (pilot test)</td><td class="num r">✗ Needed</td></tr>
+    <tr><td>30-year reserve</td><td>~9 Mt quartz (JORC-compliant)</td><td class="num r">✗ Drilling</td></tr>
+    <tr><td>Mining cost</td><td>$/tonne → confirm the $1.3/kg feedstock estimate</td><td class="num r">✗ Needed</td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--muted)"><b>Signal to UzSIF / Geology committee:</b> "We hold scientifically confirmed initial evidence; we are ready to begin Gate-1 (drilling + B/P + JORC)."</p>
+
+  <h4 class="disp" style="margin:22px 0 8px;font-size:15px">B/P — the most critical parameter</h4>
+  <p>For polysilicon, boron (B) and phosphorus (P) are the most important, because they corrupt the semiconductor property and are extremely hard to remove from quartz.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Element</th><th class="r">Target (indicative)</th><th>Method</th></tr>
+    <tr><td>Boron (B)</td><td class="num r">&lt; 0.1 ppm</td><td>ICP-MS</td></tr>
+    <tr><td>Phosphorus (P)</td><td class="num r">&lt; 0.3 ppm</td><td>ICP-MS</td></tr>
+  </table></div>
+  <p style="font-size:12.5px;color:var(--faint)">No B/P measurement currently exists for any Uzbek deposit — this is normal. Only an ICP-MS lab + international assay + JORC expert can establish it. Final polysilicon spec is even tighter (ppba level).</p>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Pilot beneficiation test (6N potential)</h4>
+  <p>After beneficiation, Al₂O₃, Fe₂O₃, TiO₂, CaO, MgO must drop to ppm levels. Pilot test stages:</p>
+  <ul class="clean">
+    <li>1 · Crushing → 2 · Magnetic separation → 3 · Chemical washing → 4 · Acid leaching → 5 · Drying → 6 · ICP-MS analysis</li>
+    <li>Result: confirms (or rejects) the quartz's eligibility to enter the <b>MG-Si → TCS → polysilicon</b> chain</li>
+  </ul>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Drilling programme (for JORC)</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>Parameter</th><th>Minimum (indicative)</th></tr>
+    <tr><td>Drill holes</td><td>~12 (more possible depending on deposit size)</td></tr>
+    <tr><td>Depth</td><td>150–200 m</td></tr>
+    <tr><td>Output</td><td>3D geological model · tonnage + grade + confidence category</td></tr>
+    <tr><td>Duration</td><td>~6 months · certified by a JORC expert</td></tr>
+  </table></div>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Gate-1 deliverables</h4>
+  <ul class="clean">
+    <li>B/P ppm assay (ICP-MS) · JORC-compliant resource statement (Inferred → Indicated → Measured)</li>
+    <li>30-year reserve confirmed (~9 Mt quartz) · post-beneficiation purity</li>
+    <li>Mining cost ($/tonne) · logistics map · feedstock readiness for MG-Si</li>
+  </ul>
+
+  <div class="card note"><h4>◆ Official signal to government (executive sentence)</h4>
+    <p style="font-style:italic;color:var(--text)">"According to preliminary scientific data, the Jizzakh and Navoi regions hold promising quartz resources for a polysilicon industry. Their suitability must be confirmed through independent laboratory assay, drilling and a JORC audit."</p></div>
+
+  <div class="card warn"><h4>⚠ Geological accuracy (Engineering DD safeguard)</h4>
+    <p>Only <b>confirmed high-purity quartz</b> is presented as the feedstock base: Nurota vein quartz (98.7%) and Jerdanak quartzite (TKTI). Uzbekistan has a broad mineral base, but <b>silica sand ≠ polysilicon quartz</b>, and each deposit (e.g. Jeroy — a phosphorite deposit, not polysilicon) must be verified separately. Maintaining this distinction preserves credibility before the geology committee.</p></div>
+</section>
+
+<!-- 3. PROCESS -->
+<section id="proc">
+  <div class="shead"><span class="num">03</span><h2>Process technology</h2><span class="lens">Process Eng. · Eng. DD</span></div>
+  <p>From quartz to polysilicon there are 5 chemical-physical stages. Each requires distinct equipment, energy and a safety regime.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Stage</th><th>Process</th><th>Main equipment</th><th class="r">Energy (kWh/kg)</th></tr>
+    <tr><td><b>1 · Carbothermic</b></td><td>SiO₂ + 2C → Si + 2CO (1800°C)</td><td>Submerged arc furnace (SAF)</td><td class="num r">~11–13</td></tr>
+    <tr><td><b>2 · TCS synthesis</b></td><td>Si + 3HCl → SiHCl₃ + H₂</td><td>Fluidized-bed reactor</td><td class="num r">~5</td></tr>
+    <tr><td><b>3 · Distillation</b></td><td>Fractional purification (remove B, P, metals)</td><td>Distillation columns</td><td class="num r">~8</td></tr>
+    <tr><td><b>4 · Siemens CVD</b></td><td>SiHCl₃ + H₂ → Si (1100°C, grows on rods)</td><td>Siemens reactors (CVD)</td><td class="num r">~45–50</td></tr>
+    <tr><td><b>5 · Crushing/packing</b></td><td>Crushing, quality control, packaging</td><td>Clean room, automation</td><td class="num r">~2</td></tr>
+    <tr><td colspan="3"><b>Total (to polysilicon)</b></td><td class="num r"><b>~70–75</b></td></tr>
+  </table></div>
+  <div class="card note"><h4>◆ Process-engineer note: 6N vs 11N</h4>
+    <p>The base target is <b>solar-grade 6N (99.9999%)</b> — for solar panels. <b>Semiconductor-grade 11N</b> (microchips) is an entirely different, far more complex level; only 5 companies manage it (Wacker, Hemlock, OCI, Tokuyama, Mitsubishi). It is left as a <b>later, separate phase.</b></p></div>
+  <div class="card warn"><h4>⚠ Eng. DD: technology owner and power quality</h4>
+    <p><b>Who is the licensor/EPC?</b> The Siemens process and STC closed loop require know-how (Western options: centrotherm and others). <b>Power quality:</b> a Siemens reactor cannot tolerate even a one-second interruption — this makes firm baseload power mandatory in the energy system.</p></div>
+</section>
+<!-- 4. WASTE -->
+<section id="waste">
+  <div class="shead"><span class="num">04</span><h2>Waste: ZLD + closed-loop STC</h2><span class="lens">Process Eng. · Govt (ESG)</span></div>
+  <p>This is the <b>heart of the project's ESG / "low-carbon" certification</b> and what the EU buyer demands. The two main waste streams of the polysilicon process — <b>silicon tetrachloride (STC, SiCl₄)</b> and <b>wastewater</b> — are fully recovered.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">STC → TCS recovery</span><span class="bt vi" style="width:96%"></span><span class="bv">~96%</span></div>
+    <div class="bar"><span class="bl">Hydrogen (H₂) recovery</span><span class="bt st" style="width:99%"></span><span class="bv">~99%</span></div>
+    <div class="bar"><span class="bl">HCl reuse</span><span class="bt am" style="width:90%"></span><span class="bv">~90%</span></div>
+    <div class="bar"><span class="bl">Water reuse (ZLD)</span><span class="bt gr" style="width:98%"></span><span class="bv">~98%</span></div>
+  </div>
+  <h4 class="disp" style="margin:16px 0 8px;font-size:15px">Three closed loops</h4>
+  <ul class="clean">
+    <li><b>STC closed-loop (hydrochlorination):</b> STC + 3H₂ + Si → 4 SiHCl₃ — waste STC converts back to TCS and returns to the process. This sharply reduces purchased chlorine and feedstock.</li>
+    <li><b>Off-gas recovery:</b> H₂, HCl, SiHCl₃ are separated from reactor gases and recovered.</li>
+    <li><b>Zero Liquid Discharge (ZLD):</b> all wastewater is treated by evaporation/crystallisation — <b>zero liquid waste discharged.</b> Mandatory in the desert zone (Navoi) due to water scarcity.</li>
+  </ul>
+  <div class="card note"><h4>◆ Government/ESG view</h4>
+    <p>ZLD + closed-loop STC raises capex by ~10–15%, but it: (1) solves water scarcity, (2) earns the "green" certificate (EU premium condition), (3) lowers operating cost by reducing chlorine/feedstock purchases. Oman built exactly this system.</p></div>
+</section>
+
+<!-- 5. WAFER -->
+<section id="wafer">
+  <div class="shead"><span class="num">05</span><h2>Wafer plant</h2><span class="lens">Process Eng. · Market</span></div>
+  <p>The wafer stage is built in Uzbekistan by a Turkish partner. Polysilicon → ingot → wafer. This is your product's <b>adjacent, immovable buyer.</b></p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Stage</th><th>Process</th><th>Waste recovery</th></tr>
+    <tr><td>Ingot growth</td><td>Czochralski (CZ) — monocrystal pulling</td><td>Pot remnant → re-melt</td></tr>
+    <tr><td>Slicing</td><td>Thin wafers via diamond wire saw</td><td><b>Kerf loss</b> (cutting powder) → recovery</td></tr>
+    <tr><td>Wash/sort</td><td>Cleaning, quality control, packaging</td><td>Connects to the ZLD water system</td></tr>
+  </table></div>
+  <ul class="clean">
+    <li><b>Capacity:</b> 20 GW/yr → consumes ~46–50 kt polysilicon (half of 100kt)</li>
+    <li><b>Export route:</b> wafer enters the EU freely via the Turkey–EU customs union</li>
+    <li><b>Energy:</b> ~210 MW firm additional (CZ pulling is energy-intensive)</li>
+  </ul>
+</section>
+
+<!-- 6. OFFTAKE MAP -->
+<section id="offtake">
+  <div class="shead"><span class="num">06</span><h2>Offtake map (buyers)</h2><span class="lens">Market · Inv. bank</span></div>
+  <p>The 100kt of polysilicon splits in two and reaches the EU via wafer. <b>This is the project's clear answer to "who buys it?"</b></p>
+  <div class="flow">
+    <div class="stage-row" style="min-width:560px">
+      <div class="stg s5"><span class="si">Source</span><span class="sn">Polysilicon</span><span class="sd">100 kt/yr</span></div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="split">
+        <div class="stg"><span class="si">Buyer A · in UZ</span><span class="sn">Turkey wafer (20 GW)</span><span class="sd">~50 kt → wafer</span></div>
+        <div class="stg"><span class="si">Buyer B · export</span><span class="sn">India</span><span class="sd">~50 kt polysilicon</span></div>
+      </div>
+      <div class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="split">
+        <div class="stg s1"><span class="si">End market</span><span class="sn">Europe (EU)</span><span class="sd">wafer · duty-free</span></div>
+        <div class="stg s1"><span class="si">End market</span><span class="sn">India wafer</span><span class="sd">Waaree·Tata·ReNew</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="tbl-wrap" style="margin-top:16px"><table>
+    <tr><th>Buyer</th><th>Volume</th><th>Why them</th><th class="r">Margin* (all-in $7.8/kg)</th></tr>
+    <tr><td><b>🇹🇷 Turkey wafer (in UZ)</b></td><td>~50 kt</td><td>Adjacent · non-China · Turkey–EU customs union</td><td class="num r">premium</td></tr>
+    <tr><td><b>🇮🇳 India</b></td><td>~50 kt</td><td>Building 20+ GW wafer, ~zero domestic polysilicon, ALMM policy</td><td class="num r">+$2/kg (thin)</td></tr>
+    <tr><td>🇪🇺 Europe (via wafer)</td><td>—</td><td>~63 GW/yr demand; €2.2 bn EU programme</td><td class="num r">+$12/kg</td></tr>
+    <tr><td>🇺🇸 USA (optional)</td><td>—</td><td>UFLPA/FEOC mandate non-China</td><td class="num r">+$16/kg</td></tr>
+  </table></div>
+  <p style="font-size:12px;color:var(--faint)">*Margin from the Energy-Cost model (separate Excel file). India is price-sensitive; US/EU premiums are wider.</p>
+  <div class="card note"><h4>◆ Market expert</h4><p>The non-China premium is real but the window is narrow — Oman (100kt), Qatar and the US are filling it. The adjacent Turkey wafer plant + India offtake keep you in this race. An <b>early LOI/MOU</b> turns "demand" into "a buyer".</p></div>
+</section>
+
+<!-- 7. ENERGY -->
+<section id="energy">
+  <div class="shead"><span class="num">07</span><h2>Energy supply</h2><span class="lens">Power · Inv. bank</span></div>
+  <p>The full chain (MG-Si + polysilicon + wafer) requires <b>~1 GW of firm (continuous) power</b> — ~8,800 GWh per year. ACWA Power / Masdar IPP model: they build it, you buy via a 20–25 year PPA.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">Solar (PV)</span><span class="bt am" style="width:90%"></span><span class="bv">~1.2 GW</span></div>
+    <div class="bar"><span class="bl">Wind</span><span class="bt st" style="width:45%"></span><span class="bv">~600 MW</span></div>
+    <div class="bar"><span class="bl">Gas (firm backup)</span><span class="bt gr" style="width:42%"></span><span class="bv">~500 MW</span></div>
+    <div class="bar"><span class="bl">BESS (storage)</span><span class="bt vi" style="width:24%"></span><span class="bv">~300 MW</span></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Metric</th><th class="r">Value</th><th>Note</th></tr>
+    <tr><td>Firm power (full chain)</td><td class="num r">~1 GW</td><td>MG-Si + poly + wafer</td></tr>
+    <tr><td>Electricity cost</td><td class="num r">~$2.6–2.8/kg</td><td>Better than grid $4.4; above China $1.65</td></tr>
+    <tr><td>Energy cluster capex</td><td class="num r">~$2.5–3 bn</td><td>Owned by ACWA/Masdar (PPA)</td></tr>
+    <tr><td>CO₂ footprint</td><td class="num r">~14 kg/kg</td><td>Within "low-carbon" range (China ~36)</td></tr>
+  </table></div>
+  <div class="card note"><h4>◆ The core trade-off + Excel companion</h4><p>More gas = cheaper/firm, but higher CO₂ (weakens the premium). More renewables = clean, but higher capex. This balance is computed in a <b>separate Energy-Cost Excel model</b> — varying the gas/renewable share shows $/kg cost, firm-coverage % and CO₂ footprint in real time.</p></div>
+</section>
+
+<!-- 8. LAND -->
+<section id="land">
+  <div class="shead"><span class="num">08</span><h2>Land and infrastructure</h2><span class="lens">Geologist · Eng. DD</span></div>
+  <p>Total area ~<b>2,800 hectares</b> — mostly the solar farm. Industrial core ~600 ha.</p>
+  <div class="land">
+    <svg viewBox="0 0 42 42" width="190" height="190" style="transform:rotate(-90deg)">
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#1B232D" stroke-width="6"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#E8A33D" stroke-width="6" stroke-dasharray="64 36" stroke-dashoffset="0"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#6BA5C9" stroke-width="6" stroke-dasharray="18 82" stroke-dashoffset="-64"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#5FB98A" stroke-width="6" stroke-dasharray="9 91" stroke-dashoffset="-82"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#9B8CCB" stroke-width="6" stroke-dasharray="5 95" stroke-dashoffset="-91"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#3E6478" stroke-width="6" stroke-dasharray="4 96" stroke-dashoffset="-96"/>
+    </svg>
+    <div class="lg">
+      <div class="li"><span class="sw" style="background:#E8A33D"></span>Solar farm <span class="lv">~1,800 ha</span></div>
+      <div class="li"><span class="sw" style="background:#6BA5C9"></span>Wind zone (spacing) <span class="lv">~500 ha</span></div>
+      <div class="li"><span class="sw" style="background:#5FB98A"></span>Polysilicon + MG-Si plant <span class="lv">~250 ha</span></div>
+      <div class="li"><span class="sw" style="background:#9B8CCB"></span>Wafer plant <span class="lv">~120 ha</span></div>
+      <div class="li"><span class="sw" style="background:#3E6478"></span>Gas/BESS/substation <span class="lv">~40 ha</span></div>
+      <div class="li"><span class="sw" style="background:#5A6470"></span>ZLD/water/logistics/buffer <span class="lv">~90 ha</span></div>
+    </div>
+  </div>
+  <p style="margin-top:16px"><b>Location factors:</b> Navoi — Masdar solar experience, industrial zone, but water-scarce (ZLD mandatory). Jizzakh/Sirdarya — water/logistics may be better. Final choice assessed by proximity to the quartz mine + energy + water + rail connection.</p>
+</section>
+
+<!-- 9. PEOPLE -->
+<section id="people">
+  <div class="shead"><span class="num">09</span><h2>Human capital (workforce)</h2><span class="lens">Govt · Operations</span></div>
+  <p>The full cluster generates ~<b>6,000–8,000 direct jobs</b> (2–3× more indirect). The largest need is at the wafer plant.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">Wafer plant</span><span class="bt am" style="width:100%"></span><span class="bv">~3,500</span></div>
+    <div class="bar"><span class="bl">Polysilicon + MG-Si</span><span class="bt st" style="width:40%"></span><span class="bv">~1,400</span></div>
+    <div class="bar"><span class="bl">Lab/QC/utilities/ZLD</span><span class="bt vi" style="width:13%"></span><span class="bv">~450</span></div>
+    <div class="bar"><span class="bl">Admin/logistics/management</span><span class="bt gr" style="width:14%"></span><span class="bv">~500</span></div>
+    <div class="bar"><span class="bl">Mining</span><span class="bt st" style="width:8%"></span><span class="bv">~300</span></div>
+    <div class="bar"><span class="bl">Energy cluster O&amp;M</span><span class="bt gr" style="width:6%"></span><span class="bv">~200</span></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Level</th><th>Role</th><th>Field</th></tr>
+    <tr><td>Engineer / PhD</td><td>Process, R&amp;D, quality</td><td>Chemical engineering · metallurgy · materials science · power</td></tr>
+    <tr><td>Technician</td><td>Equipment, automation, maintenance</td><td>Instrumentation · mechanical · electrical</td></tr>
+    <tr><td>Operator</td><td>Furnace, reactor, CZ, slicing</td><td>Chemical operators · clean room</td></tr>
+    <tr><td>HSE / environmental</td><td>Safety, ZLD, chlorine chemistry</td><td>Industrial safety · environment</td></tr>
+  </table></div>
+</section>
+
+<!-- 10. EDUCATION -->
+<section id="edu">
+  <div class="shead"><span class="num">10</span><h2>Education and workforce training</h2><span class="lens">Govt · University</span></div>
+  <p class="amb" style="font-weight:600">The most critical timing factor: training must start <b>in 2028–29, not in 2032.</b> If it does not begin 3–4 years ahead, there will be no qualified workforce when the plant commissions.</p>
+  <h4 class="disp" style="margin:16px 0 8px;font-size:15px">University departments (partners)</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th>Institution</th><th>Field</th><th>Role</th></tr>
+    <tr><td>Tashkent Inst. of Chemical Technology (TKTI)</td><td>Chemical engineering, quartz beneficiation</td><td>Core partner (the quartz study came from here)</td></tr>
+    <tr><td>Navoi State Mining &amp; Tech University</td><td>Mining, metallurgy</td><td>MG-Si and mining workforce</td></tr>
+    <tr><td>Tashkent State Technical University</td><td>Power, automation, mechanics</td><td>Technicians and engineers</td></tr>
+    <tr><td>Turin Polytechnic (Tashkent)</td><td>Materials science, mechatronics</td><td>International-standard engineers</td></tr>
+    <tr><td>Foreign partner (Germany/Korea)</td><td>Siemens process, CVD know-how</td><td>Mentorship, internship, licensing</td></tr>
+  </table></div>
+  <h4 class="disp" style="margin:18px 0 8px;font-size:15px">Training schedule</h4>
+  <div class="gantt">
+    <div class="gh"><span>Phase</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031</span><span>2032</span></div>
+    <div class="grow"><span class="gl">Curriculum + department</span><div class="gbar st" style="--s:2;--e:4"></div><div class="gcell" style="grid-column:4/9"></div></div>
+    <div class="grow"><span class="gl">Scholarships + 1st cohort</span><div class="gcell" style="grid-column:2/3"></div><div class="gbar" style="--s:3;--e:6"></div><div class="gcell" style="grid-column:6/9"></div></div>
+    <div class="grow"><span class="gl">Overseas internship (engineers)</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar vi" style="--s:4;--e:7"></div><div class="gcell" style="grid-column:7/9"></div></div>
+    <div class="grow"><span class="gl">On-site training centre + simulator</span><div class="gcell" style="grid-column:2/6"></div><div class="gbar gr" style="--s:6;--e:8"></div><div class="gcell" style="grid-column:8/9"></div></div>
+    <div class="grow"><span class="gl">Vendor training (equipment)</span><div class="gcell" style="grid-column:2/7"></div><div class="gbar" style="--s:7;--e:9"></div></div>
+  </div>
+  <div class="card note"><h4>◆ Practical approach</h4><p>1) Send the first wave of engineers in 2028–29 to plants in China/Korea/Germany for <b>hands-on training</b> (the fastest route). 2) Build an <b>on-site training-simulator centre.</b> 3) Training contracts with equipment vendors. 4) Redesign university programmes to <b>fit real needs.</b></p></div>
+</section>
+<!-- 11. CAPEX BREAKDOWN -->
+<section id="capex">
+  <div class="shead"><span class="num">11</span><h2>CAPEX breakdown (detailed)</h2><span class="lens">Auditor · Inv. bank</span></div>
+  <p>The first table UzSIF asks for. Each stage separately, with owner and model. <b>Note:</b> wafer and energy are carried by partners (Turkey, ACWA/Masdar), so <span class="amb">Uz Silicon Tech's own capex is ~$4.5–5.5 bn.</span></p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Component</th><th class="r">Capex (preliminary)</th><th>Owner / model</th></tr>
+    <tr><td>1 · Quartz mine</td><td class="num r">~$0.1–0.2 bn</td><td>Uz Silicon Tech / state</td></tr>
+    <tr><td>2 · MG-Si (arc furnace)</td><td class="num r">~$0.4–0.5 bn</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>3 · TCS synthesis</td><td class="num r">~$0.5–0.7 bn</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>4 · Distillation (purification)</td><td class="num r">~$0.5–0.7 bn</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>5 · CVD (Siemens reactors)</td><td class="num r">~$1.8–2.2 bn</td><td>Uz Silicon Tech (largest)</td></tr>
+    <tr><td>6 · ZLD + closed-loop STC</td><td class="num r">~$0.4–0.6 bn</td><td>Uz Silicon Tech</td></tr>
+    <tr><td>7 · Land + infrastructure</td><td class="num r">~$0.3–0.5 bn</td><td>Uz Silicon Tech / state</td></tr>
+    <tr style="background:rgba(232,163,61,.06)"><td><b>Your portion (1–7)</b></td><td class="num r"><b>~$4.5–5.5 bn</b></td><td>Uz Silicon Tech</td></tr>
+    <tr><td>8 · Wafer plant (20 GW)</td><td class="num r">~$2.0–4.0 bn</td><td>🇹🇷 Turkey partner (JV)</td></tr>
+    <tr><td>9 · Energy cluster (~1 GW)</td><td class="num r">~$2.5–3.0 bn</td><td>ACWA/Masdar IPP (PPA)</td></tr>
+    <tr style="background:rgba(232,163,61,.1)"><td><b>TOTAL CLUSTER</b></td><td class="num r"><b>~$9–12.5 bn</b></td><td>Multi-party</td></tr>
+  </table></div>
+  <div class="card note"><h4>◆ Important for the auditor</h4><p>"$1.5–2 bn" (v1.0) is outdated. The fully integrated cluster is ~$9–12.5 bn. But due to the <b>asset-light structure</b> your balance sheet is ~$4.5–5.5 bn — the rest is off-balance via partner/PPA.</p></div>
+
+  <h4 class="disp" style="margin:20px 0 8px;font-size:15px">Polysilicon plant CAPEX structure (industry-typical)</h4>
+  <p style="font-size:13px;color:var(--muted)">For the polysilicon core only (TCS→CVD), ~$3.6–4.2 bn. MG-Si, wafer and the energy cluster are outside this.</p>
+  <div class="bars">
+    <div class="bar"><span class="bl">TCS + Distillation</span><span class="bt am" style="width:91%"></span><span class="bv">~32%</span></div>
+    <div class="bar"><span class="bl">Siemens CVD</span><span class="bt am" style="width:80%"></span><span class="bv">~28%</span></div>
+    <div class="bar"><span class="bl">Utilities (power/water/gas)</span><span class="bt st" style="width:63%"></span><span class="bv">~22%</span></div>
+    <div class="bar"><span class="bl">STC loop + ZLD</span><span class="bt vi" style="width:28%"></span><span class="bv">~10%</span></div>
+    <div class="bar"><span class="bl">EPC / Engineering</span><span class="bt gr" style="width:23%"></span><span class="bv">~8%</span></div>
+  </div>
+
+  <div class="card good"><h4>★ Global benchmark: Oman (United Solar Polysilicon)</h4>
+    <p>The world's largest non-China polysilicon plant — the proven template for our project:</p>
+    <ul class="clean" style="margin:6px 0">
+      <li><b>100kt · ~$1.6 bn → ~$16,000/tonne</b> · built in ~22 months</li>
+      <li>Financing: IFC $480M + OIA sovereign fund $260M + Waaree + local banks</li>
+      <li>FEOC-compliant · ESG · ZLD · free zone · on-site solar</li>
+      <li><b>Its weakness: it imports raw material</b> — we overcome this with domestic quartz + MG-Si</li>
+    </ul>
+    <p style="margin-top:6px"><b>Signal to investors:</b> "Oman built 100kt for $1.6 bn, financed by the IFC + a sovereign fund. We replicate the same model, with a domestic-feedstock advantage."</p></div>
+  <p style="font-size:12px;color:var(--faint)">Note: Oman figures are from confirmed public sources. The CAPEX percentage structure is an industry-typical estimate, not any company's internal number.</p>
+</section>
+
+<!-- 12. EQUITY -->
+<section id="equity">
+  <div class="shead"><span class="num">12</span><h2>Shareholding structure</h2><span class="lens">Fund director · Inv. bank</span></div>
+  <p>An investor's first question: "who owns it?" This is the indicative cap table of the <b>polysilicon company (SPV).</b> <span class="amb">Note:</span> energy (ACWA/Masdar) and wafer (Turkey) are separate vehicles; they are primarily <b>contractual partners</b> (PPA / offtake), with optional minority stakes.</p>
+  <div class="land">
+    <svg viewBox="0 0 42 42" width="180" height="180" style="transform:rotate(-90deg)">
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#1B232D" stroke-width="6"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#E8A33D" stroke-width="6" stroke-dasharray="35 65"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#6BA5C9" stroke-width="6" stroke-dasharray="25 75" stroke-dashoffset="-35"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#5FB98A" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="-60"/>
+      <circle cx="21" cy="21" r="15.9" fill="none" stroke="#9B8CCB" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="-80"/>
+    </svg>
+    <div class="lg">
+      <div class="li"><span class="sw" style="background:#E8A33D"></span>UzSIF (sovereign fund, anchor) <span class="lv">~30%</span></div>
+      <div class="li"><span class="sw" style="background:#6BA5C9"></span>Strategic industrial partner <span class="lv">~25%</span></div>
+      <div class="li"><span class="sw" style="background:#5FB98A"></span>DFI / IPO / private investors <span class="lv">~25%</span></div>
+      <div class="li"><span class="sw" style="background:#9B8CCB"></span>Partners minority (ACWA/Turkey, opt.) <span class="lv">~20%</span></div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--faint);margin-top:8px">Percentages indicative. Core principle: the state/sovereign fund as anchor (Oman/OIA model), a DFI (IFC) with debt+equity, a strategic industrial partner bringing technology.</p>
+</section>
+
+<!-- 13. FINANCIAL MODEL -->
+<section id="fin">
+  <div class="shead"><span class="num">13</span><h2>Financial model + sensitivity</h2><span class="lens">Auditor · Inv. bank</span></div>
+  <p><b>Revenue model (100kt):</b> price × volume. Cost from our Energy model — cash ~$5.8/kg, all-in ~$7.8/kg.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Polysilicon price</th><th class="r">Revenue/yr</th><th class="r">EBITDA</th><th class="r">EBIT</th><th>Verdict</th></tr>
+    <tr><td><b>$12/kg</b> (blended premium)</td><td class="num r">$1,200M</td><td class="num r">$620M</td><td class="num r">$420M</td><td style="color:var(--green)">Strong</td></tr>
+    <tr><td>$10/kg</td><td class="num r">$1,000M</td><td class="num r">$420M</td><td class="num r">$220M</td><td style="color:var(--green)">Healthy</td></tr>
+    <tr><td>$8/kg</td><td class="num r">$800M</td><td class="num r">$220M</td><td class="num r">$20M</td><td style="color:var(--amber)">Break-even</td></tr>
+    <tr style="background:rgba(224,122,95,.08)"><td><b>$6/kg</b> (China price)</td><td class="num r">$600M</td><td class="num r">$20M</td><td class="num r">−$180M</td><td style="color:var(--red)"><b>LOSS</b></td></tr>
+  </table></div>
+  <div class="card warn"><h4>⚠ Sensitivity — the most important truth</h4>
+    <p>The all-in break-even point is <b>~$7.8/kg.</b> At the Chinese commodity price ($6) the project <b>makes a loss.</b> So the project works <b>only in premium markets</b> ($10+/kg, FEOC/EU) — not in price competition with China. This is the financial proof of the entire "non-China" strategy.</p>
+    <p style="margin-top:6px">Payback (your ~$5 bn portion): ~8 years at $12/kg · ~12 years at $10/kg. Acceptable for an infrastructure project.</p></div>
+  <p style="font-size:12px;color:var(--faint)">All figures are linked to the Energy-Cost model. Final IRR/NPV is computed in the Feasibility Study with the full financing structure.</p>
+</section>
+
+<!-- 14. SWOT -->
+<section id="swot">
+  <div class="shead"><span class="num">14</span><h2>SWOT analysis</h2><span class="lens">Strategic</span></div>
+  <div class="experts">
+    <div class="ex ok"><div class="er">S · Strengths</div><div class="eh">Domestic vertical chain</div><p>Quartz+MG-Si in-house (not in Oman) · cheap renewable potential · neutral geopolitics · state support · non-China/FEOC position.</p></div>
+    <div class="ex flag"><div class="er">W · Weaknesses</div><div class="eh">Logistics + cost</div><p>Landlocked · gas-heavy grid (ESG tension) · no polysilicon experience/workforce · all-in cost above China · subscale risk below 100kt.</p></div>
+    <div class="ex ok"><div class="er">O · Opportunities</div><div class="eh">De-China demand</div><p>EU/US diversification · India wafer boom (needs polysilicon) · 2028–30 rebalancing · semiconductor ecosystem.</p></div>
+    <div class="ex flag"><div class="er">T · Threats</div><div class="eh">Non-China oversupply</div><p>Oman/Qatar/US/Morocco · premium compression · China price war · gas deregulation · 4-party coordination.</p></div>
+  </div>
+</section>
+
+<!-- 15. STRATEGIC IMPACT -->
+<section id="impact">
+  <div class="shead"><span class="num">15</span><h2>Strategic impact for Uzbekistan</h2><span class="lens">Govt · Presidential Admin.</span></div>
+  <p>For the Presidential Administration and the Cabinet of Ministers — national-level outcomes:</p>
+  <div class="figs" style="grid-template-columns:repeat(4,1fr)">
+    <div class="fig"><div class="v am">6–8<span style="font-size:12px"> k</span></div><div class="l">Direct jobs</div></div>
+    <div class="fig"><div class="v gr">$1+<span style="font-size:12px"> bn</span></div><div class="l">Annual revenue</div></div>
+    <div class="fig"><div class="v st">~1<span style="font-size:12px"> GW</span></div><div class="l">New renewables</div></div>
+    <div class="fig"><div class="v">1st</div><div class="l">Polysilicon in C. Asia</div></div>
+  </div>
+  <ul class="clean" style="margin-top:14px">
+    <li><b>A new industrial sector</b> — the foundation of the solar and semiconductor materials chain</li>
+    <li><b>Export diversification</b> — high-value product, not raw commodity (wafer to the EU)</li>
+    <li><b>Energy-transition catalyst</b> — ~1 GW renewable cluster</li>
+    <li><b>Supply-chain sovereignty</b> — non-China, strategic independence</li>
+    <li><b>Indirect impact</b> — 2–3× additional jobs, workforce and education development</li>
+  </ul>
+</section>
+
+<!-- 16. GATE TIMELINE -->
+<section id="gates">
+  <div class="shead"><span class="num">16</span><h2>Gate-1 → FID timeline</h2><span class="lens">Inv. bank · UzSIF</span></div>
+  <p>The most important view for investors: which stage when, and which "gate" stops the project if not passed. <b>Without passing Gates 1–3, there is no FID.</b></p>
+  <div class="gantt">
+    <div class="gh"><span>Phase</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031</span><span>2032</span></div>
+    <div class="grow"><span class="gl">Gate-1 Resource (JORC,B/P)</span><div class="gbar st" style="--s:2;--e:3"></div><div class="gcell" style="grid-column:3/9"></div></div>
+    <div class="grow"><span class="gl">Gate-2 Market (LOI)</span><div class="gcell" style="grid-column:2/3"></div><div class="gbar st" style="--s:2;--e:4"></div><div class="gcell" style="grid-column:4/9"></div></div>
+    <div class="grow"><span class="gl">Gate-3 Energy (PPA)</span><div class="gcell" style="grid-column:2/3"></div><div class="gbar st" style="--s:3;--e:4"></div><div class="gcell" style="grid-column:4/9"></div></div>
+    <div class="grow"><span class="gl">Gate-4–5 Feasibility</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar vi" style="--s:3;--e:5"></div><div class="gcell" style="grid-column:5/9"></div></div>
+    <div class="grow"><span class="gl">Gate-6 Offtake lock</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar" style="--s:4;--e:5"></div><div class="gcell" style="grid-column:5/9"></div></div>
+    <div class="grow"><span class="gl">Gate-7 FID ★</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar gr" style="--s:4;--e:5"></div><div class="gcell" style="grid-column:5/9"></div></div>
+    <div class="grow"><span class="gl">Construction</span><div class="gcell" style="grid-column:2/4"></div><div class="gbar" style="--s:4;--e:8"></div></div>
+    <div class="grow"><span class="gl">Production ★</span><div class="gcell" style="grid-column:2/8"></div><div class="gbar gr" style="--s:8;--e:9"></div></div>
+  </div>
+  <p style="font-size:13px;color:var(--muted)">FID ~end of 2028 → construction ~3–4 years → <b>production in 2032</b>, aligned with the rising demand/shortage cycle.</p>
+</section>
+
+<!-- 17. AUDIENCE -->
+<section id="audience">
+  <div class="shead"><span class="num">17</span><h2>Who this document is for</h2></div>
+  <p>The master plan is intended for four groups — each reads a different section.</p>
+  <div class="experts">
+    <div class="ex ok"><div class="er">★ Primary target</div><div class="eh">UzSIF — Uzbekistan Sovereign Fund</div><p>Expects exactly this kind of document. Signal: "we are ready, you start Gate-1 and be the orchestrator." Capex + Gate timeline + offtake are for them.</p></div>
+    <div class="ex"><div class="er">Technical validation</div><div class="eh">Geology committee</div><p>The geology section is in the right tone: "we have an assumption, you confirm with JORC." B/P, reserves, drilling are for them.</p></div>
+    <div class="ex"><div class="er">Energy partner</div><div class="eh">ACWA Power / Masdar</div><p>The energy section and ~1 GW firm requirement matter most to them. PPA model + 2 anchor buyers give them bankability.</p></div>
+    <div class="ex"><div class="er">Wafer partner</div><div class="eh">Turkish wafer manufacturers</div><p>20 GW wafer → 50 kt adjacent non-China polysilicon + Turkey–EU customs route = a golden opportunity for them.</p></div>
+  </div>
+</section>
+
+<!-- 18. VERDICT -->
+<section id="verdict">
+  <div class="shead"><span class="num">18</span><h2>Eight-expert verdict</h2></div>
+  <div class="experts">
+    <div class="ex flag"><div class="er">Fund director</div><div class="eh">Differentiator + sponsor</div><p>Vertical integration (domestic quartz) is a real moat. But "who puts in equity?" is still unanswered. A sovereign fund must anchor it.</p></div>
+    <div class="ex ok"><div class="er">Market expert</div><div class="eh">Premium real, window narrow</div><p>Non-China demand exists, but Oman/Qatar/US are filling it. The adjacent Turkey wafer + India offtake are a strong position.</p></div>
+    <div class="ex"><div class="er">Government expert</div><div class="eh">National strategic cluster</div><p>~1 GW new power + 6–8k jobs. State orchestration and an energy guarantee are decisive.</p></div>
+    <div class="ex"><div class="er">Investment bank</div><div class="eh">2 offtakes required</div><p>Energy PPA + polysilicon offtake — without both it is not financed. The IFC model (Oman) exists.</p></div>
+    <div class="ex flag"><div class="er">Financial auditor</div><div class="eh">Capex $8–12 bn</div><p>"$1.5–2 bn" is outdated. All-in cost is above China — the business relies on the premium market, not price competition.</p></div>
+    <div class="ex flag"><div class="er">Engineering DD</div><div class="eh">Technology + power quality</div><p>Who is the licensor/EPC? The reactor cannot tolerate interruptions → firm power mandatory. ZLD/STC raise capex.</p></div>
+    <div class="ex"><div class="er">Geologist</div><div class="eh">Quartz yes, B/P unknown</div><p>SiO₂ confirmed for MG-Si. Boron/phosphorus measurement and reserve estimate are the rest of Gate-1.</p></div>
+    <div class="ex"><div class="er">Process engineer</div><div class="eh">5 stages + closed loop</div><p>The process is known and proven. 6N is the target; 11N a later phase. STC closed-loop + ZLD is the right approach.</p></div>
+  </div>
+</section>
+
+<!-- 19. RISK -->
+<section id="risk">
+  <div class="shead"><span class="num">19</span><h2>Risks and honest caveats</h2></div>
+  <div class="card warn"><h4>⚠ The biggest risk — coordination, not technology</h4>
+    <p>Four independent mega-decisions (poly · wafer · energy · offtake) must be signed at the same time. Only a <b>state/sovereign fund as orchestrator</b> can break this.</p></div>
+  <ul class="clean">
+    <li><b>All figures are preliminary engineering estimates</b> — to be confirmed in the Feasibility Study. This document is not a basis for an investment decision, but a concept architecture.</li>
+    <li><b>Energy:</b> the project dies on the grid; it works only with a dedicated renewable+gas PPA.</li>
+    <li><b>Quartz is not yet proven to be polysilicon-grade</b> — B/P testing and pilot beneficiation are required.</li>
+    <li><b>The premium market</b> is not guaranteed to last to 2032 — early offtake/LOI is decisive.</li>
+    <li><b>If workforce training does not start in 2028–29</b>, commissioning is delayed.</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="disc"><b>◆</b><span>This document is a Pre-Feasibility concept. All technical and financial indicators are preliminary estimates based on international benchmarks, and must be confirmed through an independent Feasibility Study and Engineering Due Diligence.</span></div>
+  <div class="disc"><b>◆</b><span>Sources: TKTI quartz study (Nomazov &amp; Aripova, 2025); IEA / pv-magazine / Bernreuter polysilicon data; ACWA Power / Masdar IPP benchmarks; United Solar (Oman) project model.</span></div>
+  <div class="sign">
+    <span>UZ SILICON TECH · <span class="g">MASTER PLAN v2.5</span> · Integrated Cluster Architecture</span>
+    <span>Kuziev Mumin Ulashboevich · <a href="#top" class="up">↑ Back to top</a></span>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
