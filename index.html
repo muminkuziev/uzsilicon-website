@@ -6,9 +6,12 @@
 <title>Uz Silicon Tech — Integrated Silicon-to-Wafer Industrial Platform</title>
 <meta name="description" content="Uz Silicon Tech is a development-stage, multi-partner industrial platform connecting quartz validation, energy, silicon metal, captive polysilicon and solar-grade monocrystalline wafer manufacturing.">
 <meta property="og:title" content="Uz Silicon Tech — Integrated Silicon-to-Wafer Industrial Platform">
-<meta property="og:description" content="A proposed multi-partner industrial platform connecting resource validation, energy, silicon metal, captive polysilicon and solar-grade monocrystalline wafer manufacturing in Uzbekistan and selected international JV locations.">
+<meta property="og:description" content="A proposed multi-partner industrial platform connecting resource validation, energy, silicon metal, captive polysilicon and solar-grade monocrystalline wafer manufacturing in Uzbekistan, with candidate international manufacturing geographies under internal evaluation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://uzsilicon.com/">
+<link rel="canonical" href="https://uzsilicon.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Uz Silicon Tech","url":"https://uzsilicon.com/","email":"founder@uzsilicon.com","founder":{"@type":"Person","name":"Kuziev Mumin Ulashboevich"},"description":"Development-stage, multi-partner industrial platform evaluating an integrated silicon-to-wafer ecosystem."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -17,7 +20,7 @@
     --ink:#0B0E13; --ink2:#0E1116; --panel:#141A22; --panel2:#1A222C; --line:#26303C;
     --amber:#E8A33D; --amber2:#F2B85A; --amber-dim:#9A6E2C; --steel:#6BA5C9; --steel-dim:#3E6478;
     --green:#5FB98A; --red:#E07A5F; --violet:#9B8CCB;
-    --text:#EAEEF3; --muted:#949DAA; --faint:#5C6672;
+    --text:#EAEEF3; --muted:#949DAA; --faint:#7E8895;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -41,7 +44,12 @@
   .brand b{color:var(--amber)}
   .nav-links{display:flex;align-items:center;gap:26px;font-size:13.5px;color:var(--muted)}
   .nav-links a{text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--amber)}
-  @media(max-width:760px){.nav-links a:not(.cta){display:none}}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:7px 10px;cursor:pointer;font-family:'Space Mono';font-size:11px}
+  @media(max-width:760px){
+    .nav-in{position:relative}.menu-toggle{display:block}
+    .nav-links{display:none;position:absolute;top:62px;left:18px;right:18px;flex-direction:column;align-items:stretch;gap:0;padding:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+    .nav-links.open{display:flex}.nav-links a{display:block!important;padding:10px 12px}.nav-links .lang{align-self:flex-start;margin:8px 12px}
+  }
   .lang{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;font-family:'Space Mono';font-size:11px}
   .lang button{background:none;border:0;color:var(--faint);padding:5px 11px;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:.05em}
   [data-lang="en"] .lang .b-en,[data-lang="uz"] .lang .b-uz{background:var(--amber);color:var(--ink)}
@@ -177,19 +185,6 @@
   .rv.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 </style>
-<!-- ============================================================
-     GOOGLE ANALYTICS 4  —  REPLACE G-XXXXXXXXXX WITH YOUR ID
-     Get it at analytics.google.com → Admin → Data Streams
-     ============================================================ -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-  // event helper for button clicks (download / view master plan)
-  function track(name){ try{ gtag('event', name, {event_category:'engagement'}); }catch(e){} }
-</script>
 </head>
 <body data-lang="en">
 
@@ -200,7 +195,8 @@
       <svg class="mk" viewBox="0 0 32 32" fill="none"><path d="M16 2l12 7v14l-12 7L4 23V9z" stroke="#E8A33D" stroke-width="1.6"/><path d="M16 9l6 3.5v7L16 23l-6-3.5v-7z" fill="#E8A33D" fill-opacity="0.18" stroke="#E8A33D" stroke-width="1.2"/></svg>
       UZ <b>SILICON</b> TECH
     </div>
-    <div class="nav-links">
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mainNav" onclick="toggleNav(this)"><span class="en">Menu</span><span class="uz">Menyu</span> ☰</button>
+    <div class="nav-links" id="mainNav">
       <a href="#top" class="en">Home</a><a href="#top" class="uz">Bosh sahifa</a>
       <a href="#project" class="en">Platform</a><a href="#project" class="uz">Platforma</a>
       <a href="#why" class="en">Strategy</a><a href="#why" class="uz">Strategiya</a>
@@ -208,8 +204,8 @@
       <a href="founder.html#publications" class="en">Publications</a><a href="founder.html#publications" class="uz">Nashrlar</a>
       <a href="#contact" class="en">Contact</a><a href="#contact" class="uz">Aloqa</a>
       <div class="lang">
-        <button class="b-en" onclick="setLang('en')">EN</button>
-        <button class="b-uz" onclick="setLang('uz')">UZ</button>
+        <button type="button" class="b-en" aria-label="Switch to English" aria-pressed="true" onclick="setLang('en')">EN</button>
+        <button type="button" class="b-uz" aria-label="O'zbek tiliga o'tish" aria-pressed="false" onclick="setLang('uz')">UZ</button>
       </div>
     </div>
   </div>
@@ -236,8 +232,8 @@
       <span class="uz">Tasdiqlangan kvarts va metallurgik kremniydan ichki polisilikon va quyosh darajasidagi monokristalli waferlarga qadar ko'p hamkorli sanoat yo'lini quramiz.</span>
     </p>
     <p class="lead">
-      <span class="en">Uz Silicon Tech is a proposed industrial platform designed to connect resource validation, competitive energy, silicon metal, polysilicon, crystal growth and wafer manufacturing in Uzbekistan, supported by selected international wafer JV platforms.</span>
-      <span class="uz">Uz Silicon Tech — O'zbekistonda resurslarni tekshirish, raqobatbardosh energiya, metallurgik kremniy, polisilikon, kristall o'stirish va wafer ishlab chiqarishni bog'lash uchun taklif etilayotgan sanoat platformasi bo'lib, tanlangan xalqaro wafer JV platformalari bilan qo'llab-quvvatlanadi.</span>
+      <span class="en">Uz Silicon Tech is a proposed industrial platform designed to connect resource validation, competitive energy, silicon metal, polysilicon, crystal growth and wafer manufacturing in Uzbekistan, with candidate international manufacturing geographies under internal evaluation.</span>
+      <span class="uz">Uz Silicon Tech — O'zbekistonda resurslarni tekshirish, raqobatbardosh energiya, metallurgik kremniy, polisilikon, kristall o'stirish va wafer ishlab chiqarishni bog'lash uchun taklif etilayotgan sanoat platformasi. Potensial xalqaro ishlab chiqarish geografiyalari faqat ichki baholash bosqichida.</span>
     </p>
     <div class="hero-cta">
       <a href="#project" class="btn btn-primary"><span class="en">Explore the platform</span><span class="uz">Platformani ko'rish</span></a>
@@ -246,7 +242,7 @@
     <div class="hero-figs">
       <div class="hf"><div class="v am">100<span style="font-size:13px"> kt/y</span></div><div class="l"><span class="en">Up to · conceptual captive polysilicon scale</span><span class="uz">Gacha · konseptual ichki polisilikon ko'lami</span></div></div>
       <div class="hf"><div class="v st">45–55<span style="font-size:13px"> GW/y</span></div><div class="l"><span class="en">Indicative wafer potential</span><span class="uz">Indikativ wafer salohiyati</span></div></div>
-      <div class="hf"><div class="v gr">2</div><div class="l"><span class="en">Proposed wafer JVs · Turkey + 2nd MENA platform under evaluation</span><span class="uz">Taklif etilgan wafer JV · Turkiya + baholanayotgan 2-MENA platformasi</span></div></div>
+      <div class="hf"><div class="v gr">2</div><div class="l"><span class="en">Candidate manufacturing geographies · Türkiye + MENA</span><span class="uz">Nomzod ishlab chiqarish geografiyalari · Türkiye + MENA</span></div></div>
       <div class="hf"><div class="v">Gate 1</div><div class="l"><span class="en">Validation before scale commitment</span><span class="uz">Ko'lam majburiyatidan oldin tekshiruv</span></div></div>
     </div>
     <p class="note" style="margin-top:18px;font-size:12.5px;color:var(--faint)"><span class="en">Conceptual target-scale figures only. Subject to Gate 1 validation, technology and yield assumptions, engineering, financing, partner structure, utilities and market conditions.</span><span class="uz">Faqat konseptual maqsad ko'rsatkichlari. Gate 1 tekshiruvi, texnologiya va unum taxminlari, muhandislik, moliyalashtirish, hamkorlik tuzilmasi, kommunal resurslar va bozor sharoitlariga bog'liq.</span></p>
@@ -365,6 +361,24 @@
   </div>
 </section>
 
+<!-- EMPLOYMENT & INDUSTRIAL FOOTPRINT -->
+<section class="blk band" id="impact">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">Planning envelope</span><span class="uz">Rejalashtirish doirasi</span></div>
+      <h2><span class="en">Employment and industrial footprint.</span><span class="uz">Bandlik va sanoat maydoni.</span></h2>
+      <p class="sec-lead"><span class="en">Preliminary order-of-magnitude ranges for the full conceptual platform. These are not approved project KPIs or commitments.</span><span class="uz">Butun konseptual platforma uchun dastlabki tartib-darajadagi diapazonlar. Bular tasdiqlangan loyiha KPI'lari yoki majburiyatlari emas.</span></p>
+    </div>
+    <div class="num-grid rv">
+      <div class="ncard"><div class="v">~2,500–6,000</div><div class="l"><span class="en">Direct operational FTE · full platform, all potential geographies</span><span class="uz">To'g'ridan-to'g'ri operatsion FTE · butun platforma, barcha potensial geografiyalar</span></div></div>
+      <div class="ncard"><div class="v st">~400–700 ha</div><div class="l"><span class="en">Illustrative industrial core · not site-selected or engineering-derived</span><span class="uz">Illyustrativ sanoat yadrosi · joy tanlanmagan, muhandislikdan olinmagan</span></div></div>
+      <div class="ncard"><div class="v gr">TBD</div><div class="l"><span class="en">Uzbekistan-only employment · geographic allocation required</span><span class="uz">Faqat O'zbekistondagi bandlik · geografik taqsimot talab qilinadi</span></div></div>
+      <div class="ncard"><div class="v">TBD</div><div class="l"><span class="en">Peak construction workforce · EPC phasing required</span><span class="uz">Qurilishdagi eng yuqori ishchi kuchi · EPC bosqichlash talab qilinadi</span></div></div>
+    </div>
+    <div class="disc rv"><span class="en">See Master Plan v2.0 §20 for scope, confidence levels and exclusions. Final values depend on Gate 1 validation, process configuration, automation, location, technology and EPC planning.</span><span class="uz">Ko'lam, ishonch darajalari va istisnolar uchun Master Plan v2.0 §20 ga qarang. Yakuniy qiymatlar Gate 1 tekshiruvi, jarayon konfiguratsiyasi, avtomatlashtirish, joy, texnologiya va EPC rejalashtirishiga bog'liq.</span></div>
+  </div>
+</section>
+
 <!-- CONSORTIUM / CAPABILITY PACKAGES -->
 <section class="blk band" id="consortium">
   <div class="wrap">
@@ -407,17 +421,17 @@
   <div class="wrap">
     <div class="rv">
       <div class="eyebrow"><span class="en">International wafer strategy</span><span class="uz">Xalqaro wafer strategiyasi</span></div>
-      <h2><span class="en">Two proposed market-access platforms.</span><span class="uz">Bozorga kirish uchun ikki taklif etilgan platforma.</span></h2>
-      <p class="sec-lead"><span class="en">Neither JV is presented as incorporated, financed or officially agreed. Location, participants, scale and structure are not finalized for either platform.</span><span class="uz">Hech bir JV tashkil etilgan, moliyalashtirilgan yoki rasman kelishilgan deb ko'rsatilmaydi. Ikkala platforma uchun ham joy, ishtirokchilar, ko'lam va tuzilma yakunlanmagan.</span></p>
+      <h2><span class="en">Two candidate market-access geographies.</span><span class="uz">Bozorga kirish uchun ikki nomzod geografiya.</span></h2>
+      <p class="sec-lead"><span class="en">These are internal corridor options, not partnerships in progress. No outreach, location, participant, financing, scale or structure has been agreed for either geography.</span><span class="uz">Bular faqat ichki baholanayotgan yo'lak variantlari, shakllanayotgan hamkorliklar emas. Hech bir geografiya bo'yicha murojaat, joy, ishtirokchi, moliyalashtirish, ko'lam yoki tuzilma kelishilmagan.</span></p>
     </div>
     <div class="grid2">
       <div class="card rv">
-        <span class="badge"><span class="en">Wafer JV #1 · Proposed</span><span class="uz">Wafer JV #1 · Taklif etilgan</span></span>
-        <h3 style="margin-top:14px"><span class="en">Turkey</span><span class="uz">Turkiya</span></h3>
+        <span class="badge"><span class="en">Candidate geography #1</span><span class="uz">Nomzod geografiya #1</span></span>
+        <h3 style="margin-top:14px">Türkiye</h3>
         <p><span class="en">Under evaluation as a manufacturing and market-access platform connecting Europe, MENA and Central Asia. No company is incorporated, no partner is selected, no financing is secured and no location is finalized.</span><span class="uz">Yevropa, MENA va Markaziy Osiyoni bog'lovchi ishlab chiqarish va bozorga kirish platformasi sifatida baholanmoqda. Hech qanday kompaniya tashkil etilmagan, hamkor tanlanmagan, moliyalashtirish kafolatlanmagan va joy yakunlanmagan.</span></p>
       </div>
       <div class="card steel rv">
-        <span class="badge steel"><span class="en">Wafer JV #2 · Under evaluation</span><span class="uz">Wafer JV #2 · Baholanmoqda</span></span>
+        <span class="badge steel"><span class="en">Candidate geography #2</span><span class="uz">Nomzod geografiya #2</span></span>
         <h3 style="margin-top:14px"><span class="en">Egypt / Gulf / MENA</span><span class="uz">Misr / Ko'rfaz / MENA</span></h3>
         <p><span class="en">A second potential platform. Exact jurisdiction remains subject to partner availability, energy, incentives, logistics, market access and financing.</span><span class="uz">Ikkinchi potensial platforma. Aniq huquqiy hudud hamkor mavjudligi, energiya, imtiyozlar, logistika, bozorga kirish va moliyalashtirishga bog'liq.</span></p>
       </div>
@@ -435,7 +449,8 @@
     </div>
     <div class="tbl rv">
       <table>
-        <tr><th><span class="en">Validation area</span><span class="uz">Tekshiruv sohasi</span></th><th><span class="en">Status</span><span class="uz">Holat</span></th></tr>
+        <caption style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><span class="en">Gate 1 validation areas and current evidence status</span><span class="uz">Gate 1 tekshiruv sohalari va joriy dalil holati</span></caption>
+        <thead><tr><th scope="col"><span class="en">Validation area</span><span class="uz">Tekshiruv sohasi</span></th><th scope="col"><span class="en">Status</span><span class="uz">Holat</span></th></tr></thead><tbody>
         <tr><td><span class="en">Quartz / HPQ quality and consistency</span><span class="uz">Kvarts / HPQ sifati va barqarorligi</span></td><td><span class="badge muted">TO VALIDATE</span></td></tr>
         <tr><td><span class="en">Resource consistency</span><span class="uz">Resurs barqarorligi</span></td><td><span class="badge muted">TO VALIDATE</span></td></tr>
         <tr><td><span class="en">Beneficiation route</span><span class="uz">Boyitish yo'li</span></td><td><span class="badge muted">TO VALIDATE</span></td></tr>
@@ -452,7 +467,7 @@
         <tr><td><span class="en">Partner structure</span><span class="uz">Hamkorlik tuzilmasi</span></td><td><span class="badge">UNDER EVALUATION</span></td></tr>
         <tr><td><span class="en">Financing</span><span class="uz">Moliyalashtirish</span></td><td><span class="badge">UNDER EVALUATION</span></td></tr>
         <tr><td><span class="en">Customer qualification</span><span class="uz">Mijoz kvalifikatsiyasi</span></td><td><span class="badge steel">EVIDENCE REQUIRED</span></td></tr>
-        <tr><td><span class="en">Market / offtake assumptions</span><span class="uz">Bozor / offtake taxminlari</span></td><td><span class="badge steel">EVIDENCE REQUIRED</span></td></tr>
+        <tr><td><span class="en">Market / offtake assumptions</span><span class="uz">Bozor / offtake taxminlari</span></td><td><span class="badge steel">EVIDENCE REQUIRED</span></td></tr></tbody>
       </table>
     </div>
   </div>
@@ -467,13 +482,13 @@
       <h2 style="margin:0 auto"><span class="en">Integrated Silicon-to-Wafer Master Plan.</span><span class="uz">Integratsiyalashgan kremniydan-wafergacha Master-Reja.</span></h2>
       <p class="sec-lead" style="margin:16px auto 0"><span class="en">Version 2.0 presents the current wafer-first, multi-partner platform concept. The document presents technical, economic and spatial metrics as conceptual ranges subject to Gate 1 validation.</span><span class="uz">2.0-versiya wafer-birinchi, ko'p hamkorli platformaning joriy konsepsiyasini taqdim etadi. Hujjat texnik, iqtisodiy va hududiy ko'rsatkichlarni Gate 1 tekshiruviga bog'liq konseptual diapazonlarda beradi.</span></p>
       <div class="hero-cta en" style="justify-content:center;margin-top:28px">
-        <a href="UzSiliconTech_MasterPlan_EN.html" target="_blank" rel="noopener" class="btn btn-primary" onclick="track('view_masterplan_v2_en')">
+        <a href="UzSiliconTech_MasterPlan_EN.html" target="_blank" rel="noopener" class="btn btn-primary">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
           View Master Plan v2.0
         </a>
       </div>
       <div class="hero-cta uz" style="justify-content:center;margin-top:28px">
-        <a href="UzSiliconTech_MasterPlan_UZ.html" target="_blank" rel="noopener" class="btn btn-primary" onclick="track('view_masterplan_v2_uz')">
+        <a href="UzSiliconTech_MasterPlan_UZ.html" target="_blank" rel="noopener" class="btn btn-primary">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M10 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5"/></svg>
           Master-reja v2.0 ni ko'rish
         </a>
@@ -511,7 +526,14 @@
     document.documentElement.setAttribute('data-lang', l);
     document.body.setAttribute('data-lang', l);
     document.documentElement.lang = l;
+    document.querySelectorAll('.b-en').forEach(function(b){ b.setAttribute('aria-pressed', l === 'en'); });
+    document.querySelectorAll('.b-uz').forEach(function(b){ b.setAttribute('aria-pressed', l === 'uz'); });
     try{ localStorage.setItem('uzst_lang', l); }catch(e){}
+  }
+  function toggleNav(button){
+    var nav = document.getElementById('mainNav');
+    var open = nav.classList.toggle('open');
+    button.setAttribute('aria-expanded', open);
   }
   (function(){
     var saved; try{ saved = localStorage.getItem('uzst_lang'); }catch(e){}

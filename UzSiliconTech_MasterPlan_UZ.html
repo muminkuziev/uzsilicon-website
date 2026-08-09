@@ -9,6 +9,13 @@
 <meta property="og:title" content="Uz Silicon Tech — Master Plan v2.0">
 <meta property="og:description" content="Wafer-birinchi, ko'p hamkorli, integratsiyalashgan kremniydan-waferga sanoat platformasi konsepsiyasi.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://uzsilicon.com/UzSiliconTech_MasterPlan_UZ.html">
+<link rel="canonical" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_UZ.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_EN.html">
+<link rel="alternate" hreflang="uz" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_UZ.html">
+<link rel="alternate" hreflang="x-default" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_EN.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Report","name":"Uz Silicon Tech Master Plan v2.0","inLanguage":"uz","url":"https://uzsilicon.com/UzSiliconTech_MasterPlan_UZ.html","author":{"@type":"Person","name":"Kuziev Mumin Ulashboevich"},"publisher":{"@type":"Organization","name":"Uz Silicon Tech"}}</script>
 <title>Uz Silicon Tech — Master Plan v2.0 — Integratsiyalashgan Kremniydan-Waferga Platforma</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +27,7 @@
   --line:#242c38; --line-soft:#1a212b;
   --amber:#E8A33D; --amber2:#F2B85A; --amber-dim:rgba(232,163,61,0.14); --amber-soft:#9A6E2C;
   --steel:#6BA5C9; --steel-dim:rgba(107,165,201,0.14); --steel-soft:#3E6478;
-  --text:#EAEEF3; --text-dim:#949DAA; --text-faint:#5C6672;
+  --text:#EAEEF3; --text-dim:#949DAA; --text-faint:#7E8895;
   --ok:#5FB98A; --warn:#F2B85A; --bad:#E07A5F; --violet:#9B8CCB;
   --mono: 'Space Mono', ui-monospace,'SF Mono','Roboto Mono',Consolas,monospace;
   --sans: 'Inter', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
@@ -61,7 +68,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 3
 .brand .mark{width:8px;height:8px;background:var(--amber);box-shadow:0 0 10px 2px var(--amber);flex-shrink:0;}
 .brand .ver{color:var(--text-faint);font-weight:400;}
 #tocToggle{display:none;background:var(--surface);border:1px solid var(--line);color:var(--text);font-family:var(--mono);font-size:12px;padding:8px 14px;cursor:pointer;}
+.master-actions{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.master-link{font-family:var(--mono);font-size:11px;color:var(--text-dim);text-decoration:none;border:1px solid var(--line);padding:7px 10px;white-space:nowrap;}
+.master-link:hover{color:var(--amber);border-color:var(--amber-soft);}
 @media(max-width:980px){#tocToggle{display:block;}}
+@media(max-width:640px){header nav{padding:12px 16px;}.brand{font-size:0}.brand .mark{width:10px;height:10px}.brand .ver{display:none;}.master-actions{gap:5px}.master-link{padding:6px 8px}}
 
 .layout{display:grid;grid-template-columns:250px 1fr;max-width:1240px;margin:0 auto;gap:0;}
 @media(max-width:980px){.layout{grid-template-columns:1fr;min-width:0;} .content,.hero-grid,.hero-meta,.wrap,section.doc{min-width:0 !important;} *{max-width:100%;}}
@@ -618,12 +629,12 @@ footer.doc{padding:60px 44px 70px;border-top:1px solid var(--line-soft);}
 </head>
 <body>
 
-<div class="disclaimer-bar">KO'RIB CHIQISH UCHUN ISH QORALAMASI · RIVOJLANISH BOSQICHIDAGI KONSEPSIYA HUJJATI · QIMMATLI QOG'OZLAR YOKI INVESTITSIYA TAKLIFI EMAS</div>
+<div class="disclaimer-bar">JORIY KONSEPTUAL MASTER PLAN · RIVOJLANISH BOSQICHIDAGI HUJJAT · QIMMATLI QOG'OZLAR YOKI INVESTITSIYA TAKLIFI EMAS</div>
 
 <header>
   <nav>
     <a href="#top" class="brand"><span class="mark"></span>UZ SILICON TECH <span class="ver">· Master Plan v2.0</span></a>
-    <button id="tocToggle" aria-expanded="false" aria-controls="tocPanel" onclick="const p=document.getElementById('tocPanel');const open=p.classList.toggle('open');this.setAttribute('aria-expanded',open);">Mundarija ☰</button>
+    <div class="master-actions"><a class="master-link" href="index.html">Bosh sahifa</a><a class="master-link" href="UzSiliconTech_MasterPlan_EN.html" lang="en" hreflang="en">EN</a><button id="tocToggle" aria-expanded="false" aria-controls="tocPanel" onclick="const p=document.getElementById('tocPanel');const open=p.classList.toggle('open');this.setAttribute('aria-expanded',open);">Mundarija ☰</button></div>
   </nav>
 </header>
 
@@ -1272,7 +1283,7 @@ footer.doc{padding:60px 44px 70px;border-top:1px solid var(--line-soft);}
       <h3>Dalil registri</h3>
       <p class="body-p" style="font-size:13px;">Quyida "Hujjatlashtirilgan" — aniq, tekshiriladigan manba aniqlangan degani. Bu Uz Silicon Tech iqtibosni asosiy hujjat bilan mustaqil tekshirganini tasdiqlamaydi. Tekshiriladigan iqtibossiz bandlar "Hujjatlashtirilgan" emas, "Manba aniqlangan — tekshiruv kutilmoqda" deb belgilangan.</p>
       <div class="tbl-wrap"><table><caption class="sr-only">Dalil registri — da'volar, manbalar va tekshiruv holati</caption><thead><tr><th scope="col">Dalil ID</th><th scope="col">Da'vo</th><th scope="col">Manba / asos</th><th scope="col">Tekshiruv holati</th></tr></thead><tbody><tr><td class="hl">GEO‑001</td><td>Nurota / Jerdanak kvarts tarkibi (SiO₂, Al₂O₃, Fe₂O₃)</td><td>Toshkent Kimyo-Texnologiya Instituti — Nomazov va Aripova, 2025 (institutsional tadqiqot, hali data-room'ga bog'lanmagan)</td><td><span class="ev-status estimate">Manba aniqlangan — tekshiruv kutilmoqda</span></td></tr><tr><td class="hl">GEO‑002</td><td>O'zbekiston Strategik Minerallar Ro'yxatiga kremniy / HPQ kiritilgan</td><td>Ochiq strategik minerallar tasnifi — Mirkamalov va boshq., 2025</td><td><span class="ev-status estimate">Manba aniqlangan — tekshiruv kutilmoqda</span></td></tr><tr><td class="hl">ENG‑001</td><td>Jarayon energiya intensivligi raqamlari (kVt·soat/kg, bosqich bo'yicha)</td><td>Sanoat-tipik benchmark'lar, yetkazib beruvchi taklifi emas</td><td><span class="ev-status estimate">Taxmin — loyihaga xos emas</span></td></tr><tr><td class="hl">FIN‑001</td><td>Komponent bo'yicha CAPEX oraliqlari</td><td>Sanoat-tipik benchmark'lar va taqqoslanadigan-loyiha ma'lumotlari</td><td><span class="ev-status estimate">Taxmin — loyihaga xos emas</span></td></tr><tr><td class="hl">IMP‑001</td><td>Ikkala nomzod xalqaro ishlab chiqarish geografiyasi uchun kontragent shaxsi</td><td>Murojaat boshlanmagan, kontragentga murojaat qilinmagan</td><td><span class="ev-status tbd">TBD — kontragent yo'q</span></td></tr><tr><td class="hl">ENR‑001</td><td>Energiya hamkori shaxsi</td><td>Hujjatlashtirilgan kontragent kelishuvi mavjud emas</td><td><span class="ev-status tbd">TBD — kontragent yo'q</span></td></tr><tr><td class="hl">GOV‑001</td><td>Investitsiyalar, sanoat va savdo vazirligi bilan aloqa</td><td>Rasmiy yozma javob, Ref. 05‑94‑94‑1‑1184/18, 15-iyul 2026 sanasida</td><td><span class="ev-status confirmed">Hujjatlashtirilgan — manba fayl holida</span></td></tr><tr><td class="hl">GEO‑003</td><td>Nomzod kvarts manbalarida B/P aralashma darajalari</td><td>Hali o'lchanmagan</td><td><span class="ev-status tbd">TBD — o'lchanmagan</span></td></tr><tr><td class="hl">GEO‑004</td><td>JORC-mos zaxira bayonoti</td><td>Hali buyurtma qilinmagan</td><td><span class="ev-status tbd">TBD — buyurtma qilinmagan</span></td></tr></tbody></table></div>
-      <p style="font-size:12px;color:var(--text-faint);margin-top:14px;">Ushbu jadval — xulosa indeksi, to'liq dalil yozuvi emas. Strukturaviy dalil jurnali (hujjat nomi, muallif, sana, sahifa/jadval havolasi, data-room joylashuvi, tekshiruvchi) hali tayyorlanmagan va ushbu hujjat tashqariga tarqatilishidan oldin tuzilishi kerak.</p>
+      <p style="font-size:12px;color:var(--text-faint);margin-top:14px;">Ushbu ochiq konseptual hujjat xulosa bo'lib, to'liq dalillar paketi emas. Strukturaviy dalil jurnali (hujjat nomi, muallif, sana, sahifa/jadval havolasi, data-room joylashuvi va tekshiruvchi) tekshiruv davomida tuzilishi va yuritilishi kerak. Tashqi foydalanuvchilar ushbu qisqa registrni mustaqil tasdiq sifatida talqin qilmasligi kerak.</p>
       <p style="font-size:12px;color:var(--text-faint);margin-top:20px;">Manbalar: TKTI kvarts tadqiqoti (Nomazov va Aripova, 2025); IEA / pv-magazine / Bernreuter polisilikon sanoati ma'lumotlari; ochiq taqqoslanadigan-loyiha benchmark'lari. Ushbu v2.0 hujjati oldingi v1.x Master Plan o'rnini egallagan joriy konseptual Master Plan hisoblanadi. Undagi loyiha ko'rsatkichlari tegishli tekshiruv, muhandislik va mustaqil feasibility ishlariga bog'liq.</p>
     </section>
 

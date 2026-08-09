@@ -9,13 +9,16 @@
 <meta property="og:description" content="Founder and strategic initiator of Uz Silicon Tech — a development-stage, multi-partner industrial platform designed to evaluate and structure an integrated silicon-to-wafer ecosystem.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://uzsilicon.com/founder.html">
+<link rel="canonical" href="https://uzsilicon.com/founder.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Kuziev Mumin Ulashboevich","jobTitle":"Founder and Strategic Project Initiator","email":"founder@uzsilicon.com","url":"https://uzsilicon.com/founder.html","worksFor":{"@type":"Organization","name":"Uz Silicon Tech","url":"https://uzsilicon.com/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{--ink:#0B0E13;--ink2:#0E1116;--panel:#141A22;--panel2:#1A222C;--line:#26303C;
     --amber:#E8A33D;--amber2:#F2B85A;--amber-dim:#9A6E2C;--steel:#6BA5C9;--steel-dim:#3E6478;
-    --text:#EAEEF3;--muted:#949DAA;--faint:#5C6672}
+    --text:#EAEEF3;--muted:#949DAA;--faint:#7E8895}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{background:var(--ink);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;font-size:16px;overflow-x:hidden}
@@ -34,7 +37,15 @@
   .brand .mk{width:26px;height:26px;flex:0 0 auto}.brand b{color:var(--amber)}
   .nav-links{display:flex;align-items:center;gap:22px;font-size:13.5px;color:var(--muted)}
   .nav-links a{text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--amber)}
-  @media(max-width:760px){.nav-links a:not(.cta){display:none}}
+  .home-return{margin-left:auto;margin-right:12px;font-family:'Space Mono';font-size:11px;color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:7px 10px;white-space:nowrap}
+  .home-return:hover{color:var(--amber);border-color:var(--amber-dim)}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:7px 10px;cursor:pointer;font-family:'Space Mono';font-size:11px}
+  @media(max-width:760px){
+    .nav-in{position:relative}.menu-toggle{display:block}
+    .nav-links{display:none;position:absolute;top:62px;left:18px;right:18px;flex-direction:column;align-items:stretch;gap:0;padding:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+    .nav-links.open{display:flex}.nav-links a{display:block!important;padding:10px 12px}.nav-links .lang{align-self:flex-start;margin:8px 12px}
+  }
+  @media(max-width:480px){.brand{font-size:0}.brand .mk{width:28px;height:28px}.home-return{margin-right:6px}}
   .lang{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;font-family:'Space Mono';font-size:11px}
   .lang button{background:none;border:0;color:var(--faint);padding:5px 11px;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:.05em}
   [data-lang="en"] .lang .b-en,[data-lang="uz"] .lang .b-uz{background:var(--amber);color:var(--ink)}
@@ -141,7 +152,9 @@
       <svg class="mk" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2l12 7v14l-12 7L4 23V9z" stroke="#E8A33D" stroke-width="1.6"/><path d="M16 9l6 3.5v7L16 23l-6-3.5v-7z" fill="#E8A33D" fill-opacity="0.18" stroke="#E8A33D" stroke-width="1.2"/></svg>
       UZ <b>SILICON</b> TECH
     </a>
-    <div class="nav-links">
+    <a href="index.html" class="home-return"><span class="en">← Home</span><span class="uz">← Bosh sahifa</span></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="founderNav" onclick="toggleNav(this)"><span class="en">Menu</span><span class="uz">Menyu</span> ☰</button>
+    <div class="nav-links" id="founderNav">
       <a href="index.html" class="en">Home</a><a href="index.html" class="uz">Bosh sahifa</a>
       <a href="index.html#project" class="en">Platform</a><a href="index.html#project" class="uz">Platforma</a>
       <a href="index.html#why" class="en">Strategy</a><a href="index.html#why" class="uz">Strategiya</a>
@@ -149,8 +162,8 @@
       <a href="#publications" class="en">Publications</a><a href="#publications" class="uz">Nashrlar</a>
       <a href="#contact" class="en">Contact</a><a href="#contact" class="uz">Aloqa</a>
       <div class="lang">
-        <button class="b-en" onclick="setLang('en')">EN</button>
-        <button class="b-uz" onclick="setLang('uz')">UZ</button>
+        <button type="button" class="b-en" aria-label="Switch to English" aria-pressed="true" onclick="setLang('en')">EN</button>
+        <button type="button" class="b-uz" aria-label="O'zbek tiliga o'tish" aria-pressed="false" onclick="setLang('uz')">UZ</button>
       </div>
     </div>
   </div>
@@ -183,6 +196,7 @@
       <h2><span class="en">Initiating and structuring an industrial concept.</span><span class="uz">Sanoat konsepsiyasini boshlash va tuzish.</span></h2>
       <p class="sec-lead"><span class="en"><b>Kuziev Mumin Ulashboevich</b> initiated the Uz Silicon Tech concept and is responsible for its strategic architecture, development coordination and stakeholder engagement. His role spans defining the platform's industrial logic, sequencing validation work, and building the early-stage framework through which specialist partners, technical advisors and prospective institutions may be evaluated.</span><span class="uz"><b>Kuziev Mumin Ulashboevich</b> Uz Silicon Tech konsepsiyasini boshlagan va uning strategik arxitekturasi, rivojlanishini muvofiqlashtirish hamda manfaatdor tomonlar bilan aloqasi uchun mas'uldir. Uning roli platforma sanoat mantig'ini belgilash, tekshiruv ishlarining ketma-ketligini tuzish va ixtisoslashgan hamkorlar, texnik maslahatchilar hamda potensial institutlarni baholash mumkin bo'lgan dastlabki bosqich doirasini qurishni o'z ichiga oladi.</span></p>
       <p class="sec-lead" style="margin-top:14px"><span class="en">In this capacity, the founder supports technical and commercial evaluation work, contributes to building a long-term international cooperation framework, and represents the concept in preliminary dialogue with prospective stakeholders. This role does not extend to government mandate, institutional endorsement, committed financing, confirmed investment, formal partnership, technology ownership, or industrial operating experience beyond what is documented.</span><span class="uz">Ushbu vazifada asoschi texnik va tijorat baholash ishlarini qo'llab-quvvatlaydi, uzoq muddatli xalqaro hamkorlik doirasini shakllantirishga hissa qo'shadi va konsepsiyani potensial manfaatdor tomonlar bilan dastlabki muloqotda ifodalaydi. Ushbu rol davlat mandati, institutsional tasdiq, majburiy moliyalashtirish, tasdiqlangan investitsiya, rasmiy hamkorlik, texnologiya egaligi yoki hujjatlashtirilmagan sanoat operatsion tajribasini o'z ichiga olmaydi.</span></p>
+      <div class="notice" style="margin-top:22px"><h3><span class="en">Development method</span><span class="uz">Ishlab chiqish usuli</span></h3><p><span class="en">The project concept and Master Plan were developed under the founder's direction with AI-assisted research, structuring and drafting. Technical, commercial and financial assumptions remain subject to independent specialist validation.</span><span class="uz">Loyiha konsepsiyasi va Master Plan asoschi rahbarligida sun'iy intellekt yordamidagi tadqiqot, tuzilmalash va matn tayyorlash orqali ishlab chiqildi. Texnik, tijorat va moliyaviy taxminlar mustaqil soha mutaxassislari tekshiruviga bog'liq.</span></p></div>
     </div>
   </div>
 </section>
@@ -193,7 +207,7 @@
     <div class="rv">
       <div class="eyebrow"><span class="en">Strategic Vision</span><span class="uz">Strategik Ko'rish</span></div>
       <h2><span class="en">An internationally competitive silicon-to-wafer ecosystem.</span><span class="uz">Xalqaro raqobatbardosh kremniydan-wafergacha ekotizim.</span></h2>
-      <p class="sec-lead"><span class="en">The long-term objective is to evaluate and potentially develop an internationally competitive silicon-to-wafer industrial ecosystem centered on Uzbekistan and connected to selected international manufacturing and market-access platforms.</span><span class="uz">Uzoq muddatli maqsad — O'zbekiston markazidagi va tanlangan xalqaro ishlab chiqarish hamda bozorga kirish platformalari bilan bog'langan, xalqaro raqobatbardosh kremniydan-wafergacha sanoat ekotizimini baholash va potensial rivojlantirishdir.</span></p>
+      <p class="sec-lead"><span class="en">The long-term objective is to evaluate and potentially develop an internationally competitive silicon-to-wafer industrial ecosystem centered on Uzbekistan, while separately evaluating candidate international manufacturing and market-access geographies.</span><span class="uz">Uzoq muddatli maqsad — O'zbekiston markazidagi xalqaro raqobatbardosh kremniydan-wafergacha sanoat ekotizimini baholash va potensial rivojlantirish, shu bilan birga nomzod xalqaro ishlab chiqarish va bozorga kirish geografiyalarini alohida baholashdir.</span></p>
       <div class="chips">
         <span class="chip"><span class="en">Long-Term Industrial Development</span><span class="uz">Uzoq Muddatli Sanoat Rivoji</span></span>
         <span class="chip"><span class="en">Technology Neutrality</span><span class="uz">Texnologik Neytrallik</span></span>
@@ -498,7 +512,14 @@
     document.documentElement.setAttribute('data-lang', l);
     document.body.setAttribute('data-lang', l);
     document.documentElement.lang = l;
+    document.querySelectorAll('.b-en').forEach(function(b){ b.setAttribute('aria-pressed', l === 'en'); });
+    document.querySelectorAll('.b-uz').forEach(function(b){ b.setAttribute('aria-pressed', l === 'uz'); });
     try{ localStorage.setItem('uzst_lang', l); }catch(e){}
+  }
+  function toggleNav(button){
+    var nav = document.getElementById('founderNav');
+    var open = nav.classList.toggle('open');
+    button.setAttribute('aria-expanded', open);
   }
   (function(){
     var saved; try{ saved = localStorage.getItem('uzst_lang'); }catch(e){}

@@ -9,6 +9,13 @@
 <meta property="og:title" content="Uz Silicon Tech — Master Plan v2.0">
 <meta property="og:description" content="Wafer-first, multi-partner, integrated silicon-to-wafer industrial platform concept.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://uzsilicon.com/UzSiliconTech_MasterPlan_EN.html">
+<link rel="canonical" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_EN.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_EN.html">
+<link rel="alternate" hreflang="uz" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_UZ.html">
+<link rel="alternate" hreflang="x-default" href="https://uzsilicon.com/UzSiliconTech_MasterPlan_EN.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Report","name":"Uz Silicon Tech Master Plan v2.0","inLanguage":"en","url":"https://uzsilicon.com/UzSiliconTech_MasterPlan_EN.html","author":{"@type":"Person","name":"Kuziev Mumin Ulashboevich"},"publisher":{"@type":"Organization","name":"Uz Silicon Tech"}}</script>
 <title>Uz Silicon Tech — Master Plan v2.0 — Integrated Silicon-to-Wafer Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +26,7 @@
   --line:#242c38; --line-soft:#1a212b;
   --amber:#E8A33D; --amber2:#F2B85A; --amber-dim:rgba(232,163,61,0.14); --amber-soft:#9A6E2C;
   --steel:#6BA5C9; --steel-dim:rgba(107,165,201,0.14); --steel-soft:#3E6478;
-  --text:#EAEEF3; --text-dim:#949DAA; --text-faint:#5C6672;
+  --text:#EAEEF3; --text-dim:#949DAA; --text-faint:#7E8895;
   --ok:#5FB98A; --warn:#F2B85A; --bad:#E07A5F; --violet:#9B8CCB;
   --mono: 'Space Mono', ui-monospace,'SF Mono','Roboto Mono',Consolas,monospace;
   --sans: 'Inter', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
@@ -55,7 +62,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 3
 .brand .mark{width:8px;height:8px;background:var(--amber);box-shadow:0 0 10px 2px var(--amber);flex-shrink:0;}
 .brand .ver{color:var(--text-faint);font-weight:400;}
 #tocToggle{display:none;background:var(--surface);border:1px solid var(--line);color:var(--text);font-family:var(--mono);font-size:12px;padding:8px 14px;cursor:pointer;}
+.master-actions{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.master-link{font-family:var(--mono);font-size:11px;color:var(--text-dim);text-decoration:none;border:1px solid var(--line);padding:7px 10px;white-space:nowrap;}
+.master-link:hover{color:var(--amber);border-color:var(--amber-soft);}
 @media(max-width:980px){#tocToggle{display:block;}}
+@media(max-width:640px){header nav{padding:12px 16px;}.brand{font-size:0}.brand .mark{width:10px;height:10px}.brand .ver{display:none;}.master-actions{gap:5px}.master-link{padding:6px 8px}}
 .layout{display:grid;grid-template-columns:250px 1fr;max-width:1240px;margin:0 auto;gap:0;}
 @media(max-width:980px){.layout{grid-template-columns:1fr;min-width:0;} .content,.hero-grid,.hero-meta,.wrap,section.doc{min-width:0 !important;} *{max-width:100%;}}
 .toc{padding:32px 20px 60px 32px; border-right:1px solid var(--line-soft); position:sticky; top:57px; align-self:start; max-height:calc(100vh - 57px); overflow-y:auto;}
@@ -457,12 +468,12 @@ section.doc.alt .ring-node-bg{fill:var(--bg);}
 </head>
 <body>
 
-<div class="disclaimer-bar">WORKING DRAFT FOR REVIEW · DEVELOPMENT-STAGE CONCEPT DOCUMENT · NOT AN OFFER OF SECURITIES OR INVESTMENT</div>
+<div class="disclaimer-bar">CURRENT CONCEPTUAL MASTER PLAN · DEVELOPMENT-STAGE DOCUMENT · NOT AN OFFER OF SECURITIES OR INVESTMENT</div>
 
 <header>
   <nav>
     <a href="#top" class="brand"><span class="mark"></span>UZ SILICON TECH <span class="ver">· Master Plan v2.0</span></a>
-    <button id="tocToggle" aria-expanded="false" aria-controls="tocPanel" onclick="const p=document.getElementById('tocPanel');const open=p.classList.toggle('open');this.setAttribute('aria-expanded',open);">Contents ☰</button>
+    <div class="master-actions"><a class="master-link" href="index.html">Home</a><a class="master-link" href="UzSiliconTech_MasterPlan_UZ.html" lang="uz" hreflang="uz">UZ</a><button id="tocToggle" aria-expanded="false" aria-controls="tocPanel" onclick="const p=document.getElementById('tocPanel');const open=p.classList.toggle('open');this.setAttribute('aria-expanded',open);">Contents ☰</button></div>
   </nav>
 </header>
 
@@ -988,7 +999,7 @@ section.doc.alt .ring-node-bg{fill:var(--bg);}
         <tr><td class="hl">GEO&#8209;003</td><td>B/P impurity levels at candidate quartz sources</td><td>Not yet measured</td><td><span class="ev-status tbd">TBD — not measured</span></td></tr>
         <tr><td class="hl">GEO&#8209;004</td><td>JORC&#8209;compliant reserve statement</td><td>Not yet commissioned</td><td><span class="ev-status tbd">TBD — not commissioned</span></td></tr>
       </tbody></table></div>
-      <p style="font-size:12px;color:var(--text-faint);margin-top:14px;">This table is a summary index, not a full evidence record. A structured evidence log (document title, author, date, page/table reference, data&#8209;room location, reviewer) has not yet been prepared and is to be compiled before this document is circulated externally.</p>
+      <p style="font-size:12px;color:var(--text-faint);margin-top:14px;">This public conceptual document is a summary, not a complete evidence package. A structured evidence log (document title, author, date, page/table reference, data&#8209;room location and reviewer) remains to be compiled and maintained as validation progresses. External users should not treat the summary register as independent verification.</p>
       <p style="font-size:12px;color:var(--text-faint);margin-top:20px;">Sources: TKTI quartz study (Nomazov &amp; Aripova, 2025); IEA / pv&#8209;magazine / Bernreuter polysilicon industry data; public comparable&#8209;project benchmarks. This v2.0 document supersedes the previous v1.x Master Plan and is the current conceptual Master Plan. Its project metrics remain subject to appropriate validation, engineering and independent feasibility work.</p>
     </section>
 
